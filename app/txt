@@ -1,0 +1,22 @@
+  {/* Background glow
+      <div
+        className="
+          pointer-events-none absolute
+          -right-32 top-20
+          h-[500px] w-[500px]
+          rounded-full
+          bg-[#207EB9]/20
+          blur-[120px]
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none absolute
+          -left-40 bottom-0
+          h-[400px] w-[400px]
+          rounded-full
+          bg-[#55A9D4]/10
+          blur-[100px]
+        "
+      /> */}
