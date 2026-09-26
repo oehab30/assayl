@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope, Plus_Jakarta_Sans, Cairo, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Layout/Navbar";
+import Footer from "./components/Layout/Footer";
 
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
@@ -44,6 +45,8 @@ export default function RootLayout({
         <div className="">
           <Navbar />
           {children}
+           <Footer />
+
         </div>
       </body>
     </html>

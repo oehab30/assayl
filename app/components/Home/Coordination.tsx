@@ -52,21 +52,7 @@ function Coordination() {
         "
       />
 
-      {/* Burgundy atmospheric glow */}
-      <div
-        aria-hidden="true"
-        className="
-          pointer-events-none
-          absolute
-          -left-40
-          bottom-0
-          h-[400px]
-          w-[400px]
-          rounded-full
-          bg-[#4F0908]/[0.035]
-          blur-[110px]
-        "
-      />
+
 
       {/* =========================================================
           CONTAINER
@@ -157,34 +143,7 @@ function Coordination() {
 
           <div className="lg:sticky lg:top-32">
             {/* Small section label */}
-            <div className="mb-7 flex items-center gap-3">
-              <span
-                className="
-                  font-jakarta
-                  text-[10px]
-                  font-bold
-                  tracking-[0.18em]
-                  text-[#005293]
-                "
-              >
-                01
-              </span>
-
-              <span className="h-px w-8 bg-[#005293]/30" />
-
-              <span
-                className="
-                  font-manrope
-                  text-[9px]
-                  font-semibold
-                  uppercase
-                  tracking-[0.2em]
-                  text-slate-400
-                "
-              >
-                About STARS
-              </span>
-            </div>
+         
 
             {/* Main heading */}
             <h2

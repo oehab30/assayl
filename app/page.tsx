@@ -8,8 +8,6 @@ export default function app() {
   return (
    <>
 <Home/>
-<div className="h-screen">
-</div>
    </>
 
   )

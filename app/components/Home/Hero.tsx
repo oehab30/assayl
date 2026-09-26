@@ -59,22 +59,7 @@ export default function Hero() {
         "
       />
 
-      {/* Burgundy atmospheric glow */}
-      <div
-        aria-hidden="true"
-        className="
-          pointer-events-none
-          absolute
-          -right-40
-          top-1/3
-          z-[2]
-          h-[500px]
-          w-[500px]
-          rounded-full
-          bg-[#4F0908]/20
-          blur-[130px]
-        "
-      />
+
 
       {/* Blue atmospheric glow */}
       <div
@@ -110,34 +95,7 @@ export default function Hero() {
       {/* =========================================================
           TOP TECHNICAL LABEL
       ========================================================== */}
-      <div
-        aria-hidden="true"
-        className="
-          absolute
-          right-8
-          top-32
-          z-[3]
-          hidden
-          items-center
-          gap-3
-          lg:flex
-        "
-      >
-        <span className="h-px w-12 bg-white/20" />
 
-        <span
-          className="
-            font-manrope
-            text-[9px]
-            font-semibold
-            uppercase
-            tracking-[0.28em]
-            text-white/40
-          "
-        >
-          GLOBAL SOURCING · LOGISTICS
-        </span>
-      </div>
 
       {/* =========================================================
           MAIN CONTENT
@@ -175,12 +133,11 @@ export default function Hero() {
                 delay: 0.15,
                 ease: [0.76, 0, 0.24, 1],
               }}
-              className="mb-7"
+              className="mb-7 z-100"
             >
               <AnimatedLine
                 text="From China to your destination"
                 lines={1}
-                lineColor="bg-[#5ba7df]"
               />
             </motion.div>
 
