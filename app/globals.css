@@ -26,6 +26,10 @@ body {
   line-height: 1.75;
 }
 
+[dir="rtl"] {
+  font-family: var(--font-cairo), "Tahoma", Arial, sans-serif;
+}
+
 button,
 input,
 textarea,

@@ -3,9 +3,11 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import AnimatedLine from "../Common/AnimatedLine"; // قم بتعديل المسار حسب مجلد المشروع لديك
+import AnimatedLine from "./AnimatedLine";
+import { useTranslation } from "../Language/translator";
 
 export default function Banner() {
+  const { locale } = useTranslation();
   return (
     <section className="relative overflow-hidden bg-[#f8fafc] py-12 sm:py-16 lg:py-20">
       <div className="relative mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
@@ -57,7 +59,7 @@ export default function Banner() {
           <div className="relative z-10 mt-8 flex flex-col gap-3.5 sm:flex-row lg:mt-0 lg:flex-col sm:items-center lg:items-stretch min-w-[200px]">
             {/* Primary Button */}
             <Link
-              href="/quote"
+              href={`/${locale}/contact`}
               className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3.5 font-jakarta text-xs font-bold text-[#06182e] shadow-sm transition-all duration-300 hover:bg-slate-100 hover:shadow-md text-center"
             >
               Request a Quote

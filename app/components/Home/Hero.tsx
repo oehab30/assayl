@@ -5,8 +5,10 @@ import { motion } from "motion/react"
 import Image from "next/image"
 import { ArrowUpRight, ArrowDown } from "lucide-react"
 import AnimatedLine from "../Common/AnimatedLine"
+import { useTranslation } from "../Language/translator"
 
 export default function Hero() {
+  const { locale, t } = useTranslation()
   return (
     <section
       id="home"
@@ -136,7 +138,7 @@ export default function Hero() {
               className="mb-7 z-100"
             >
               <AnimatedLine
-                text="From China to your destination"
+                text={t("hero.eyebrow")}
                 lines={1}
               />
             </motion.div>
@@ -166,21 +168,7 @@ export default function Hero() {
                 xl:text-[84px]
               "
             >
-              Your trusted{" "}
-              <span className="relative inline-block text-[#5ba7df]">
-                partner
-                <span
-                  aria-hidden="true"
-                  className="
-                    absolute
-                    -bottom-2
-                    left-0
-                    h-[2px]
-                    w-1/2
-                  "
-                />
-              </span>{" "}
-              for sourcing and shipping from China.
+              {t("hero.title")}
             </motion.h1>
 
             {/* =================================================
@@ -205,9 +193,7 @@ export default function Hero() {
                 sm:leading-8
               "
             >
-              STARS connects its presence in China, Hong Kong, and Egypt
-              to deliver coordinated sourcing, shipping, warehousing,
-              and import solutions for traders, businesses, and individuals.
+              {t("hero.description")}
             </motion.p>
 
             {/* =================================================
@@ -231,7 +217,7 @@ export default function Hero() {
             >
               {/* Primary CTA */}
               <Link
-                href="#contact"
+                href={`/${locale}/contact`}
                 className="
                   group
                   relative
@@ -257,7 +243,7 @@ export default function Hero() {
                 "
               >
                 <span className="relative z-10 flex items-center gap-3">
-                  Start a Project
+                  {t("hero.start")}
 
                   <ArrowUpRight
                     className="
@@ -298,7 +284,7 @@ export default function Hero() {
                   hover:bg-white/[0.07]
                 "
               >
-                <span>Explore Services</span>
+                <span>{t("hero.services")}</span>
 
                 <span
                   className="

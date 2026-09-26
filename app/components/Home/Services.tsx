@@ -14,7 +14,8 @@ import {
   Anchor,
   ArrowUpRight,
 } from "lucide-react";
-import ArrowButton from "../Common/Arrowbutton";
+import ArrowButton from "../Common/ArrowButton";
+import { useTranslation } from "../Language/translator";
 
 interface ServiceCardData {
   id: string;
@@ -35,7 +36,7 @@ const servicesData: ServiceCardData[] = [
       "Coordinated import and export services from China to Egypt and destinations worldwide, tailored to each shipment.",
     image: "/hero2.jpg",
     icon: <Ship />,
-    href: "/quote?service=import-export",
+    href: "?service=import-export",
   },
   {
     id: "02",
@@ -45,7 +46,7 @@ const servicesData: ServiceCardData[] = [
       "Support with customs requirements and procedures in line with applicable regulations.",
     image: "/imgi_2_hero-port-v2.jpeg",
     icon: <FileText />,
-    href: "/quote?service=customs-clearance",
+    href: "?service=customs-clearance",
   },
   {
     id: "03",
@@ -55,7 +56,7 @@ const servicesData: ServiceCardData[] = [
       "Receive, consolidate, and hold products in secure company warehouses before shipment preparation.",
     image: "/imgi_2_hero-port-v2.jpeg",
     icon: <Warehouse />,
-    href: "/quote?service=warehousing",
+    href: "?service=warehousing",
   },
   {
     id: "04",
@@ -65,7 +66,7 @@ const servicesData: ServiceCardData[] = [
       "Import arrangements using client or company documentation, subject to applicable legal frameworks.",
     image: "/imgi_2_hero-port-v2.jpeg",
     icon: <UserCheck />,
-    href: "/quote?service=import-behalf",
+    href: "?service=import-behalf",
   },
   {
     id: "05",
@@ -75,7 +76,7 @@ const servicesData: ServiceCardData[] = [
       "Product sourcing, purchasing, consolidation, and supply according to the requested specifications.",
     image: "/imgi_2_hero-port-v2.jpeg",
     icon: <Search />,
-    href: "/quote?service=sourcing",
+    href: "?service=sourcing",
   },
   {
     id: "06",
@@ -85,11 +86,12 @@ const servicesData: ServiceCardData[] = [
       "Sea freight solutions for varied shipment sizes, including cubic-meter consolidation.",
     image: "/imgi_2_hero-port-v2.jpeg",
     icon: <Anchor />,
-    href: "/quote?service=sea-freight",
+    href: "?service=sea-freight",
   },
 ];
 
 export default function Services() {
+  const { locale } = useTranslation();
   const [activeService, setActiveService] = useState(servicesData[0]);
 
   return (
@@ -631,7 +633,7 @@ export default function Services() {
                   </p>
 
                   <Link
-                    href={activeService.href}
+                    href={`/${locale}/contact${activeService.href}`}
                     className="
                       group
                       mt-7
@@ -701,7 +703,7 @@ export default function Services() {
           </div>
 
           <ArrowButton
-            href="/quote"
+            href={`/${locale}/contact`}
             text="Request a Quote"
             icon={ArrowUpRight}
           />

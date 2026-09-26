@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
 import AnimatedLine from "../Common/AnimatedLine";
+import { useTranslation } from "../Language/translator";
 
 interface ProcessStep {
   id: string;
@@ -35,6 +36,7 @@ const steps: ProcessStep[] = [
 ];
 
 export default function ProcessTimeline() {
+  const { locale } = useTranslation();
   const [activeStep, setActiveStep] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
   const [isPaused, setIsPaused] = useState(false);
@@ -446,7 +448,7 @@ export default function ProcessTimeline() {
         {/* CTA */}
         <div className="mt-8">
           <Link
-            href="/process"
+            href={`/${locale}/process`}
             className="
               inline-flex
               items-center

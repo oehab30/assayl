@@ -3,7 +3,8 @@
 import React from "react";
 import Link from "next/link";
 import { Phone, ChevronRight } from "lucide-react";
-import AnimatedLine from "../Common/AnimatedLine"; // Adjust import path as needed
+import AnimatedLine from "../Common/AnimatedLine";
+import { useTranslation } from "../Language/translator";
 
 interface OfficeLocation {
   id: string;
@@ -47,6 +48,7 @@ const offices: OfficeLocation[] = [
 ];
 
 export default function OfficesSection() {
+  const { locale } = useTranslation();
   return (
     <section className="relative overflow-hidden bg-white py-16 sm:py-24 lg:py-28">
       <div className="relative mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
@@ -140,7 +142,7 @@ export default function OfficesSection() {
         {/* Bottom Navigation Link */}
         <div className="flex justify-center">
           <Link
-            href="/offices"
+            href={`/${locale}/branches`}
             className="group inline-flex items-center gap-1.5 font-jakarta text-xs font-bold text-[#005293] hover:underline underline-offset-4"
           >
             <span>Branch and office details</span>

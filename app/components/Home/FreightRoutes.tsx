@@ -3,7 +3,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import AnimatedLine from "../Common/AnimatedLine";
-import ArrowButton from "../Common/Arrowbutton";
+import ArrowButton from "../Common/ArrowButton";
+import { useTranslation } from "../Language/translator";
 
 interface RouteCard {
   id: string;
@@ -25,7 +26,7 @@ const routeOptions: RouteCard[] = [
     description:
       "A practical solution for larger cargo, with flexible capacity, consolidation options, and carefully coordinated routing from China to your destination.",
     image: "/imgi_2_hero-port-v2.jpeg",
-    href: "/quote?service=sea-freight",
+    href: "?service=sea-freight",
     capacity: "High",
     speed: "Planned",
     bestFor: "Larger cargo",
@@ -37,7 +38,7 @@ const routeOptions: RouteCard[] = [
     description:
       "A faster option for time-sensitive cargo, with schedule coordination designed around priority shipments and shorter transit requirements.",
     image: "/air-freight.webp",
-    href: "/quote?service=air-freight",
+    href: "?service=air-freight",
     capacity: "Flexible",
     speed: "Fast",
     bestFor: "Priority cargo",
@@ -45,6 +46,7 @@ const routeOptions: RouteCard[] = [
 ];
 
 export default function FreightRoutes() {
+  const { locale } = useTranslation();
   const [activeRoute, setActiveRoute] = useState("01");
 
   return (
@@ -556,7 +558,7 @@ export default function FreightRoutes() {
 
                   <div className="mt-6">
                     <ArrowButton
-                      href={route.href}
+                      href={`/${locale}/contact${route.href}`}
                       text="Request this service"
                       className="
                         !text-white

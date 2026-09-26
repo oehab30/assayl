@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, LucideIcon } from "lucide-react";
+import { ArrowUpRight, type LucideIcon } from "lucide-react";
 
 interface ArrowButtonProps {
   href: string;
@@ -40,7 +40,6 @@ export default function ArrowButton({
     >
       <span>{content}</span>
 
-      {/* Circle Icon Wrapper */}
       <span
         className="
           flex
@@ -73,7 +72,6 @@ export default function ArrowButton({
         />
       </span>
 
-      {/* Animated underline */}
       <span
         className="
           absolute

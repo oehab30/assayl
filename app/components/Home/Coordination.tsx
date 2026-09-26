@@ -1,10 +1,14 @@
+"use client";
+
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowUpRight, ShieldCheck, MoveUpRight } from "lucide-react"
 
 import AnimatedLine from "../Common/AnimatedLine"
+import { useTranslation } from "../Language/translator"
 
 function Coordination() {
+  const { locale } = useTranslation()
   return (
     <section
       id="about"
@@ -213,7 +217,7 @@ function Coordination() {
             ================================================== */}
 
             <Link
-              href="/#about"
+              href={`/${locale}/about`}
               className="
                 group
                 relative

@@ -2,52 +2,37 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
+import { useTranslation } from "../Language/translator";
 
 const navigationLinks = [
-  { name: "Home", href: "#home", number: "01" },
-  { name: "About", href: "#about", number: "02" },
-  { name: "Services", href: "#services", number: "03" },
-  { name: "How We Work", href: "#how-we-work", number: "04" },
-  { name: "Branches", href: "#branches", number: "05" },
-  { name: "Contact", href: "#contact", number: "06" },
+  { key: "home", path: "", number: "01" },
+  { key: "about", path: "/about", number: "02" },
+  { key: "services", path: "/services", number: "03" },
+  { key: "process", path: "/process", number: "04" },
+  { key: "branches", path: "/branches", number: "05" },
+  { key: "contact", path: "/contact", number: "06" },
 ];
 
 export default function Navbar() {
-  const [activeHash, setActiveHash] = useState("#home");
+  const { locale, t } = useTranslation();
+  const pathname = usePathname();
+  const nextLocale = locale === "ar" ? "en" : "ar";
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const localeRoot = `/${locale}`;
+  const switchPath = pathname.replace(/^\/(en|ar)(?=\/|$)/, `/${nextLocale}`);
 
   /* =========================================================
      SCROLL STATE + ACTIVE SECTION
   ========================================================== */
 
   useEffect(() => {
-    const sections = navigationLinks
-      .map((link) => document.querySelector(link.href))
-      .filter(Boolean);
-
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-
-      setIsScrolled(scrollY > 40);
-
-      let currentSection = "#home";
-
-      sections.forEach((section) => {
-        if (!section) return;
-
-        const element = section as HTMLElement;
-        const top = element.offsetTop - 180;
-
-        if (scrollY >= top) {
-          currentSection = `#${element.id}`;
-        }
-      });
-
-      setActiveHash(currentSection);
+      setIsScrolled(window.scrollY > 40);
     };
 
     handleScroll();
@@ -95,8 +80,7 @@ export default function Navbar() {
      NAVIGATION
   ========================================================== */
 
-  const handleNavigation = (href: string) => {
-    setActiveHash(href);
+  const handleNavigation = () => {
     setIsMenuOpen(false);
   };
 
@@ -155,9 +139,9 @@ export default function Navbar() {
           ================================================== */}
 
           <Link
-            href="/#home"
+            href={localeRoot}
             aria-label="STARS home"
-            onClick={() => handleNavigation("#home")}
+            onClick={handleNavigation}
             className="
               group
               relative
@@ -203,13 +187,14 @@ export default function Navbar() {
             "
           >
             {navigationLinks.map((link) => {
-              const isActive = activeHash === link.href;
+              const href = `${localeRoot}${link.path}`;
+              const isActive = pathname === href;
 
               return (
                 <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => handleNavigation(link.href)}
+                  key={link.path}
+                  href={href}
+                  onClick={handleNavigation}
                   className="
                     group
                     relative
@@ -235,7 +220,7 @@ export default function Navbar() {
                       }
                     `}
                   >
-                    {link.name}
+                    {t(`nav.${link.key}`)}
                   </span>
 
                   {/* Active line */}
@@ -283,9 +268,9 @@ export default function Navbar() {
 
           <div className="hidden items-center gap-5 lg:flex">
             {/* Language */}
-            <button
-              type="button"
-              aria-label="Change language to Arabic"
+            <Link
+              href={switchPath}
+              aria-label={t("language.change")}
               className="
                 group
                 relative
@@ -298,7 +283,7 @@ export default function Navbar() {
                 hover:text-white
               "
             >
-              العربية
+              {t("language.switch")}
 
               <span
                 className="
@@ -313,7 +298,7 @@ export default function Navbar() {
                   group-hover:w-full
                 "
               />
-            </button>
+            </Link>
 
             {/* Divider */}
             <span
@@ -323,8 +308,8 @@ export default function Navbar() {
 
             {/* Quote CTA */}
             <Link
-              href="/#contact"
-              onClick={() => handleNavigation("#contact")}
+              href={`${localeRoot}/contact`}
+              onClick={handleNavigation}
               className="
                 group
                 relative
@@ -363,7 +348,7 @@ export default function Navbar() {
               />
 
               <span className="relative z-10 flex items-center gap-3">
-                <span>Request a Quote</span>
+                <span>{t("nav.quote")}</span>
 
                 <ArrowUpRight
                   className="
@@ -385,9 +370,9 @@ export default function Navbar() {
 
           <div className="flex items-center gap-4 lg:hidden">
             {/* Language */}
-            <button
-              type="button"
-              aria-label="Change language to Arabic"
+            <Link
+              href={switchPath}
+              aria-label={t("language.change")}
               className="
                 font-cairo
                 text-[11px]
@@ -397,8 +382,8 @@ export default function Navbar() {
                 hover:text-white
               "
             >
-              العربية
-            </button>
+              {t("language.switch")}
+            </Link>
 
             {/* Menu */}
             <button
@@ -547,7 +532,7 @@ export default function Navbar() {
                 <span className="h-px w-8 bg-[#5ba7df]" />
 
                 <span className="font-jakarta text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
-                  Navigation
+                  {t("nav.navigation")}
                 </span>
               </div>
 
@@ -557,11 +542,12 @@ export default function Navbar() {
                 className="flex flex-col"
               >
                 {navigationLinks.map((link, index) => {
-                  const isActive = activeHash === link.href;
+                  const href = `${localeRoot}${link.path}`;
+                  const isActive = pathname === href;
 
                   return (
                     <motion.div
-                      key={link.href}
+                      key={link.path}
                       initial={{
                         opacity: 0,
                         x: -30,
@@ -577,10 +563,8 @@ export default function Navbar() {
                       }}
                     >
                       <Link
-                        href={link.href}
-                        onClick={() =>
-                          handleNavigation(link.href)
-                        }
+                        href={href}
+                        onClick={handleNavigation}
                         className="
                           group
                           flex
@@ -623,7 +607,7 @@ export default function Navbar() {
                               }
                             `}
                           >
-                            {link.name}
+                            {t(`nav.${link.key}`)}
                           </span>
                         </div>
 
@@ -670,10 +654,8 @@ export default function Navbar() {
                   </div>
 
                   <Link
-                    href="/#contact"
-                    onClick={() =>
-                      handleNavigation("#contact")
-                    }
+                    href={`${localeRoot}/contact`}
+                    onClick={handleNavigation}
                     className="
                       group
                       flex

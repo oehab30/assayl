@@ -9,24 +9,26 @@ import {
   MessageCircle,
 } from "lucide-react";
 import Image from "next/image";
+import { useTranslation } from "../Language/translator";
 
 const companyLinks = [
-  { label: "About", href: "/about" },
-  { label: "How We Work", href: "/process" },
-  { label: "Branches", href: "/branches" },
+  { key: "about", href: "/about" },
+  { key: "process", href: "/process" },
+  { key: "branches", href: "/branches" },
 ];
 
 const serviceLinks = [
-  { label: "Import & Export", href: "/services#import-export" },
-  { label: "Customs Clearance", href: "/services#customs" },
-  { label: "Warehousing in China", href: "/services#warehousing" },
+  { key: "importExport", href: "/services" },
+  { key: "customs", href: "/services" },
+  { key: "warehousing", href: "/services" },
   {
-    label: "Importing on Behalf",
-    href: "/services#third-party-import",
+    key: "importing",
+    href: "/services",
   },
 ];
 
 export default function Footer() {
+  const { locale, t } = useTranslation();
   return (
     <footer className="relative overflow-hidden bg-[#05121f] text-white">
       {/* Subtle grid */}
@@ -47,7 +49,7 @@ export default function Footer() {
         <div className="grid gap-10 py-12 sm:py-14 lg:grid-cols-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-4">
-           <Link href="/" className="inline-flex items-center">
+           <Link href={`/${locale}`} className="inline-flex items-center">
           <Image
             src="/logo.png"
             alt="STARS"
@@ -60,8 +62,7 @@ export default function Footer() {
             <div className="mt-4 h-px w-8 bg-[#5ba7df]" />
 
             <p className="mt-4 max-w-sm font-manrope text-xs leading-6 text-white/40">
-              Import, export, and international freight solutions connecting
-              China with Egypt and destinations worldwide.
+              {t("footer.description")}
             </p>
 
             <div className="mt-5 flex items-center gap-2.5">
@@ -86,17 +87,17 @@ export default function Footer() {
           {/* Company */}
           <div className="lg:col-span-2">
             <h3 className="font-jakarta text-[9px] font-bold uppercase tracking-[0.18em] text-white/25">
-              Company
+              {t("footer.company")}
             </h3>
 
             <nav className="mt-4 flex flex-col gap-2.5">
               {companyLinks.map((link) => (
                 <Link
-                  key={link.label}
-                  href={link.href}
+                  key={link.key}
+                  href={`/${locale}${link.href}`}
                   className="group flex items-center gap-2 font-manrope text-xs text-white/50 transition-colors hover:text-white"
                 >
-                  <span>{link.label}</span>
+                  <span>{t(`nav.${link.key}`)}</span>
                   <ArrowUpRight className="h-3 w-3 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100 group-hover:text-[#5ba7df]" />
                 </Link>
               ))}
@@ -106,17 +107,17 @@ export default function Footer() {
           {/* Services */}
           <div className="lg:col-span-3">
             <h3 className="font-jakarta text-[9px] font-bold uppercase tracking-[0.18em] text-white/25">
-              Services
+              {t("footer.services")}
             </h3>
 
             <nav className="mt-4 flex flex-col gap-2.5">
               {serviceLinks.map((link) => (
                 <Link
-                  key={link.label}
-                  href={link.href}
+                  key={link.key}
+                  href={`/${locale}${link.href}`}
                   className="group flex items-center gap-2 font-manrope text-xs text-white/50 transition-colors hover:text-white"
                 >
-                  <span>{link.label}</span>
+                  <span>{t(`footer.${link.key}`)}</span>
                   <ArrowUpRight className="h-3 w-3 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100 group-hover:text-[#5ba7df]" />
                 </Link>
               ))}
@@ -126,7 +127,7 @@ export default function Footer() {
           {/* Contact */}
           <div className="lg:col-span-3">
             <h3 className="font-jakarta text-[9px] font-bold uppercase tracking-[0.18em] text-white/25">
-              Egypt Office
+              {t("footer.office")}
             </h3>
 
             <div className="mt-4 flex items-start gap-2.5">
@@ -155,7 +156,7 @@ export default function Footer() {
                 className="flex items-center gap-2.5 font-manrope text-xs text-white/50 transition-colors hover:text-white"
               >
                 <MessageCircle className="h-3.5 w-3.5 text-[#5ba7df]" />
-                WhatsApp
+                {t("footer.whatsapp")}
                 <ArrowUpRight className="h-3 w-3" />
               </a>
             </div>
@@ -169,20 +170,6 @@ export default function Footer() {
           </p>
 
           <div className="flex items-center gap-5">
-            <Link
-              href="/privacy"
-              className="font-manrope text-[10px] text-white/25 transition-colors hover:text-white/50"
-            >
-              Privacy
-            </Link>
-
-            <Link
-              href="/terms"
-              className="font-manrope text-[10px] text-white/25 transition-colors hover:text-white/50"
-            >
-              Terms
-            </Link>
-
             <span className="font-jakarta text-[8px] font-bold tracking-[0.15em] text-white/15">
               CN · HK · EG
             </span>

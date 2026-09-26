@@ -1,0 +1,66 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "process": "How We Work",
+    "branches": "Branches",
+    "contact": "Contact",
+    "quote": "Request a Quote",
+    "navigation": "Navigation"
+  },
+  "language": {
+    "change": "Change language",
+    "switch": "العربية"
+  },
+
+  "hero": {
+    "eyebrow": "From China to your destination",
+    "title": "Your trusted partner for sourcing and shipping from China.",
+    "description": "STARS connects its presence in China, Hong Kong, and Egypt to deliver coordinated solutions for individuals, traders, importers, and companies.",
+    "start": "Start a Project",
+    "services": "Explore Services"
+  },
+
+  "about": {
+    "eyebrow": "Experience that knows the route",
+    "title": "A reliable link between source and destination.",
+    "description": "Our teams and offices coordinate sourcing, purchasing, consolidation, warehousing, freight, and customs support through a clear process shaped around each product, volume, and destination."
+  },
+
+  "services": {
+    "eyebrow": "What We Do",
+    "title": "Trade, handled with precision.",
+    "description": "From sourcing at the origin to delivery in Egypt, we coordinate the critical stages behind every shipment.",
+    "explore": "Explore Service"
+  },
+
+  "process": {
+    "eyebrow": "A Clear Journey",
+    "title": "From request details to arrival procedures",
+    "step1": "Share your product or request details",
+    "step2": "Review the request and define requirements",
+    "step3": "Source, purchase, or arrange supply",
+    "step4": "Consolidate and inspect"
+  },
+  "contact": {
+    "eyebrow": "Get in touch",
+    "title": "Let’s plan your next shipment.",
+    "description": "Talk to our Egypt team about sourcing, shipping, or coordinating your next order.",
+    "phone": "Call our office",
+    "whatsapp": "Message us on WhatsApp",
+    "office": "Egypt office",
+    "address": "Badr City, Cairo, Egypt"
+  },
+  "footer": {
+    "description": "Import, export, and international freight solutions connecting China with Egypt and destinations worldwide.",
+    "company": "Company",
+    "services": "Services",
+    "office": "Egypt Office",
+    "whatsapp": "WhatsApp",
+    "importExport": "Import & Export",
+    "customs": "Customs Clearance",
+    "warehousing": "Warehousing in China",
+    "importing": "Importing on Behalf"
+  }
+}

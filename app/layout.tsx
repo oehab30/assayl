@@ -1,19 +1,11 @@
 import type { Metadata } from "next";
-import { Manrope, Plus_Jakarta_Sans, Cairo, Inter } from "next/font/google";
+import { Manrope, Plus_Jakarta_Sans, Cairo } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Layout/Navbar";
-import Footer from "./components/Layout/Footer";
 
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
   weight: ["400", "600", "700"],
   variable: "--font-cairo",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
   display: "swap",
 });
 
@@ -40,14 +32,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${manrope.variable} ${jakarta.variable} ${cairo.variable} ${inter.variable}`}>
+    <html lang="en" className={`${manrope.variable} ${jakarta.variable} ${cairo.variable}`}>
       <body className="font-manrope antialiased">
-        <div className="">
-          <Navbar />
           {children}
-           <Footer />
-
-        </div>
       </body>
     </html>
   );
