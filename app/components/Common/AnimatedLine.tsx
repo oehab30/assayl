@@ -1,21 +1,25 @@
+"use client";
+
 import { memo } from "react";
 import { motion } from "framer-motion";
 
 interface AnimatedLineProps {
   text?: string;
-  lines?: number;
+  lines?: 1 | 2;
   lineColor?: string;
   textColor?: string;
+  className?: string;
 }
 
 const AnimatedLine = memo(({
-  text = "Frontend Developer",
-  lines = 2,               // 1 or 2
-  lineColor = "bg-primary/40",
-  textColor = "text-primary/80",
+  text = "From China To Your Destination",
+  lines = 1,
+  lineColor = "bg-[#005293]",
+  textColor = "text-[#005293]",
+  className = "",
 }: AnimatedLineProps) => {
   return (
-    <div className="flex items-center gap-3 sm:gap-4 mb-6 md:mb-8">
+    <div className={`flex items-center gap-3 sm:gap-4 mb-4 ${className}`}>
       {/* Left line */}
       {(lines === 2 || lines === 1) && (
         <motion.div
@@ -38,8 +42,7 @@ const AnimatedLine = memo(({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 1.2, ease: "easeOut" }}
-        className={`text-[10px] sm:text-xs md:text-sm font-heading tracking-[0.2em] sm:tracking-[0.4em]
-        uppercase font-medium ${textColor}`}
+        className={`font-jakarta text-xs font-bold uppercase tracking-[0.2em] whitespace-nowrap ${textColor}`}
       >
         {text}
       </motion.span>
