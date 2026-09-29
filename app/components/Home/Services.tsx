@@ -15,12 +15,13 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import ArrowButton from "../Common/Arrowbutton";
+import { useTranslation } from "../../Language/translator";
 
 interface ServiceCardData {
   id: string;
   number: string;
-  title: string;
-  description: string;
+  titleKey: string;
+  descriptionKey: string;
   image: string;
   icon: React.ReactNode;
   href: string;
@@ -30,9 +31,8 @@ const servicesData: ServiceCardData[] = [
   {
     id: "01",
     number: "01",
-    title: "Import & Export",
-    description:
-      "Coordinated import and export services from China to Egypt and destinations worldwide, tailored to each shipment.",
+    titleKey: "importExportTitle",
+    descriptionKey: "importExportDescription",
     image: "/hero2.jpg",
     icon: <Ship />,
     href: "/quote?service=import-export",
@@ -40,9 +40,8 @@ const servicesData: ServiceCardData[] = [
   {
     id: "02",
     number: "02",
-    title: "Customs Clearance",
-    description:
-      "Support with customs requirements and procedures in line with applicable regulations.",
+    titleKey: "customsTitle",
+    descriptionKey: "customsDescription",
     image: "/imgi_2_hero-port-v2.jpeg",
     icon: <FileText />,
     href: "/quote?service=customs-clearance",
@@ -50,9 +49,8 @@ const servicesData: ServiceCardData[] = [
   {
     id: "03",
     number: "03",
-    title: "Secure Warehousing",
-    description:
-      "Receive, consolidate, and hold products in secure company warehouses before shipment preparation.",
+    titleKey: "warehousingTitle",
+    descriptionKey: "warehousingDescription",
     image: "/imgi_2_hero-port-v2.jpeg",
     icon: <Warehouse />,
     href: "/quote?service=warehousing",
@@ -60,9 +58,8 @@ const servicesData: ServiceCardData[] = [
   {
     id: "04",
     number: "04",
-    title: "Importing on Behalf",
-    description:
-      "Import arrangements using client or company documentation, subject to applicable legal frameworks.",
+    titleKey: "importingTitle",
+    descriptionKey: "importingDescription",
     image: "/imgi_2_hero-port-v2.jpeg",
     icon: <UserCheck />,
     href: "/quote?service=import-behalf",
@@ -70,9 +67,8 @@ const servicesData: ServiceCardData[] = [
   {
     id: "05",
     number: "05",
-    title: "Sourcing & Supply",
-    description:
-      "Product sourcing, purchasing, consolidation, and supply according to the requested specifications.",
+    titleKey: "sourcingTitle",
+    descriptionKey: "sourcingDescription",
     image: "/imgi_2_hero-port-v2.jpeg",
     icon: <Search />,
     href: "/quote?service=sourcing",
@@ -80,9 +76,8 @@ const servicesData: ServiceCardData[] = [
   {
     id: "06",
     number: "06",
-    title: "Sea Freight",
-    description:
-      "Sea freight solutions for varied shipment sizes, including cubic-meter consolidation.",
+    titleKey: "seaFreightTitle",
+    descriptionKey: "seaFreightDescription",
     image: "/imgi_2_hero-port-v2.jpeg",
     icon: <Anchor />,
     href: "/quote?service=sea-freight",
@@ -91,6 +86,7 @@ const servicesData: ServiceCardData[] = [
 
 export default function Services() {
   const [activeService, setActiveService] = useState(servicesData[0]);
+  const { t } = useTranslation();
 
   return (
     <section
@@ -168,7 +164,7 @@ export default function Services() {
           <div className="lg:col-span-8">
             <div className="mb-6">
               <AnimatedLine
-                text="WHAT WE DO"
+                text={t("services.eyebrow")}
                 lines={1}
                 lineColor="bg-[#005293]"
                 textColor="text-white/60"
@@ -188,10 +184,10 @@ export default function Services() {
                 lg:text-[68px]
               "
             >
-              Trade, handled
+              {t("services.titleLead")}
               <br />
               <span className="text-[#5ba7df]">
-                with precision.
+                {t("services.titleTail")}
               </span>
             </h2>
           </div>
@@ -207,9 +203,7 @@ export default function Services() {
                 sm:text-[15px]
               "
             >
-              From sourcing at the origin to delivery in Egypt,
-              we coordinate the critical stages behind every
-              shipment.
+              {t("services.description")}
             </p>
           </div>
         </div>
@@ -262,7 +256,7 @@ export default function Services() {
                   text-white/30
                 "
               >
-                Our capabilities
+                {t("services.capabilities")}
               </span>
             </div>
 
@@ -295,7 +289,7 @@ export default function Services() {
                       border-white/10
                       px-6
                       py-6
-                      text-left
+                      text-start
                       transition-colors
                       duration-500
                       last:border-b-0
@@ -372,7 +366,7 @@ export default function Services() {
                         sm:text-lg
                       "
                     >
-                      {service.title}
+                      {t(`services.${service.titleKey}`)}
                     </motion.span>
 
                     {/* Arrow */}
@@ -439,7 +433,7 @@ export default function Services() {
               >
                 <Image
                   src={activeService.image}
-                  alt={activeService.title}
+                  alt={t(`services.${activeService.titleKey}`)}
                   fill
                   sizes="(max-width: 1024px) 100vw, 55vw"
                   className="
@@ -543,7 +537,7 @@ export default function Services() {
                       text-white/70
                     "
                   >
-                    Service {activeService.number}
+                    {t("services.serviceLabel")} {activeService.number}
                   </span>
                 </motion.div>
               </AnimatePresence>
@@ -614,7 +608,7 @@ export default function Services() {
                       lg:text-[46px]
                     "
                   >
-                    {activeService.title}
+                    {t(`services.${activeService.titleKey}`)}
                   </h3>
 
                   <p
@@ -627,7 +621,7 @@ export default function Services() {
                       text-white/60
                     "
                   >
-                    {activeService.description}
+                    {t(`services.${activeService.descriptionKey}`)}
                   </p>
 
                   <Link
@@ -649,7 +643,7 @@ export default function Services() {
                       hover:text-[#5ba7df]
                     "
                   >
-                    <span>Explore service</span>
+                    <span>{t("services.explore")}</span>
 
                     <span
                       className="
@@ -691,18 +685,17 @@ export default function Services() {
         >
           <div>
             <p className="font-jakarta text-sm font-semibold text-white">
-              Have a shipment in mind?
+              {t("services.bottomTitle")}
             </p>
 
             <p className="mt-1 font-manrope text-xs text-white/40">
-              Tell us what you need and we&apos;ll help determine
-              the right solution.
+              {t("services.bottomDescription")}
             </p>
           </div>
 
           <ArrowButton
             href="/quote"
-            text="Request a Quote"
+            text={t("nav.quote")}
             icon={ArrowUpRight}
           />
         </div>

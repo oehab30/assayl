@@ -5,47 +5,47 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import AnimatedLine from "../Common/AnimatedLine";
+import { useTranslation } from "../../Language/translator";
 
 interface JourneyStep {
   id: string;
   number: string;
-  title: string;
-  description: string;
+  titleKey: string;
+  descriptionKey: string;
   image: string;
-  tag: string;
+  tagKey: string;
 }
 
 const steps: JourneyStep[] = [
   {
     id: "step-1",
     number: "01",
-    tag: "ORIGIN",
-    title: "Inspect & verify",
-    description:
-      "Products are checked against the requested specifications before they move forward.",
+    tagKey: "origin",
+    titleKey: "inspectTitle",
+    descriptionKey: "inspectDescription",
     image: "/hero2.jpg",
   },
   {
     id: "step-2",
     number: "02",
-    tag: "CONSOLIDATION",
-    title: "Consolidate & store",
-    description:
-      "Cargo is received, organized, and consolidated before shipment preparation.",
+    tagKey: "consolidation",
+    titleKey: "consolidateTitle",
+    descriptionKey: "consolidateDescription",
     image: "/hero2.jpg",
   },
   {
     id: "step-3",
     number: "03",
-    tag: "MOVEMENT",
-    title: "Ship & move",
-    description:
-      "Prepared cargo moves through the selected freight route toward its destination.",
+    tagKey: "movement",
+    titleKey: "movementTitle",
+    descriptionKey: "movementDescription",
     image: "/hero2.jpg",
   },
 ];
 
 export default function CargoJourney() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="cargo-journey"
@@ -78,7 +78,7 @@ export default function CargoJourney() {
           <div className="lg:col-span-8">
             <div className="mb-6">
               <AnimatedLine
-                text="CARGO JOURNEY"
+                text={t("cargo.eyebrow")}
                 lines={1}
                 lineColor="bg-[#005293]"
                 textColor="text-[#005293]/70"
@@ -98,17 +98,15 @@ export default function CargoJourney() {
                 lg:text-[64px]
               "
             >
-              From selection
+              {t("cargo.titleLead")}
               <br />
-              <span className="text-[#005293]">to movement.</span>
+              <span className="text-[#005293]">{t("cargo.titleTail")}</span>
             </h2>
           </div>
 
           <div className="lg:col-span-4 lg:pb-2">
             <p className="max-w-md font-manrope text-sm leading-7 text-[#071827]/55 sm:text-[15px]">
-              Every shipment moves through a coordinated sequence. From
-              verification at the origin to final freight movement, each stage
-              is handled with clarity and control.
+              {t("cargo.description")}
             </p>
           </div>
         </div>
@@ -207,7 +205,7 @@ export default function CargoJourney() {
                       text-[#071827]/30
                     "
                   >
-                    {step.tag}
+                    {t(`cargo.${step.tagKey}`)}
                   </span>
                 </div>
 
@@ -226,7 +224,7 @@ export default function CargoJourney() {
                   {/* Image */}
                   <Image
                     src={step.image}
-                    alt={step.title}
+                    alt={t(`cargo.${step.titleKey}`)}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="
@@ -301,7 +299,7 @@ export default function CargoJourney() {
                         sm:text-[28px]
                       "
                     >
-                      {step.title}
+                      {t(`cargo.${step.titleKey}`)}
                     </h3>
 
                     <p
@@ -315,7 +313,7 @@ export default function CargoJourney() {
                         sm:text-sm
                       "
                     >
-                      {step.description}
+                      {t(`cargo.${step.descriptionKey}`)}
                     </p>
                   </div>
 
@@ -360,31 +358,30 @@ export default function CargoJourney() {
 
             <div>
               <p className="font-jakarta text-sm font-semibold text-[#071827]">
-                One coordinated journey.
+                {t("cargo.bottomTitle")}
               </p>
 
               <p className="mt-1 max-w-2xl font-manrope text-xs leading-6 text-[#071827]/45">
-                Inspection, consolidation, and freight movement work together
-                as one connected process.
+                {t("cargo.bottomDescription")}
               </p>
             </div>
           </div>
 
           <div className="mt-5 flex items-center gap-3 sm:mt-0">
             <span className="font-jakarta text-[9px] font-bold uppercase tracking-[0.18em] text-[#071827]/30">
-              CHINA
+              {t("hero.china")}
             </span>
 
             <span className="h-px w-8 bg-[#005293]/40" />
 
             <span className="font-jakarta text-[9px] font-bold uppercase tracking-[0.18em] text-[#071827]/30">
-              HONG KONG
+              {t("hero.saudia")}
             </span>
 
             <span className="h-px w-8 bg-[#005293]/40" />
 
             <span className="font-jakarta text-[9px] font-bold uppercase tracking-[0.18em] text-[#071827]/30">
-              EGYPT
+              {t("hero.egypt")}
             </span>
           </div>
         </motion.div>

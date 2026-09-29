@@ -3,41 +3,40 @@
 import React from "react";
 import Image from "next/image";
 import AnimatedLine from "../Common/AnimatedLine";
+import { useTranslation } from "../../Language/translator";
 
 interface FeatureItem {
   id: string;
-  title: string;
-  description: string;
+  titleKey: string;
+  descriptionKey: string;
 }
 
 const features: FeatureItem[] = [
   {
     id: "01",
-    title: "Present at the source",
-    description:
-      "Legal and operational presence in China and Hong Kong, represented in Egypt.",
+    titleKey: "sourceTitle",
+    descriptionKey: "sourceDescription",
   },
   {
     id: "02",
-    title: "Experienced team",
-    description:
-      "More than 15 years of hands-on experience in importing and freight.",
+    titleKey: "teamTitle",
+    descriptionKey: "teamDescription",
   },
   {
     id: "03",
-    title: "Flexible solutions",
-    description:
-      "Support for large volumes, cubic-meter shipping, and individual orders.",
+    titleKey: "solutionsTitle",
+    descriptionKey: "solutionsDescription",
   },
   {
     id: "04",
-    title: "Coordinated follow-up",
-    description:
-      "Aligned sourcing, consolidation, warehousing, shipping, and arrival stages.",
+    titleKey: "coordinationTitle",
+    descriptionKey: "coordinationDescription",
   },
 ];
 
 export default function WhySTARS() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="why-stars"
@@ -84,7 +83,7 @@ export default function WhySTARS() {
               {/* Eyebrow */}
               <div className="mb-5">
                 <AnimatedLine
-                  text="A PRACTICAL ADVANTAGE"
+                  text={t("why.eyebrow")}
                   lines={1}
                   lineColor="bg-[#005293]"
                   textColor="text-[#005293]"
@@ -105,8 +104,8 @@ export default function WhySTARS() {
                   lg:text-[52px]
                 "
               >
-                Why
-                <span className="text-[#005293]"> STARS?</span>
+                {t("why.headingLead")}
+                <span className="text-[#005293]"> {t("why.headingAccent")}</span>
               </h2>
 
               {/* Accent line */}
@@ -127,9 +126,7 @@ export default function WhySTARS() {
                   sm:text-[15px]
                 "
               >
-                The value lies in having a team close to the source that
-                understands sourcing and freight stages and brings them into
-                one clearer experience.
+                {t("why.description")}
               </p>
 
               {/* Small supporting statement */}
@@ -140,7 +137,7 @@ export default function WhySTARS() {
                 />
 
                 <span className="font-jakarta text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">
-                  Source · Coordinate · Deliver
+                  {t("why.principles")}
                 </span>
               </div>
             </div>
@@ -242,7 +239,7 @@ export default function WhySTARS() {
                         sm:text-xl
                       "
                     >
-                      {feature.title}
+                      {t(`why.${feature.titleKey}`)}
                     </h3>
 
                     <p
@@ -257,7 +254,7 @@ export default function WhySTARS() {
                         sm:leading-7
                       "
                     >
-                      {feature.description}
+                      {t(`why.${feature.descriptionKey}`)}
                     </p>
                   </div>
 

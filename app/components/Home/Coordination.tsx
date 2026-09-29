@@ -3,8 +3,11 @@ import Image from "next/image"
 import { ArrowUpRight, ShieldCheck, MoveUpRight } from "lucide-react"
 
 import AnimatedLine from "../Common/AnimatedLine"
+import { useTranslation } from "../../Language/translator"
 
 function Coordination() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="about"
@@ -95,7 +98,7 @@ function Coordination() {
         >
           <div>
             <AnimatedLine
-              text="Experience that knows the route"
+              text={t("about.eyebrow")}
               lines={1}
               lineColor="bg-[#005293]"
             />
@@ -114,9 +117,9 @@ function Coordination() {
               sm:text-right
             "
           >
-            China · Hong Kong · Egypt
+            {t("about.markets")}
             <br />
-            One coordinated network
+            {t("about.networkLine")}
           </div>
         </div>
 
@@ -143,7 +146,7 @@ function Coordination() {
 
           <div className="lg:sticky lg:top-32">
             {/* Small section label */}
-         
+
 
             {/* Main heading */}
             <h2
@@ -162,11 +165,11 @@ function Coordination() {
                 xl:text-[4.7rem]
               "
             >
-              A reliable link between{" "}
+              {t("about.titleLead")}{" "}
               <span className="text-[#005293]">
-                source
+                {t("about.titleAccent")}
               </span>{" "}
-              and destination.
+              {t("about.titleTail")}
             </h2>
 
             {/* Accent line */}
@@ -189,9 +192,7 @@ function Coordination() {
                 lg:text-[17px]
               "
             >
-              STARS connects its presence across China, Hong Kong, and Egypt
-              to coordinate sourcing, purchasing, consolidation, warehousing,
-              freight, and customs support through one clear process.
+              {t("about.description")}
             </p>
 
             <p
@@ -204,8 +205,7 @@ function Coordination() {
                 text-slate-400
               "
             >
-              Every shipment is handled around the product, volume,
-              destination, and requirements of the customer.
+              {t("about.supportingDescription")}
             </p>
 
             {/* =================================================
@@ -231,7 +231,7 @@ function Coordination() {
                 sm:mt-12
               "
             >
-              <span>Discover our story</span>
+              <span>{t("about.cta")}</span>
 
               <span
                 className="
@@ -324,7 +324,7 @@ function Coordination() {
                     sm:text-[13px]
                   "
                 >
-                  Coordinated with confidence
+                  {t("about.trustTitle")}
                 </p>
 
                 <p
@@ -338,7 +338,7 @@ function Coordination() {
                     sm:text-[11px]
                   "
                 >
-                  One process from source through final destination.
+                  {t("about.trustDescription")}
                 </p>
               </div>
             </div>
@@ -412,7 +412,7 @@ function Coordination() {
               >
                 <Image
                   src="/about-team.webp"
-                  alt="STARS team coordinating international logistics operations"
+                  alt={t("about.imageAlt")}
                   fill
                   className="
                     object-cover
@@ -478,7 +478,7 @@ function Coordination() {
                       text-white/65
                     "
                   >
-                    Behind the operation
+                    {t("about.imageLabel")}
                   </span>
                 </div>
 
@@ -541,7 +541,7 @@ function Coordination() {
                           sm:text-[13px]
                         "
                       >
-                        End-to-end coordination
+                        {t("about.overlayTitle")}
                       </p>
 
                       <p
@@ -555,8 +555,7 @@ function Coordination() {
                           sm:text-[11px]
                         "
                       >
-                        From supplier coordination and consolidation
-                        to freight and final destination.
+                        {t("about.overlayDescription")}
                       </p>
                     </div>
                   </div>
@@ -595,7 +594,7 @@ function Coordination() {
                     sm:text-[10px]
                   "
                 >
-                  Global operations
+                  {t("about.globalOperations")}
                 </span>
               </div>
 
@@ -609,7 +608,7 @@ function Coordination() {
                     text-slate-300
                   "
                 >
-                  Source
+                  {t("about.source")}
                 </span>
 
                 <MoveUpRight
@@ -626,7 +625,7 @@ function Coordination() {
                     text-slate-300
                   "
                 >
-                  Destination
+                  {t("about.destination")}
                 </span>
               </div>
             </div>
@@ -689,7 +688,7 @@ function Coordination() {
                   text-[#071827]
                 "
               >
-                Source
+                {t("about.source")}
               </p>
 
               <p
@@ -700,7 +699,7 @@ function Coordination() {
                   text-slate-400
                 "
               >
-                Sourcing & purchasing
+                {t("about.sourcing")}
               </p>
             </div>
           </div>
@@ -745,7 +744,7 @@ function Coordination() {
                   text-[#071827]
                 "
               >
-                Coordinate
+                {t("about.coordinate")}
               </p>
 
               <p
@@ -756,7 +755,7 @@ function Coordination() {
                   text-slate-400
                 "
               >
-                Consolidation & freight
+                {t("about.consolidation")}
               </p>
             </div>
           </div>
@@ -797,7 +796,7 @@ function Coordination() {
                   text-[#071827]
                 "
               >
-                Deliver
+                {t("about.deliver")}
               </p>
 
               <p
@@ -808,7 +807,7 @@ function Coordination() {
                   text-slate-400
                 "
               >
-                Customs & destination
+                {t("about.customs")}
               </p>
             </div>
           </div>

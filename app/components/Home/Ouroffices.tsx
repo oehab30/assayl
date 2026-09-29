@@ -4,49 +4,50 @@ import React from "react";
 import Link from "next/link";
 import { Phone, ChevronRight } from "lucide-react";
 import AnimatedLine from "../Common/AnimatedLine"; // Adjust import path as needed
+import { useTranslation } from "../../Language/translator";
 
 interface OfficeLocation {
   id: string;
   tag: string;
-  title: string;
+  titleKey: string;
   companyName: string;
   address: string;
   phones?: string[];
-  noPhoneText?: string;
-  badgeLabel: string;
+  badgeKey: string;
 }
 
 const offices: OfficeLocation[] = [
   {
     id: "01",
     tag: "01",
-    title: "Hong Kong Branch",
+    titleKey: "saudiaTitle",
     companyName: "STARS EMAA TRADE LIMITED",
     address: "FLAT 1512, 15/F, LUCKY CENTRE, NO. 165-171 WAN CHAI ROAD, WAN CHAI, HONG KONG",
-    noPhoneText: "No verified phone available",
-    badgeLabel: "Hong Kong",
+    badgeKey: "saudia",
   },
   {
     id: "02",
     tag: "02",
-    title: "China Branch",
+    titleKey: "chinaTitle",
     companyName: "Guangzhou Stars International Supply Chain Co., Limited",
     address: "Room E77-4611, No. 372 Huan Shi Dong Road, Guangzhou City, Guangdong Province, China",
     phones: ["+86 185 6551 1660"],
-    badgeLabel: "China",
+    badgeKey: "china",
   },
   {
     id: "03",
     tag: "03",
-    title: "Representative Office in Egypt",
+    titleKey: "egyptTitle",
     companyName: "STARS - Essam El-Din El-Sayed",
     address: "Badr City, Cairo, Arab Republic of Egypt",
     phones: ["+20 100 844 2982", "+20 102 395 5586"],
-    badgeLabel: "Egypt",
+    badgeKey: "egypt",
   },
 ];
 
 export default function OfficesSection() {
+  const { t } = useTranslation();
+
   return (
     <section className="relative overflow-hidden bg-white py-16 sm:py-24 lg:py-28">
       <div className="relative mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
@@ -54,7 +55,7 @@ export default function OfficesSection() {
         {/* Eyebrow Label */}
         <div className="mb-4">
           <AnimatedLine
-            text="OUR OFFICES"
+            text={t("offices.eyebrow")}
             lines={1}
             lineColor="bg-[#005293]"
             textColor="text-[#005293]"
@@ -64,10 +65,10 @@ export default function OfficesSection() {
         {/* Section Header */}
         <div className="max-w-xl mb-12 sm:mb-16">
           <h2 className="font-jakarta text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0a192f] tracking-tight leading-[1.15]">
-            Close to both source and client
+            {t("offices.title")}
           </h2>
           <p className="mt-4 font-manrope text-xs sm:text-sm leading-relaxed text-slate-500">
-            Our China, Hong Kong, and Egypt offices work together to simplify communication and coordinate the import and freight journey.
+            {t("offices.description")}
           </p>
         </div>
 
@@ -88,7 +89,7 @@ export default function OfficesSection() {
 
                   {/* Corner Map Pin Badge Element */}
                   <div className="relative flex items-center gap-1.5 rounded-full bg-sky-100/70 border border-sky-200/60 px-3 py-1 font-jakarta text-[11px] font-semibold text-[#005293]">
-                    <span>{office.badgeLabel}</span>
+                    <span>{t(`offices.${office.badgeKey}`)}</span>
                     <span className="relative flex h-2 w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-[#005293]"></span>
@@ -98,16 +99,16 @@ export default function OfficesSection() {
 
                 {/* Branch Title */}
                 <h3 className="font-jakarta text-xl font-bold text-[#0a192f] mb-3">
-                  {office.title}
+                  {t(`offices.${office.titleKey}`)}
                 </h3>
 
                 {/* Company Legal Name */}
-                <p className="font-jakarta text-[11px] font-bold uppercase tracking-wider text-[#005293] mb-4">
+                <p dir="ltr" className="font-jakarta text-[11px] font-bold uppercase tracking-wider text-[#005293] mb-4">
                   {office.companyName}
                 </p>
 
                 {/* Address */}
-                <p className="font-manrope text-xs leading-relaxed text-slate-500 uppercase tracking-wide">
+                <p dir="ltr" className="font-manrope text-xs leading-relaxed text-slate-500 uppercase tracking-wide">
                   {office.address}
                 </p>
               </div>
@@ -129,7 +130,7 @@ export default function OfficesSection() {
                   </div>
                 ) : (
                   <p className="font-manrope text-xs text-slate-400">
-                    {office.noPhoneText}
+                    {t("offices.noPhone")}
                   </p>
                 )}
               </div>
@@ -143,7 +144,7 @@ export default function OfficesSection() {
             href="/offices"
             className="group inline-flex items-center gap-1.5 font-jakarta text-xs font-bold text-[#005293] hover:underline underline-offset-4"
           >
-            <span>Branch and office details</span>
+            <span>{t("offices.cta")}</span>
             <ChevronRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
           </Link>
         </div>

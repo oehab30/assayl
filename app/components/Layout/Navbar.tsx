@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslation } from "../../Language/translator";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
@@ -7,18 +8,22 @@ import { useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 
 const navigationLinks = [
-  { name: "Home", href: "#home", number: "01" },
-  { name: "About", href: "#about", number: "02" },
-  { name: "Services", href: "#services", number: "03" },
-  { name: "How We Work", href: "#how-we-work", number: "04" },
-  { name: "Branches", href: "#branches", number: "05" },
-  { name: "Contact", href: "#contact", number: "06" },
+  { key: "home", href: "#home", number: "01" },
+  { key: "about", href: "#about", number: "02" },
+  { key: "services", href: "#services", number: "03" },
+  { key: "process", href: "#how-we-work", number: "04" },
+  { key: "branches", href: "#branches", number: "05" },
+  { key: "contact", href: "#contact", number: "06" },
 ];
 
 export default function Navbar() {
+  const { locale, setLocale, t } = useTranslation();
   const [activeHash, setActiveHash] = useState("#home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+
+
 
   /* =========================================================
      SCROLL STATE + ACTIVE SECTION
@@ -156,7 +161,7 @@ export default function Navbar() {
 
           <Link
             href="/#home"
-            aria-label="STARS home"
+            aria-label={`STARS ${t("nav.home")}`}
             onClick={() => handleNavigation("#home")}
             className="
               group
@@ -193,7 +198,7 @@ export default function Navbar() {
           ================================================== */}
 
           <nav
-            aria-label="Main navigation"
+            aria-label={t("nav.mainNavigation")}
             className="
               hidden
               items-center
@@ -235,7 +240,7 @@ export default function Navbar() {
                       }
                     `}
                   >
-                    {link.name}
+                    {t(`nav.${link.key}`)}
                   </span>
 
                   {/* Active line */}
@@ -285,7 +290,8 @@ export default function Navbar() {
             {/* Language */}
             <button
               type="button"
-              aria-label="Change language to Arabic"
+              aria-label={t(locale === "ar" ? "language.changeToEnglish" : "language.changeToArabic")}
+              onClick={() => setLocale(locale === "ar" ? "en" : "ar")}
               className="
                 group
                 relative
@@ -298,7 +304,7 @@ export default function Navbar() {
                 hover:text-white
               "
             >
-              العربية
+              {t("language.switch")}
 
               <span
                 className="
@@ -363,7 +369,7 @@ export default function Navbar() {
               />
 
               <span className="relative z-10 flex items-center gap-3">
-                <span>Request a Quote</span>
+                <span>{t("nav.quote")}</span>
 
                 <ArrowUpRight
                   className="
@@ -387,7 +393,8 @@ export default function Navbar() {
             {/* Language */}
             <button
               type="button"
-              aria-label="Change language to Arabic"
+              aria-label={t(locale === "ar" ? "language.changeToEnglish" : "language.changeToArabic")}
+              onClick={() => setLocale(locale === "ar" ? "en" : "ar")}
               className="
                 font-cairo
                 text-[11px]
@@ -397,14 +404,14 @@ export default function Navbar() {
                 hover:text-white
               "
             >
-              العربية
+              {t("language.switch")}
             </button>
 
             {/* Menu */}
             <button
               type="button"
               aria-label={
-                isMenuOpen ? "Close menu" : "Open menu"
+                isMenuOpen ? t("nav.closeMenu") : t("nav.openMenu")
               }
               aria-expanded={isMenuOpen}
               aria-controls="mobile-navigation"
@@ -547,13 +554,13 @@ export default function Navbar() {
                 <span className="h-px w-8 bg-[#5ba7df]" />
 
                 <span className="font-jakarta text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
-                  Navigation
+                  {t("nav.navigation")}
                 </span>
               </div>
 
               {/* Links */}
               <nav
-                aria-label="Mobile navigation"
+                aria-label={t("nav.mobileNavigation")}
                 className="flex flex-col"
               >
                 {navigationLinks.map((link, index) => {
@@ -623,7 +630,7 @@ export default function Navbar() {
                               }
                             `}
                           >
-                            {link.name}
+                            {t(`nav.${link.key}`)}
                           </span>
                         </div>
 
@@ -661,11 +668,11 @@ export default function Navbar() {
                 <div className="flex items-end justify-between gap-6">
                   <div>
                     <p className="font-jakarta text-sm font-semibold text-white">
-                      Ready to move?
+                      {t("nav.ready")}
                     </p>
 
                     <p className="mt-1 max-w-[220px] font-manrope text-xs leading-5 text-white/35">
-                      Let&apos;s discuss your next shipment.
+                      {t("nav.shipmentPrompt")}
                     </p>
                   </div>
 
@@ -691,7 +698,7 @@ export default function Navbar() {
                       text-white
                     "
                   >
-                    Quote
+                    {t("nav.quote")}
 
                     <ArrowUpRight
                       className="

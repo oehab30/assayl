@@ -3,6 +3,7 @@ import { Manrope, Plus_Jakarta_Sans, Cairo, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Layout/Navbar";
 import Footer from "./components/Layout/Footer";
+import { TranslationProvider } from "./Language/translator";
 
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
@@ -42,12 +43,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${manrope.variable} ${jakarta.variable} ${cairo.variable} ${inter.variable}`}>
       <body className="font-manrope antialiased">
-        <div className="">
-          <Navbar />
-          {children}
-           <Footer />
-
-        </div>
+        <TranslationProvider>
+          <div>
+            <Navbar />
+            {children}
+            <Footer />
+          </div>
+        </TranslationProvider>
       </body>
     </html>
   );

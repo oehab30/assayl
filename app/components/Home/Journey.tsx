@@ -4,37 +4,39 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
 import AnimatedLine from "../Common/AnimatedLine";
+import { useTranslation } from "../../Language/translator";
 
 interface ProcessStep {
   id: string;
   number: string;
-  text: string;
+  textKey: string;
 }
 
 const steps: ProcessStep[] = [
   {
     id: "step-1",
     number: "01",
-    text: "Share your product or request details",
+    textKey: "step1",
   },
   {
     id: "step-2",
     number: "02",
-    text: "Review the request and define requirements",
+    textKey: "step2",
   },
   {
     id: "step-3",
     number: "03",
-    text: "Source, purchase, or arrange supply",
+    textKey: "step3",
   },
   {
     id: "step-4",
     number: "04",
-    text: "Consolidate and inspect",
+    textKey: "step4",
   },
 ];
 
 export default function ProcessTimeline() {
+  const { t } = useTranslation();
   const [activeStep, setActiveStep] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
   const [isPaused, setIsPaused] = useState(false);
@@ -132,7 +134,7 @@ export default function ProcessTimeline() {
         {/* Eyebrow */}
         <div className="mb-4">
           <AnimatedLine
-            text="A CLEAR JOURNEY"
+            text={t("process.eyebrow")}
             lines={1}
             lineColor="bg-sky-400"
             textColor="text-sky-300"
@@ -153,9 +155,9 @@ export default function ProcessTimeline() {
               lg:text-[44px]
             "
           >
-            From request details
+            {t("process.titleLead")}
             <br />
-            to arrival procedures
+            {t("process.titleTail")}
           </h2>
         </div>
 
@@ -374,7 +376,7 @@ export default function ProcessTimeline() {
                       sm:text-[13px]
                     "
                   >
-                    {step.text}
+                    {t(`process.${step.textKey}`)}
                   </motion.p>
                 </motion.div>
               );
@@ -425,8 +427,8 @@ export default function ProcessTimeline() {
               "
             >
               {isPaused
-                ? "Process paused"
-                : "Process in motion"}
+                ? t("process.paused")
+                : t("process.inMotion")}
             </span>
           </div>
 
@@ -467,7 +469,7 @@ export default function ProcessTimeline() {
               hover:shadow-[0_8px_30px_rgba(255,255,255,0.08)]
             "
           >
-            See the complete process
+            {t("process.cta")}
           </Link>
         </div>
       </div>

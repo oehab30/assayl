@@ -4,47 +4,47 @@ import React, { useState } from "react";
 import Image from "next/image";
 import AnimatedLine from "../Common/AnimatedLine";
 import ArrowButton from "../Common/Arrowbutton";
+import { useTranslation } from "../../Language/translator";
 
 interface RouteCard {
   id: string;
-  tag: string;
-  title: string;
-  description: string;
+  tagKey: string;
+  titleKey: string;
+  descriptionKey: string;
   image: string;
   href: string;
-  capacity: string;
-  speed: string;
-  bestFor: string;
+  capacityKey: string;
+  speedKey: string;
+  bestForKey: string;
 }
 
 const routeOptions: RouteCard[] = [
   {
     id: "01",
-    tag: "SEA FREIGHT",
-    title: "More capacity. Carefully planned routes.",
-    description:
-      "A practical solution for larger cargo, with flexible capacity, consolidation options, and carefully coordinated routing from China to your destination.",
+    tagKey: "seaTag",
+    titleKey: "seaTitle",
+    descriptionKey: "seaDescription",
     image: "/imgi_2_hero-port-v2.jpeg",
     href: "/quote?service=sea-freight",
-    capacity: "High",
-    speed: "Planned",
-    bestFor: "Larger cargo",
+    capacityKey: "seaCapacity",
+    speedKey: "seaTransit",
+    bestForKey: "seaBestFor",
   },
   {
     id: "02",
-    tag: "AIR FREIGHT",
-    title: "Faster movement for priority shipments.",
-    description:
-      "A faster option for time-sensitive cargo, with schedule coordination designed around priority shipments and shorter transit requirements.",
-    image: "/air-freight.webp",
+    tagKey: "airTag",
+    titleKey: "airTitle",
+    descriptionKey: "airDescription",
+    image: "/imgi_10_cargo-air.png",
     href: "/quote?service=air-freight",
-    capacity: "Flexible",
-    speed: "Fast",
-    bestFor: "Priority cargo",
+    capacityKey: "airCapacity",
+    speedKey: "airTransit",
+    bestForKey: "airBestFor",
   },
 ];
 
 export default function FreightRoutes() {
+  const { t } = useTranslation();
   const [activeRoute, setActiveRoute] = useState("01");
 
   return (
@@ -150,7 +150,7 @@ export default function FreightRoutes() {
           {/* Left */}
           <div className="max-w-[780px]">
             <AnimatedLine
-              text="International freight solutions"
+              text={t("freight.eyebrow")}
               lines={1}
               lineColor="bg-[#005293]"
             />
@@ -170,9 +170,9 @@ export default function FreightRoutes() {
                 lg:text-[4.6rem]
               "
             >
-              The right route for{" "}
+              {t("freight.titleLead")}{" "}
               <span className="text-[#005293]">
-                your cargo.
+                {t("freight.titleAccent")}
               </span>
             </h2>
           </div>
@@ -190,9 +190,7 @@ export default function FreightRoutes() {
                 lg:text-[15px]
               "
             >
-              Choose the freight method that matches your cargo,
-              timing, and priorities. STARS coordinates the route
-              from origin through destination.
+              {t("freight.description")}
             </p>
           </div>
         </div>
@@ -241,7 +239,7 @@ export default function FreightRoutes() {
 
                 <Image
                   src={route.image}
-                  alt={route.title}
+                  alt={t(`freight.${route.titleKey}`)}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className={`
@@ -340,7 +338,7 @@ export default function FreightRoutes() {
                         text-white/55
                       "
                     >
-                      {route.tag}
+                      {t(`freight.${route.tagKey}`)}
                     </span>
                   </div>
 
@@ -376,7 +374,7 @@ export default function FreightRoutes() {
                       `}
                     />
 
-                    Available route
+                    {t("freight.available")}
                   </span>
                 </div>
 
@@ -412,7 +410,7 @@ export default function FreightRoutes() {
                       lg:text-[2.8rem]
                     "
                   >
-                    {route.title}
+                    {t(`freight.${route.titleKey}`)}
                   </h3>
 
                   {/* Description */}
@@ -429,7 +427,7 @@ export default function FreightRoutes() {
                       sm:leading-[1.75]
                     "
                   >
-                    {route.description}
+                    {t(`freight.${route.descriptionKey}`)}
                   </p>
 
                   {/* =================================================
@@ -465,7 +463,7 @@ export default function FreightRoutes() {
                           text-white/35
                         "
                       >
-                        Capacity
+                        {t("freight.capacityLabel")}
                       </span>
 
                       <span
@@ -478,7 +476,7 @@ export default function FreightRoutes() {
                           text-white
                         "
                       >
-                        {route.capacity}
+                        {t(`freight.${route.capacityKey}`)}
                       </span>
                     </div>
 
@@ -502,7 +500,7 @@ export default function FreightRoutes() {
                           text-white/35
                         "
                       >
-                        Transit
+                        {t("freight.transitLabel")}
                       </span>
 
                       <span
@@ -515,7 +513,7 @@ export default function FreightRoutes() {
                           text-white
                         "
                       >
-                        {route.speed}
+                        {t(`freight.${route.speedKey}`)}
                       </span>
                     </div>
 
@@ -532,7 +530,7 @@ export default function FreightRoutes() {
                           text-white/35
                         "
                       >
-                        Best for
+                        {t("freight.bestForLabel")}
                       </span>
 
                       <span
@@ -545,7 +543,7 @@ export default function FreightRoutes() {
                           text-white
                         "
                       >
-                        {route.bestFor}
+                        {t(`freight.${route.bestForKey}`)}
                       </span>
                     </div>
                   </div>
@@ -557,7 +555,7 @@ export default function FreightRoutes() {
                   <div className="mt-6">
                     <ArrowButton
                       href={route.href}
-                      text="Request this service"
+                      text={t("freight.requestService")}
                       className="
                         !text-white
                         [&_span]:border-white/25
@@ -647,7 +645,7 @@ export default function FreightRoutes() {
                 text-[#071827]
               "
             >
-              Larger shipments
+              {t("freight.decisionSeaTitle")}
             </p>
 
             <p
@@ -659,7 +657,7 @@ export default function FreightRoutes() {
                 text-slate-400
               "
             >
-              Consider sea freight when capacity is the priority.
+              {t("freight.decisionSeaDescription")}
             </p>
           </div>
 
@@ -698,7 +696,7 @@ export default function FreightRoutes() {
                 text-[#071827]
               "
             >
-              Time-sensitive cargo
+              {t("freight.decisionAirTitle")}
             </p>
 
             <p
@@ -710,7 +708,7 @@ export default function FreightRoutes() {
                 text-slate-400
               "
             >
-              Consider air freight when speed is the priority.
+              {t("freight.decisionAirDescription")}
             </p>
           </div>
 
@@ -739,7 +737,7 @@ export default function FreightRoutes() {
                 text-[#071827]
               "
             >
-              Not sure which?
+              {t("freight.decisionHelpTitle")}
             </p>
 
             <p
@@ -751,7 +749,7 @@ export default function FreightRoutes() {
                 text-slate-400
               "
             >
-              Tell us about your shipment and we can help coordinate the route.
+              {t("freight.decisionHelpDescription")}
             </p>
           </div>
         </div>

@@ -1,5 +1,6 @@
 "use client"
 
+import { useTranslation } from "../../Language/translator";
 import Link from "next/link"
 import { motion } from "motion/react"
 import Image from "next/image"
@@ -7,6 +8,8 @@ import { ArrowUpRight, ArrowDown } from "lucide-react"
 import AnimatedLine from "../Common/AnimatedLine"
 
 export default function Hero() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="home"
@@ -22,7 +25,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/imgi_2_hero-port-v2.jpeg"
-          alt="Cargo containers and international shipping port"
+          alt={t("hero.portImageAlt")}
           fill
           priority
           className="
@@ -136,7 +139,7 @@ export default function Hero() {
               className="mb-7 z-100"
             >
               <AnimatedLine
-                text="From China to your destination"
+                text={t("hero.eyebrow")}
                 lines={1}
               />
             </motion.div>
@@ -166,9 +169,9 @@ export default function Hero() {
                 xl:text-[84px]
               "
             >
-              Your trusted{" "}
+              {t("hero.titleLead")} {" "}
               <span className="relative inline-block text-[#5ba7df]">
-                partner
+                {t("hero.titleAccent")}
                 <span
                   aria-hidden="true"
                   className="
@@ -180,7 +183,7 @@ export default function Hero() {
                   "
                 />
               </span>{" "}
-              for sourcing and shipping from China.
+              {t("hero.titleTail")}
             </motion.h1>
 
             {/* =================================================
@@ -205,9 +208,7 @@ export default function Hero() {
                 sm:leading-8
               "
             >
-              STARS connects its presence in China, Hong Kong, and Egypt
-              to deliver coordinated sourcing, shipping, warehousing,
-              and import solutions for traders, businesses, and individuals.
+              {t("hero.description")}
             </motion.p>
 
             {/* =================================================
@@ -257,7 +258,7 @@ export default function Hero() {
                 "
               >
                 <span className="relative z-10 flex items-center gap-3">
-                  Start a Project
+                  {t("hero.start")}
 
                   <ArrowUpRight
                     className="
@@ -298,7 +299,7 @@ export default function Hero() {
                   hover:bg-white/[0.07]
                 "
               >
-                <span>Explore Services</span>
+                <span>{t("hero.services")}</span>
 
                 <span
                   className="
@@ -343,7 +344,7 @@ export default function Hero() {
                     text-white/35
                   "
                 >
-                  Our operational network
+                  {t("hero.operationalNetwork")}
                 </span>
               </div>
 
@@ -375,7 +376,7 @@ export default function Hero() {
                       text-white/40
                     "
                   >
-                    China
+                    {t("hero.china")}
                   </span>
                 </div>
 
@@ -403,7 +404,7 @@ export default function Hero() {
                       text-white
                     "
                   >
-                    HK
+                    KSA
                   </span>
 
                   <span className="h-3 w-px bg-white/20" />
@@ -418,7 +419,7 @@ export default function Hero() {
                       text-white/40
                     "
                   >
-                    Hong Kong
+                    {t("hero.saudia")}
                   </span>
                 </div>
 
@@ -461,7 +462,7 @@ export default function Hero() {
                       text-white/40
                     "
                   >
-                    Egypt
+                    {t("hero.egypt")}
                   </span>
                 </div>
               </div>
@@ -509,7 +510,7 @@ export default function Hero() {
                     text-white/40
                   "
                 >
-                  STARS Network
+                  {t("hero.Aseel")}
                 </span>
 
                 <span className="flex items-center gap-2">
@@ -523,7 +524,7 @@ export default function Hero() {
                       text-white/35
                     "
                   >
-                    Connected
+                    {t("hero.connected")}
                   </span>
                 </span>
               </div>
@@ -555,11 +556,11 @@ export default function Hero() {
 
                     <div>
                       <p className="font-jakarta text-[12px] font-bold uppercase tracking-[0.08em] text-white">
-                        China
+                        {t("hero.china")}
                       </p>
 
                       <p className="mt-1 font-manrope text-[10px] leading-5 text-white/35">
-                        Sourcing · Supplier network
+                        {t("hero.chinaDetails")}
                       </p>
                     </div>
                   </div>
@@ -570,11 +571,11 @@ export default function Hero() {
 
                     <div>
                       <p className="font-jakarta text-[12px] font-bold uppercase tracking-[0.08em] text-white">
-                        Hong Kong
+                        {t("hero.saudia")}
                       </p>
 
                       <p className="mt-1 font-manrope text-[10px] leading-5 text-white/35">
-                        Freight · Consolidation
+                        {t("hero.saudiaDetails")}
                       </p>
                     </div>
                   </div>
@@ -585,11 +586,11 @@ export default function Hero() {
 
                     <div>
                       <p className="font-jakarta text-[12px] font-bold uppercase tracking-[0.08em] text-white">
-                        Egypt
+                        {t("hero.egypt")}
                       </p>
 
                       <p className="mt-1 font-manrope text-[10px] leading-5 text-white/35">
-                        Clearance · Final delivery
+                        {t("hero.egyptDetails")}
                       </p>
                     </div>
                   </div>
@@ -608,9 +609,9 @@ export default function Hero() {
                     text-white/30
                   "
                 >
-                  One coordinated route.
+                  {t("hero.routeFirst")}
                   <br />
-                  Multiple stages. One partner.
+                  {t("hero.routeSecond")}
                 </p>
               </div>
             </div>
@@ -646,7 +647,7 @@ export default function Hero() {
             text-white/30
           "
         >
-          Scroll to explore
+          {t("hero.scroll")}
         </span>
 
         <span className="h-px w-10 bg-white/20" />
