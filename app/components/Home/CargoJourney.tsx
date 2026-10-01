@@ -31,7 +31,7 @@ const steps: JourneyStep[] = [
     tagKey: "consolidation",
     titleKey: "consolidateTitle",
     descriptionKey: "consolidateDescription",
-    image: "/hero2.jpg",
+    image: "/ship1.jpg",
   },
   {
     id: "step-3",
@@ -39,7 +39,7 @@ const steps: JourneyStep[] = [
     tagKey: "movement",
     titleKey: "movementTitle",
     descriptionKey: "movementDescription",
-    image: "/hero2.jpg",
+    image: "/Ship2.jpg",
   },
 ];
 

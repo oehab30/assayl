@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -36,19 +37,16 @@ const steps: ProcessStep[] = [
 ];
 
 export default function ProcessTimeline() {
-  const { t } = useTranslation();
+  const { t, locale: language } = useTranslation();
+
   const [activeStep, setActiveStep] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
   const [isPaused, setIsPaused] = useState(false);
 
-  /*
-   * Faster automatic process:
-   *
-   * 01 → 02 → 03 → 04
-   * 04 → 03 → 02 → 01
-   *
-   * 1500ms = 1.5 seconds per step
-   */
+  // Arabic = RTL
+  const isArabic = language === "ar";
+
+  
   useEffect(() => {
     if (isPaused) return;
 
@@ -73,8 +71,7 @@ export default function ProcessTimeline() {
     return () => clearTimeout(timer);
   }, [activeStep, direction, isPaused]);
 
-  const progress =
-    (activeStep / (steps.length - 1)) * 100;
+  const progress = (activeStep / (steps.length - 1)) * 100;
 
   return (
     <section
@@ -184,27 +181,27 @@ export default function ProcessTimeline() {
             "
           />
 
-          {/* Desktop animated progress */}
-          <motion.div
-            aria-hidden="true"
-            className="
-              absolute
-              left-0
-              top-5
-              z-0
-              hidden
-              h-px
-              bg-sky-400
-              lg:block
-            "
-            animate={{
-              width: `${progress}%`,
-            }}
-            transition={{
-              duration: 0.65,
-              ease: [0.65, 0, 0.35, 1],
-            }}
-          />
+ {/* Desktop animated progress */}
+<motion.div
+  aria-hidden="true"
+  className={`
+    absolute
+    top-5
+    z-0
+    hidden
+    h-px
+    bg-sky-400
+    lg:block
+    ${isArabic ? "right-0" : "left-0"}
+  `}
+  animate={{
+    width: `${progress}%`,
+  }}
+  transition={{
+    duration: 0.65,
+    ease: [0.65, 0, 0.35, 1],
+  }}
+/>
 
           <div
             className="
@@ -230,7 +227,7 @@ export default function ProcessTimeline() {
                   }}
                   transition={{
                     duration: 0.5,
-                    ease: "easeOut"
+                    ease: "easeOut",
                   }}
                   className="
                     group

@@ -8,7 +8,7 @@ import Hero from "./Hero"
 import Journey from "./Journey"
 import OfficesSection from "./Ouroffices"
 import Services from "./Services"
-import WhySTARS from "./WhySTARS"
+import WhySTARS from "./WhyAseel"
 // import HeroFacts from "./HeroFacts"
 
 
