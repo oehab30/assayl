@@ -19,23 +19,25 @@ export default function Hero() {
         text-white
       "
     >
-      {/* =========================================================
-          BACKGROUND IMAGE
-      ========================================================== */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/imgi_2_hero-port-v2.jpeg"
-          alt={t("hero.portImageAlt")}
-          fill
-          priority
-          className="
-            object-cover
-            object-[62%_center]
-            scale-[1.03]
-          "
-          sizes="100vw"
-        />
-      </div>
+  {/* =========================================================
+    BACKGROUND VIDEO
+========================================================== */}
+<div className="absolute inset-0 z-0 overflow-hidden">
+  <video
+    src="/Hero_video.mp4"
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="
+      h-full
+      w-full
+      object-cover
+      object-[62%_center]
+      scale-[1.03]
+    "
+  />
+</div>
 
       {/* =========================================================
           IMAGE TREATMENT
@@ -393,7 +395,7 @@ export default function Hero() {
                   "
                 />
 
-                {/* Hong Kong */}
+                {/* Saudi */}
                 <div className="flex items-center gap-2.5 px-5">
                   <span
                     className="
@@ -419,7 +421,7 @@ export default function Hero() {
                       text-white/40
                     "
                   >
-                    {t("hero.saudia")}
+                    {t("hero.Saudi")}
                   </span>
                 </div>
 
@@ -565,17 +567,17 @@ export default function Hero() {
                     </div>
                   </div>
 
-                  {/* Hong Kong */}
+                  {/* Saudi */}
                   <div className="relative flex items-start gap-5 pb-8">
                     <span className="relative z-10 mt-1 h-2.5 w-2.5 rounded-full border-2 border-white/30 bg-[#051428]" />
 
                     <div>
                       <p className="font-jakarta text-[12px] font-bold uppercase tracking-[0.08em] text-white">
-                        {t("hero.saudia")}
+                        {t("hero.Saudi")}
                       </p>
 
                       <p className="mt-1 font-manrope text-[10px] leading-5 text-white/35">
-                        {t("hero.saudiaDetails")}
+                     {t("hero.SaudiDetails")}
                       </p>
                     </div>
                   </div>

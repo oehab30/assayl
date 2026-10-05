@@ -268,7 +268,7 @@ export default function CargoJourney() {
                         backdrop-blur-sm
                       "
                     >
-                      STARS / {step.number}
+                     {t(`cargo.Aseel`)} / {step.number}
                     </span>
 
                     <ArrowUpRight
