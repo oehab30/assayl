@@ -56,7 +56,7 @@ export default function NotFound() {
         <header className="flex items-center justify-between">
           <Link href="/" className="inline-flex items-center">
             <span className="font-jakarta text-2xl font-extrabold tracking-[-0.06em] text-[#071827]">
-              STARS
+              Aseel
             </span>
           </Link>
 
