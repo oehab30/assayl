@@ -54,8 +54,8 @@ const navigation = [
     icon: PackageSearch,
   },
   {
-    label: "Branches",
-    href: "/admin/branches",
+    label: "Edit",
+    href: "/admin/Edit",
     icon: Building2,
   },
 ];

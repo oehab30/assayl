@@ -1,7 +1,5 @@
-
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import AnimatedLine from "../Common/AnimatedLine";
@@ -11,7 +9,7 @@ export default function Banner() {
   const { t } = useTranslation();
 
   return (
-    <section className="relative overflow-hidden bg-[#f8fafc] py-12 sm:py-16 lg:py-20">
+    <section className="relative overflow-hidden bg-[#F8F6F3] py-12 sm:py-16 lg:py-20">
       <div className="relative mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8">
 
         {/* Banner Card Container */}
@@ -23,7 +21,7 @@ export default function Banner() {
             justify-between
             overflow-hidden
             rounded-[28px]
-            bg-[#08182b]
+            bg-[#34161C]
             p-8
             shadow-xl
             sm:p-12
@@ -49,28 +47,28 @@ export default function Banner() {
 
           {/* Dark Overlay */}
           <div
+            aria-hidden="true"
             className="
               absolute
               inset-0
               bg-gradient-to-r
-              from-[#061322]/85
-              via-[#08182b]/55
-              to-[#08182b]/30
+              from-[#221E20]/90
+              via-[#421821]/75
+              to-[#421821]/35
             "
-            aria-hidden="true"
           />
 
-          {/* Subtle bottom darkening */}
+          {/* Bottom Contrast */}
           <div
+            aria-hidden="true"
             className="
               absolute
               inset-0
               bg-gradient-to-t
-              from-[#061322]/55
-              via-transparent
+              from-[#221E20]/65
+              via-[#34161C]/15
               to-transparent
             "
-            aria-hidden="true"
           />
 
           {/* Left Column: Text Content */}
@@ -81,15 +79,14 @@ export default function Banner() {
               <AnimatedLine
                 text={t("banner.eyebrow")}
                 lines={1}
-                lineColor="bg-sky-400"
-                textColor="text-sky-300"
+                lineColor="bg-[#CD2B55]"
+                textColor="text-[#D1C6B9]"
               />
             </div>
 
             {/* Main Headline */}
             <h2
               className="
-                font-jakarta
                 text-3xl
                 font-bold
                 leading-[1.12]
@@ -112,7 +109,7 @@ export default function Banner() {
                 font-manrope
                 text-xs
                 leading-relaxed
-                text-slate-300/90
+                text-[#D1C6B9]/90
                 sm:text-sm
               "
             >
@@ -152,11 +149,11 @@ export default function Banner() {
                 font-jakarta
                 text-xs
                 font-bold
-                text-[#06182e]
+                text-[#34161C]
                 shadow-sm
                 transition-all
                 duration-300
-                hover:bg-slate-100
+                hover:bg-[#F8F6F3]
                 hover:shadow-md
               "
             >
@@ -179,7 +176,6 @@ export default function Banner() {
                 px-6
                 py-3.5
                 text-center
-                font-jakarta
                 text-xs
                 font-bold
                 text-white

@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
@@ -49,7 +48,7 @@ export default function CargoJourney() {
   return (
     <section
       id="cargo-journey"
-      className="relative overflow-hidden bg-[#F4F7F9] py-24 sm:py-28 lg:py-36"
+      className="relative overflow-hidden bg-[#F8F6F3] py-24 sm:py-28 lg:py-36"
     >
       {/* Technical background */}
       <div
@@ -60,16 +59,16 @@ export default function CargoJourney() {
         <div
           className="
             absolute inset-0 opacity-[0.45]
-            [background-image:linear-gradient(rgba(7,24,39,.045)_1px,transparent_1px),linear-gradient(90deg,rgba(7,24,39,.045)_1px,transparent_1px)]
+            [background-image:linear-gradient(rgba(66,24,33,.045)_1px,transparent_1px),linear-gradient(90deg,rgba(66,24,33,.045)_1px,transparent_1px)]
             [background-size:72px_72px]
           "
         />
 
-        {/* Blue atmosphere */}
-        <div className="absolute -right-40 top-20 h-[500px] w-[500px] rounded-full bg-[#005293]/[0.045] blur-[120px]" />
+        {/* Assayel burgundy atmosphere */}
+        <div className="absolute -right-40 top-20 h-[500px] w-[500px] rounded-full bg-[#421821]/[0.045] blur-[120px]" />
 
-        {/* Burgundy atmosphere */}
-        <div className="absolute -bottom-48 -left-48 h-[500px] w-[500px] rounded-full bg-[#4F0908]/[0.025] blur-[120px]" />
+        {/* Assayel accent atmosphere */}
+        <div className="absolute -bottom-48 -left-48 h-[500px] w-[500px] rounded-full bg-[#CD2B55]/[0.035] blur-[120px]" />
       </div>
 
       <div className="relative mx-auto w-full max-w-[1320px] px-5 sm:px-8 lg:px-10">
@@ -80,32 +79,32 @@ export default function CargoJourney() {
               <AnimatedLine
                 text={t("cargo.eyebrow")}
                 lines={1}
-                lineColor="bg-[#005293]"
-                textColor="text-[#005293]/70"
+                textColor="text-[#8c8275]"
               />
             </div>
 
             <h2
               className="
                 max-w-4xl
-                font-jakarta
                 text-4xl
                 font-extrabold
                 leading-[0.98]
                 tracking-[-0.045em]
-                text-[#071827]
+                text-[#221E20]
                 sm:text-5xl
                 lg:text-[64px]
               "
             >
               {t("cargo.titleLead")}
               <br />
-              <span className="text-[#005293]">{t("cargo.titleTail")}</span>
+              <span className="text-[#421821]">
+                {t("cargo.titleTail")}
+              </span>
             </h2>
           </div>
 
           <div className="lg:col-span-4 lg:pb-2">
-            <p className="max-w-md font-manrope text-sm leading-7 text-[#071827]/55 sm:text-[15px]">
+            <p className="max-w-md text-sm leading-7 text-[#4B4A4B]/75 sm:text-[15px]">
               {t("cargo.description")}
             </p>
           </div>
@@ -123,7 +122,7 @@ export default function CargoJourney() {
               top-[48px]
               hidden
               h-px
-              bg-[#071827]/10
+              bg-[#D1C6B9]
               lg:block
             "
           />
@@ -139,7 +138,7 @@ export default function CargoJourney() {
               h-px
               w-[66.66%]
               origin-left
-              bg-[#005293]/30
+              bg-[#421821]
               lg:block
             "
             initial={{ scaleX: 0 }}
@@ -176,33 +175,31 @@ export default function CargoJourney() {
                       items-center
                       justify-center
                       border
-                      border-[#005293]
-                      bg-[#F4F7F9]
-                      font-jakarta
+                      border-[#421821]
+                      bg-[#D1C6B9]/35
                       text-xs
                       font-bold
                       tracking-[0.12em]
-                      text-[#005293]
+                      text-[#421821]
                       transition-all
                       duration-500
-                      group-hover:bg-[#005293]
+                      group-hover:bg-[#34161C]
                       group-hover:text-white
                     "
                   >
                     {step.number}
                   </div>
 
-                  <div className="ml-4 hidden h-px flex-1 bg-[#071827]/10 lg:block" />
+                  <div className="ml-4 hidden h-px flex-1 bg-[#D1C6B9] lg:block" />
 
                   <span
                     className="
                       ml-auto
-                      font-jakarta
                       text-[9px]
                       font-bold
                       uppercase
                       tracking-[0.2em]
-                      text-[#071827]/30
+                      text-[#4B4A4B]/60
                     "
                   >
                     {t(`cargo.${step.tagKey}`)}
@@ -216,8 +213,8 @@ export default function CargoJourney() {
                     h-[430px]
                     overflow-hidden
                     border
-                    border-[#071827]/10
-                    bg-[#071827]
+                    border-[#421821]/15
+                    bg-[#221E20]
                     sm:h-[470px]
                   "
                 >
@@ -239,14 +236,18 @@ export default function CargoJourney() {
 
                   {/* Image overlay */}
                   <div
+                    aria-hidden="true"
                     className="
                       absolute
                       inset-0
                       bg-gradient-to-t
-                      from-[#071827]
-                      via-[#071827]/35
-                      to-transparent
-                      opacity-90
+                      from-[#221E20]/95
+                      via-[#421821]/65
+                      to-[#421821]/15
+                      opacity-70
+                      transition-opacity
+                      duration-500
+                      group-hover:opacity-100
                     "
                   />
 
@@ -256,38 +257,37 @@ export default function CargoJourney() {
                       className="
                         border
                         border-white/20
-                        bg-[#071827]/35
+                        bg-[#221E20]/45
                         px-3
                         py-1.5
-                        font-jakarta
                         text-[9px]
                         font-bold
                         uppercase
                         tracking-[0.2em]
-                        text-white/70
+                        text-white/75
                         backdrop-blur-sm
                       "
                     >
-                     {t(`cargo.Aseel`)} / {step.number}
+                      {t("cargo.Aseel")} / {step.number}
                     </span>
 
                     <ArrowUpRight
                       className="
                         h-4
                         w-4
-                        text-white/50
+                        text-white/60
                         transition-all
                         duration-500
                         group-hover:-translate-y-0.5
                         group-hover:translate-x-0.5
-                        group-hover:text-[#5ba7df]
+                        group-hover:text-[#CD2B55]
                       "
                     />
                   </div>
 
                   {/* Bottom content */}
                   <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7">
-                    <div className="mb-3 h-px w-10 bg-[#5ba7df] transition-all duration-500 group-hover:w-16" />
+                    <div className="mb-3 h-px w-10 bg-[#CD2B55] transition-all duration-500 group-hover:w-16" />
 
                     <h3
                       className="
@@ -309,7 +309,7 @@ export default function CargoJourney() {
                         font-manrope
                         text-xs
                         leading-6
-                        text-white/55
+                        text-white/70
                         sm:text-sm
                       "
                     >
@@ -324,10 +324,10 @@ export default function CargoJourney() {
                       absolute
                       inset-0
                       border
-                      border-[#5ba7df]/0
+                      border-[#CD2B55]/0
                       transition-colors
                       duration-500
-                      group-hover:border-[#5ba7df]/50
+                      group-hover:border-[#421821]
                     "
                   />
                 </div>
@@ -346,7 +346,7 @@ export default function CargoJourney() {
             mt-12
             grid
             border-t
-            border-[#071827]/10
+            border-[#D1C6B9]
             pt-7
             sm:grid-cols-[1fr_auto]
             sm:items-center
@@ -354,33 +354,33 @@ export default function CargoJourney() {
           "
         >
           <div className="flex items-start gap-4">
-            <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#005293]" />
+            <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#CD2B55]" />
 
             <div>
-              <p className="font-jakarta text-sm font-semibold text-[#071827]">
+              <p className="text-sm font-semibold text-[#421821]">
                 {t("cargo.bottomTitle")}
               </p>
 
-              <p className="mt-1 max-w-2xl font-manrope text-xs leading-6 text-[#071827]/45">
+              <p className="mt-1 max-w-2xl text-xs leading-6 text-[#4B4A4B]">
                 {t("cargo.bottomDescription")}
               </p>
             </div>
           </div>
 
           <div className="mt-5 flex items-center gap-3 sm:mt-0">
-            <span className="font-jakarta text-[9px] font-bold uppercase tracking-[0.18em] text-[#071827]/30">
+            <span className="text-[9px] font-bold uppercase tracking-[0.18em] text-[#4B4A4B]">
               {t("hero.china")}
             </span>
 
-            <span className="h-px w-8 bg-[#005293]/40" />
+            <span className="h-px w-8 bg-[#D1C6B9]" />
 
-            <span className="font-jakarta text-[9px] font-bold uppercase tracking-[0.18em] text-[#071827]/30">
-              {t("hero.saudia")}
+            <span className="text-[9px] font-bold uppercase tracking-[0.18em] text-[#4B4A4B]">
+              {t("hero.Saudi")}
             </span>
 
-            <span className="h-px w-8 bg-[#005293]/40" />
+            <span className="h-px w-8 bg-[#D1C6B9]" />
 
-            <span className="font-jakarta text-[9px] font-bold uppercase tracking-[0.18em] text-[#071827]/30">
+            <span className="text-[9px] font-bold uppercase tracking-[0.18em] text-[#4B4A4B]">
               {t("hero.egypt")}
             </span>
           </div>

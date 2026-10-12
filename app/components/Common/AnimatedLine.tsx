@@ -1,7 +1,7 @@
 "use client";
 
 import { memo } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 interface AnimatedLineProps {
   text?: string;
@@ -11,54 +11,77 @@ interface AnimatedLineProps {
   className?: string;
 }
 
-const AnimatedLine = memo(({
+const AnimatedLine = memo(function AnimatedLine({
   text = "From China To Your Destination",
   lines = 1,
-  lineColor = "bg-[#005293]",
-  textColor = "text-[#005293]",
+  lineColor = "bg-[#CD2B55]",
+  textColor = "text-[#D1C6B9]",
   className = "",
-}: AnimatedLineProps) => {
-  return (
-    <div className={`flex items-center gap-3 sm:gap-4 mb-4 ${className}`}>
-      {/* Left line */}
-      {(lines === 2 || lines === 1) && (
-        <motion.div
-          initial={{ width: 0, opacity: 0 }}
-          animate={{ width: "2rem", opacity: 1, x: [0, -4, 4, 0] }}
-          whileInView={{ width: ["1.5rem", "2rem", "3rem"], opacity: 1 }}
-          transition={{
-            width: { duration: 1.4, ease: "easeInOut" },
-            opacity: { duration: 1.2 },
-            x: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.6 },
-          }}
-          className={`h-px ${lineColor}`}
-          aria-hidden="true"
-        />
-      )}
+}: AnimatedLineProps) {
+  const shouldReduceMotion = useReducedMotion();
 
-      {/* Text */}
-      <motion.span
-        initial={{ opacity: 0, y: 12 }}
+  const lineAnimation = {
+    initial: shouldReduceMotion
+      ? { opacity: 1 }
+      : { width: 0, opacity: 0 },
+    animate: shouldReduceMotion
+      ? { opacity: 1 }
+      : {
+          width: "2rem",
+          opacity: 1,
+          x: [0, -4, 4, 0],
+        },
+    whileInView: shouldReduceMotion
+      ? { opacity: 1 }
+      : {
+          width: ["1.5rem", "2rem", "3rem"],
+          opacity: 1,
+        },
+    transition: shouldReduceMotion
+      ? { duration: 0 }
+      : {
+          width: { duration: 1.4, ease: "easeInOut" as const },
+          opacity: { duration: 1.2 },
+          x: {
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut" as const,
+            delay: 1.6,
+          },
+        },
+  };
+
+  return (
+    <div
+      className={` flex items-center gap-3 sm:gap-4 ${className}`}
+    >
+      {/* Decorative line before the label */}
+      <motion.div
+        {...lineAnimation}
+        className={`h-px shrink-0 ${lineColor}`}
+        aria-hidden="true"
+      />
+
+      {/* Brand label */}
+      <motion.h1
+        initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-        className={`font-jakarta text-xs font-bold uppercase tracking-[0.2em] whitespace-nowrap ${textColor}`}
+        transition={
+          shouldReduceMotion
+            ? { duration: 0 }
+            : { duration: 1.2, ease: "easeOut" }
+        }
+        className={` whitespace-nowrap text-xs font-medium uppercase tracking-[0.15em] ${textColor}`}
       >
         {text}
-      </motion.span>
+      </motion.h1>
 
-      {/* Right line */}
+      {/* Optional second decorative line */}
       {lines === 2 && (
         <motion.div
-          initial={{ width: 0, opacity: 0 }}
-          animate={{ width: "2rem", opacity: 1, x: [0, 4, -4, 0] }}
-          whileInView={{ width: ["1.5rem", "2rem", "3rem"], opacity: 1 }}
-          transition={{
-            width: { duration: 1.4, ease: "easeInOut" },
-            opacity: { duration: 1.2 },
-            x: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.6 },
-          }}
-          className={`h-px ${lineColor}`}
+          {...lineAnimation}
+          className={`h-px shrink-0 ${lineColor}`}
           aria-hidden="true"
         />
       )}

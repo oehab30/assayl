@@ -1,7 +1,87 @@
 @import "tailwindcss";
 
 /* ========================================
-   Base
+   1. Assayel Brand Design Tokens
+======================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Surfaces */
+  --bg-canvas: #ffffff;
+  --bg-surface: #f5f2ef;
+  --bg-surface-muted: #eee8e1;
+
+  /* Typography Colors */
+  --text-main: #221e20;
+  --text-muted: #4b4a4b;
+  --text-on-brand: #ffffff;
+
+  /* Official Brand Colors */
+  --brand-primary: #421821;
+  --brand-primary-dark: #34161c;
+  --brand-primary-light: #662433;
+  --brand-neutral: #d1c6b9;
+  --brand-accent: #cd2b55;
+  --brand-stone: #4b4a4b;
+  --brand-dark: #221e20;
+  --brand-white: #ffffff;
+
+  /* ========================================
+     Typography Families
+  ======================================== */
+
+  /* English */
+  --font-headline-en: "Florensans", sans-serif;
+  --font-body-en: var(--font-barlow), sans-serif;
+
+  /* Arabic */
+  --font-headline-ar: "Thania", sans-serif;
+  --font-body-ar: "Dinar One Medium", sans-serif;
+
+  /* Effects */
+  --shadow-default: 0 20px 60px rgb(34 30 32 / 10%);
+  --shadow-brand: 0 12px 32px rgb(66 24 33 / 16%);
+
+  /* Borders */
+  --border-subtle: rgb(66 24 33 / 12%);
+}
+
+/* ========================================
+   2. Tailwind CSS v4 Theme
+======================================== */
+
+@theme inline {
+  /* Semantic Colors */
+  --color-background: var(--bg-canvas);
+  --color-surface: var(--bg-surface);
+  --color-surface-muted: var(--bg-surface-muted);
+
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  --color-text-on-brand: var(--text-on-brand);
+
+  /* Brand Colors */
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-primary-dark: var(--brand-primary-dark);
+  --color-brand-primary-light: var(--brand-primary-light);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-neutral: var(--brand-neutral);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-white: var(--brand-white);
+  --color-brand-stone: var(--brand-stone);
+
+  /* Font Utilities */
+  --font-sans: var(--font-body-en);
+  --font-body-en: "Barlow Medium", var(--font-barlow), sans-serif;
+  --font-headline-en: "Florensans", sans-serif;
+
+  --font-body-ar: "Dinar One Medium", sans-serif;
+  --font-headline-ar: "Thania", sans-serif;
+}
+
+/* ========================================
+   3. Base Reset
 ======================================== */
 
 *,
@@ -12,18 +92,20 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 body {
   margin: 0;
   padding: 0;
-
-  background: var(--foreground);
-  color: var(--background);
-
-  font-family: var(--font-manrope), "Segoe UI", Arial, sans-serif;
+  background-color: var(--bg-canvas);
+  color: var(--text-main);
+  font-family: var(--font-body-en);
   font-size: 16px;
   line-height: 1.75;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 button,
@@ -37,53 +119,103 @@ button {
   cursor: pointer;
 }
 
-
-/* ========================================
-   Design Tokens
-======================================== */
-
-:root {
-  /* Background */
-  --background: #ffffff;
-  --foreground: #171717;
-
-  /* Dark Burgundy */
-  --main: #45151F;
-  --Deep-Burgundy: #2A0504;
-  --Near-Black: #0D0808;
-  --Deep-Accent: #7A1715;
-
-  /* Light Burgundy */
-  --Light-Burgundy: #A33A35;
-  --Off-White: #F5F2EF;
-  --Gray: #A7A09D;
-
-  /* Effects */
-  --shadow: 0 30px 80px #041f3d21;
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
 }
 
+a {
+  text-decoration: none;
+}
 
 /* ========================================
-   Tailwind Theme
+   4. English and Arabic Typography
 ======================================== */
 
-@theme inline {
-  /* Colors */
-  --color-background: var(--background);
-  --color-Deep-Burgundy: var(--Deep-Burgundy);
-  --color-Near-Black: var(--Near-Black);
-  --color-Deep-Accent: var(--Deep-Accent);
+/* English body */
+html[lang="en"] body,
+html:not([lang="ar"]) body:not([dir="rtl"]) {
+  font-family: var(--font-body-en);
+}
 
-    /* Light  Burgundy */
-  --color-Light-Burgundy: var(--Light-Burgundy);
-  --color-Gray: var(--Gray);
+/* Arabic body */
+html[lang="ar"] body,
+html[dir="rtl"] body {
+  font-family: var(--font-body-ar);
+}
 
+/* English headings */
+html[lang="en"] h1,
+html[lang="en"] h2,
+html[lang="en"] h3,
+html[lang="en"] h4,
+html[lang="en"] h5,
+html[lang="en"] h6,
+html[lang="en"] .font-headline {
+  font-family: var(--font-headline-en);
+}
 
-  --color-ink: var(--ink);
-  --color-muted: var(--muted);
-  --color-line: var(--line);
+/* Arabic headings */
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] h5,
+html[lang="ar"] h6,
+html[dir="rtl"] .font-headline {
+  font-family: var(--font-headline-ar);
+}
 
-  /* Fonts */
-  --font-manrope: var(--font-manrope), "Segoe UI", Arial, sans-serif;
-  --font-jakarta: var(--font-jakarta), "Segoe UI", Arial, sans-serif;
---font-cairo: var(--font-cairo), "Segoe UI", "Tahoma", sans-serif;}
+/* Consistent heading styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  line-height: 1.2;
+}
+
+/* ========================================
+   5. Brand Gradient
+======================================== */
+
+.bg-brand-gradient {
+  background-image: linear-gradient(
+    135deg,
+    var(--brand-primary-light) 0%,
+    var(--brand-primary) 55%,
+    var(--brand-primary-dark) 100%
+  );
+}
+
+/* ========================================
+   6. Brand Focus States
+======================================== */
+
+:focus-visible {
+  outline: 2px solid var(--brand-accent);
+  outline-offset: 3px;
+}
+
+/* ========================================
+   7. Reduced Motion
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

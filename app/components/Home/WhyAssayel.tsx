@@ -34,14 +34,14 @@ const features: FeatureItem[] = [
   },
 ];
 
-export default function WhySTARS() {
+export default function WhyAssayel() {
   const { t } = useTranslation();
 
   return (
     <section
-      id="why-stars"
-      aria-labelledby="why-stars-title"
-      className="relative isolate overflow-hidden bg-slate-50 py-20 sm:py-24 lg:py-32"
+      id="why-Assayel"
+      aria-labelledby="why-Assayel-title"
+      className="relative isolate overflow-hidden bg-[#F8F6F3] py-20 sm:py-24 lg:py-32"
     >
       {/* -------------------------------------------------
           Background
@@ -50,22 +50,13 @@ export default function WhySTARS() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10"
       >
-        <Image
-          src="/H-banner.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center opacity-[0.055] grayscale"
-        />
-
         {/* Main fade */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-slate-50/95 to-slate-50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F8F6F3] via-[#F8F6F3]/95 to-[#F8F6F3]" />
 
-        {/* Subtle blue atmospheric glow */}
-        <div className="absolute -right-40 top-1/4 h-[420px] w-[420px] rounded-full bg-[#005293]/[0.035] blur-3xl" />
+        {/* Subtle Assayel accent glow */}
+        <div className="absolute -right-40 top-1/4 h-[420px] w-[420px] rounded-full bg-[#CD2B55]/[0.035] blur-3xl" />
 
-        <div className="absolute -left-40 bottom-0 h-[360px] w-[360px] rounded-full bg-[#4F0908]/[0.025] blur-3xl" />
+        <div className="absolute -left-40 bottom-0 h-[360px] w-[360px] rounded-full bg-[#421821]/[0.035] blur-3xl" />
       </div>
 
       {/* -------------------------------------------------
@@ -73,45 +64,45 @@ export default function WhySTARS() {
       -------------------------------------------------- */}
       <div className="relative mx-auto w-full max-w-[1240px] px-5 sm:px-6 lg:px-8">
         <div className="grid items-start gap-14 lg:grid-cols-12 lg:gap-20">
-
           {/* -------------------------------------------------
               Left Column
           -------------------------------------------------- */}
           <div className="lg:col-span-5 lg:sticky lg:top-28">
             <div className="max-w-lg">
-
               {/* Eyebrow */}
               <div className="mb-5">
                 <AnimatedLine
                   text={t("why.eyebrow")}
                   lines={1}
-                  lineColor="bg-[#005293]"
-                  textColor="text-[#005293]"
+                  textColor="text-[#8c8275 ]"
                 />
               </div>
 
               {/* Heading */}
               <h2
-                id="why-stars-title"
+                id="why-Assayel-title"
                 className="
                   font-jakarta
                   text-4xl
                   font-extrabold
                   leading-[1.05]
                   tracking-[-0.035em]
-                  text-[#0a192f]
+                  text-[#221E20]
                   sm:text-5xl
                   lg:text-[52px]
                 "
               >
                 {t("why.headingLead")}
-                <span className="text-[#005293]"> {t("why.headingAccent")}</span>
+                <span className="text-[#421821]">
+                  {" "}
+                  {t("why.headingAccent")}
+                </span>
               </h2>
 
               {/* Accent line */}
               <div
                 aria-hidden="true"
-                className="mt-7 h-[2px] w-14 bg-[#005293]"
+                className="mt-7 h-[2px] w-14 bg-[#CD2B55]"
               />
 
               {/* Description */}
@@ -122,7 +113,7 @@ export default function WhySTARS() {
                   font-manrope
                   text-sm
                   leading-7
-                  text-slate-500
+                  text-[#4B4A4B]
                   sm:text-[15px]
                 "
               >
@@ -133,10 +124,10 @@ export default function WhySTARS() {
               <div className="mt-8 flex items-center gap-3">
                 <span
                   aria-hidden="true"
-                  className="h-px w-8 bg-slate-300"
+                  className="h-px w-8 bg-[#D1C6B9]"
                 />
 
-                <span className="font-jakarta text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                <span className="font-jakarta text-[10px] font-semibold uppercase tracking-[0.18em] text-[#4B4A4B]/75">
                   {t("why.principles")}
                 </span>
               </div>
@@ -151,7 +142,7 @@ export default function WhySTARS() {
               className="
                 overflow-hidden
                 border-y
-                border-slate-200
+                border-[#D1C6B9]
               "
             >
               {features.map((feature, index) => (
@@ -198,10 +189,10 @@ export default function WhySTARS() {
                         text-xs
                         font-bold
                         tracking-wider
-                        text-slate-300
+                        text-[#D1C6B9]
                         transition-colors
                         duration-300
-                        group-hover:text-[#005293]
+                        group-hover:text-[#CD2B55]
                       "
                     >
                       {feature.id}
@@ -216,7 +207,7 @@ export default function WhySTARS() {
                         top-7
                         h-0
                         w-[2px]
-                        bg-[#005293]
+                        bg-[#CD2B55]
                         transition-all
                         duration-300
                         group-hover:h-8
@@ -232,10 +223,10 @@ export default function WhySTARS() {
                         text-lg
                         font-bold
                         tracking-[-0.015em]
-                        text-[#0a192f]
+                        text-[#221E20]
                         transition-colors
                         duration-300
-                        group-hover:text-[#005293]
+                        group-hover:text-[#421821]
                         sm:text-xl
                       "
                     >
@@ -249,7 +240,7 @@ export default function WhySTARS() {
                         font-manrope
                         text-xs
                         leading-6
-                        text-slate-500
+                        text-[#4B4A4B]
                         sm:text-sm
                         sm:leading-7
                       "
@@ -269,7 +260,7 @@ export default function WhySTARS() {
                       translate-x-2
                       font-jakarta
                       text-lg
-                      text-[#005293]
+                      text-[#CD2B55]
                       opacity-0
                       transition-all
                       duration-300

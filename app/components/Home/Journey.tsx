@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -14,26 +13,10 @@ interface ProcessStep {
 }
 
 const steps: ProcessStep[] = [
-  {
-    id: "step-1",
-    number: "01",
-    textKey: "step1",
-  },
-  {
-    id: "step-2",
-    number: "02",
-    textKey: "step2",
-  },
-  {
-    id: "step-3",
-    number: "03",
-    textKey: "step3",
-  },
-  {
-    id: "step-4",
-    number: "04",
-    textKey: "step4",
-  },
+  { id: "step-1", number: "01", textKey: "step1" },
+  { id: "step-2", number: "02", textKey: "step2" },
+  { id: "step-3", number: "03", textKey: "step3" },
+  { id: "step-4", number: "04", textKey: "step4" },
 ];
 
 export default function ProcessTimeline() {
@@ -46,7 +29,6 @@ export default function ProcessTimeline() {
   // Arabic = RTL
   const isArabic = language === "ar";
 
-  
   useEffect(() => {
     if (isPaused) return;
 
@@ -79,9 +61,9 @@ export default function ProcessTimeline() {
         relative
         overflow-hidden
         bg-gradient-to-r
-        from-[#030e1e]
-        via-[#081b33]
-        to-[#0a2342]
+        from-[#221E20]
+        via-[#34161C]
+        to-[#421821]
         py-20
         text-white
         sm:py-28
@@ -101,7 +83,7 @@ export default function ProcessTimeline() {
         "
       />
 
-      {/* Blue atmospheric glow */}
+      {/* Assayel accent glow */}
       <div
         aria-hidden="true"
         className="
@@ -112,7 +94,7 @@ export default function ProcessTimeline() {
           h-[420px]
           w-[420px]
           rounded-full
-          bg-sky-400/[0.05]
+          bg-[#CD2B55]/[0.08]
           blur-[120px]
         "
       />
@@ -133,8 +115,6 @@ export default function ProcessTimeline() {
           <AnimatedLine
             text={t("process.eyebrow")}
             lines={1}
-            lineColor="bg-sky-400"
-            textColor="text-sky-300"
           />
         </div>
 
@@ -159,12 +139,7 @@ export default function ProcessTimeline() {
         </div>
 
         {/* Timeline */}
-        <div
-          className="
-            relative
-            mb-14
-          "
-        >
+        <div className="relative mb-14">
           {/* Desktop base line */}
           <div
             aria-hidden="true"
@@ -176,32 +151,32 @@ export default function ProcessTimeline() {
               z-0
               hidden
               h-px
-              bg-slate-700/60
+              bg-[#D1C6B9]/25
               lg:block
             "
           />
 
- {/* Desktop animated progress */}
-<motion.div
-  aria-hidden="true"
-  className={`
-    absolute
-    top-5
-    z-0
-    hidden
-    h-px
-    bg-sky-400
-    lg:block
-    ${isArabic ? "right-0" : "left-0"}
-  `}
-  animate={{
-    width: `${progress}%`,
-  }}
-  transition={{
-    duration: 0.65,
-    ease: [0.65, 0, 0.35, 1],
-  }}
-/>
+          {/* Desktop animated progress */}
+          <motion.div
+            aria-hidden="true"
+            className={`
+              absolute
+              top-5
+              z-0
+              hidden
+              h-px
+              bg-[#CD2B55]
+              lg:block
+              ${isArabic ? "right-0" : "left-0"}
+            `}
+            animate={{
+              width: `${progress}%`,
+            }}
+            transition={{
+              duration: 0.65,
+              ease: [0.65, 0, 0.35, 1],
+            }}
+          />
 
           <div
             className="
@@ -247,7 +222,7 @@ export default function ProcessTimeline() {
                         left-5
                         top-10
                         w-px
-                        bg-slate-700/60
+                        bg-[#D1C6B9]/25
                         lg:hidden
                       "
                     />
@@ -264,7 +239,7 @@ export default function ProcessTimeline() {
                         z-0
                         w-px
                         origin-top
-                        bg-sky-400
+                        bg-[#CD2B55]
                         lg:hidden
                       "
                       animate={{
@@ -285,14 +260,14 @@ export default function ProcessTimeline() {
                     animate={{
                       scale: isActive ? 1.08 : 1,
                       borderColor: isActive
-                        ? "rgba(56,189,248,0.9)"
-                        : "rgba(56,189,248,0.4)",
+                        ? "rgba(205,43,85,0.95)"
+                        : "rgba(205,43,85,0.4)",
                       backgroundColor: isActive
-                        ? "rgba(10,39,76,1)"
-                        : "rgba(10,39,76,0.65)",
+                        ? "#421821"
+                        : "rgba(66,24,33,0.65)",
                       boxShadow: isActive
-                        ? "0 0 22px rgba(56,189,248,0.22)"
-                        : "0 0 12px rgba(56,189,248,0.08)",
+                        ? "0 0 22px rgba(205,43,85,0.22)"
+                        : "0 0 12px rgba(205,43,85,0.08)",
                     }}
                     transition={{
                       duration: 0.55,
@@ -316,8 +291,8 @@ export default function ProcessTimeline() {
                     <motion.span
                       animate={{
                         color: isActive
-                          ? "#7dd3fc"
-                          : "rgba(186,230,253,0.7)",
+                          ? "#FFFFFF"
+                          : "rgba(209,198,185,0.75)",
                       }}
                       transition={{
                         duration: 0.4,
@@ -335,7 +310,7 @@ export default function ProcessTimeline() {
                           inset-[-5px]
                           rounded-full
                           border
-                          border-sky-400/30
+                          border-[#CD2B55]/40
                         "
                         initial={{
                           opacity: 0,
@@ -358,8 +333,8 @@ export default function ProcessTimeline() {
                   <motion.p
                     animate={{
                       color: isActive
-                        ? "rgba(226,232,240,1)"
-                        : "rgba(203,213,225,0.55)",
+                        ? "#FFFFFF"
+                        : "rgba(209,198,185,0.6)",
                     }}
                     transition={{
                       duration: 0.5,
@@ -396,21 +371,14 @@ export default function ProcessTimeline() {
           <div className="flex items-center gap-3">
             <motion.span
               animate={{
-                opacity: isPaused
-                  ? 0.3
-                  : [0.3, 1, 0.3],
+                opacity: isPaused ? 0.3 : [0.3, 1, 0.3],
               }}
               transition={{
                 duration: 1.4,
                 repeat: isPaused ? 0 : Infinity,
                 ease: "easeInOut",
               }}
-              className="
-                h-1.5
-                w-1.5
-                rounded-full
-                bg-sky-400
-              "
+              className="h-1.5 w-1.5 rounded-full bg-[#CD2B55]"
             />
 
             <span
@@ -420,7 +388,7 @@ export default function ProcessTimeline() {
                 font-semibold
                 uppercase
                 tracking-[0.18em]
-                text-slate-400
+                text-[#D1C6B9]
               "
             >
               {isPaused
@@ -435,7 +403,7 @@ export default function ProcessTimeline() {
               text-[10px]
               font-bold
               tracking-[0.15em]
-              text-sky-300
+              text-[#D1C6B9]
             "
           >
             {steps[activeStep].number} / 04
@@ -451,7 +419,7 @@ export default function ProcessTimeline() {
               items-center
               justify-center
               rounded-md
-              bg-white
+              bg-[#D1C6B9]
               px-6
               py-3
               font-jakarta
@@ -459,11 +427,11 @@ export default function ProcessTimeline() {
               font-bold
               uppercase
               tracking-wider
-              text-[#06182e]
+              text-[#34161C]
               transition-all
               duration-300
-              hover:bg-slate-100
-              hover:shadow-[0_8px_30px_rgba(255,255,255,0.08)]
+              hover:bg-white
+              hover:shadow-[0_8px_30px_rgba(205,43,85,0.12)]
             "
           >
             {t("process.cta")}

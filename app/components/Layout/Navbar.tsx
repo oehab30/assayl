@@ -18,12 +18,21 @@ const navigationLinks = [
 
 export default function Navbar() {
   const { locale, setLocale, t } = useTranslation();
+
   const [activeHash, setActiveHash] = useState("#home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const isArabic = locale === "ar";
 
+  // Brand typography follows the active language.
+  const bodyFont = isArabic ? "font-body-ar" : "font-body-en";
+  const headlineFont = isArabic
+    ? "font-headline-ar"
+    : "font-headline-en";
 
+  const accentColor = "#CD2B55";
+  const brandColor = "#421821";
 
   /* =========================================================
      SCROLL STATE + ACTIVE SECTION
@@ -105,6 +114,10 @@ export default function Navbar() {
     setIsMenuOpen(false);
   };
 
+  const toggleLocale = () => {
+    setLocale(isArabic ? "en" : "ar");
+  };
+
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -116,38 +129,25 @@ export default function Navbar() {
       }}
       className="fixed inset-x-0 top-0 z-[100]"
     >
-      {/* =====================================================
-          NAVBAR SURFACE
-      ====================================================== */}
+      {/* NAVBAR SURFACE */}
 
       <motion.div
         animate={{
-          backgroundColor: isScrolled
-            ? "rgba(5, 20, 40, 0.94)"
-            : "rgba(5, 20, 40, 0)",
-          borderColor: isScrolled
-            ? "rgba(255,255,255,0.08)"
-            : "rgba(255,255,255,0)",
+         backgroundColor: isScrolled
+  ? "rgba(34, 30, 32, 0.94)"
+  : "rgba(34, 30, 32, 0)",
+borderColor: isScrolled
+  ? "rgba(209, 198, 185, 0.13)"
+  : "rgba(209, 198, 185, 0)",
         }}
         transition={{ duration: 0.4 }}
-        className="
-          border-b
-          backdrop-blur-xl
-        "
+        className="border-b backdrop-blur-xl"
       >
         <div
           className={`
-            mx-auto
-            flex
-            w-full
-            max-w-[1320px]
-            items-center
-            justify-between
-            px-5
-            transition-all
-            duration-500
-            sm:px-8
-            lg:px-10
+            mx-auto flex w-full max-w-[1320px]
+            items-center justify-between px-5
+            transition-all duration-500 sm:px-8 lg:px-10
             ${
               isScrolled
                 ? "h-[70px]"
@@ -155,35 +155,22 @@ export default function Navbar() {
             }
           `}
         >
-          {/* =================================================
-              LOGO
-          ================================================== */}
+          {/* LOGO */}
 
           <Link
             href="/#home"
-            aria-label={`STARS ${t("nav.home")}`}
+            aria-label={`Assayel ${t("nav.home")}`}
             onClick={() => handleNavigation("#home")}
-            className="
-              group
-              relative
-              z-[110]
-              flex
-              shrink-0
-              items-center
-              outline-none
-            "
+            className="group relative z-[110] flex shrink-0 items-center outline-none"
           >
             <Image
               src="/logo.png"
-              alt="STARS"
+              alt="Assayel"
               width={205}
               height={61}
               priority
               className={`
-                w-auto
-                object-contain
-                transition-all
-                duration-500
+                w-auto object-contain transition-all duration-500
                 ${
                   isScrolled
                     ? "max-h-[42px]"
@@ -193,19 +180,11 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* =================================================
-              DESKTOP NAVIGATION
-          ================================================== */}
+          {/* DESKTOP NAVIGATION */}
 
           <nav
             aria-label={t("nav.mainNavigation")}
-            className="
-              hidden
-              items-center
-              gap-7
-              lg:flex
-              xl:gap-9
-            "
+            className="hidden items-center gap-7 lg:flex xl:gap-9"
           >
             {navigationLinks.map((link) => {
               const isActive = activeHash === link.href;
@@ -215,24 +194,16 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => handleNavigation(link.href)}
-                  className="
-                    group
-                    relative
-                    flex
-                    items-center
-                    py-3
-                    font-jakarta
-                    text-[11px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.13em]
-                    outline-none
-                  "
+                  className={`
+                    group relative flex items-center py-3
+                    ${bodyFont}
+                    text-[11px] font-medium uppercase
+                    tracking-[0.10em] outline-none
+                  `}
                 >
                   <span
                     className={`
-                      transition-colors
-                      duration-300
+                      transition-colors duration-300
                       ${
                         isActive
                           ? "text-white"
@@ -243,38 +214,35 @@ export default function Navbar() {
                     {t(`nav.${link.key}`)}
                   </span>
 
-                  {/* Active line */}
+                  {/* Active underline */}
+
                   <span
                     className={`
-                      absolute
-                      bottom-1
-                      left-0
-                      h-px
-                      bg-[#5ba7df]
-                      transition-all
-                      duration-300
+                      absolute bottom-1 h-px
+                      transition-all duration-300
+                      ${
+                        isArabic ? "right-0" : "left-0"
+                      }
                       ${
                         isActive
                           ? "w-full"
                           : "w-0 group-hover:w-full"
                       }
                     `}
+                    style={{ backgroundColor: accentColor }}
                   />
 
-                  {/* Tiny active dot */}
+                  {/* Active indicator */}
+
                   {isActive && (
                     <motion.span
                       layoutId="nav-dot"
-                      className="
-                        absolute
-                        -right-2
-                        top-1/2
-                        h-[3px]
-                        w-[3px]
-                        -translate-y-1/2
-                        rounded-full
-                        bg-[#5ba7df]
-                      "
+                      className={`
+                        absolute top-1/2 h-[3px] w-[3px]
+                        -translate-y-1/2 rounded-full
+                        ${isArabic ? "-left-2" : "-right-2"}
+                      `}
+                      style={{ backgroundColor: accentColor }}
                     />
                   )}
                 </Link>
@@ -282,132 +250,103 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* =================================================
-              DESKTOP ACTIONS
-          ================================================== */}
+          {/* DESKTOP ACTIONS */}
 
           <div className="hidden items-center gap-5 lg:flex">
-            {/* Language */}
             <button
               type="button"
-              aria-label={t(locale === "ar" ? "language.changeToEnglish" : "language.changeToArabic")}
-              onClick={() => setLocale(locale === "ar" ? "en" : "ar")}
-              className="
-                group
-                relative
-                font-cairo
-                text-[11px]
-                font-bold
-                text-white/50
-                transition-colors
-                duration-300
-                hover:text-white
-              "
+              aria-label={t(
+                isArabic
+                  ? "language.changeToEnglish"
+                  : "language.changeToArabic"
+              )}
+              onClick={toggleLocale}
+              className={`
+                group relative ${bodyFont}
+                text-[11px] font-medium text-white/60
+                transition-colors duration-300 hover:text-white
+              `}
             >
               {t("language.switch")}
 
               <span
-                className="
-                  absolute
-                  -bottom-1
-                  left-0
-                  h-px
-                  w-0
-                  bg-[#5ba7df]
-                  transition-all
-                  duration-300
-                  group-hover:w-full
-                "
+                className={`
+                  absolute -bottom-1 h-px w-0
+                  transition-all duration-300 group-hover:w-full
+                  ${isArabic ? "right-0" : "left-0"}
+                `}
+                style={{ backgroundColor: accentColor }}
               />
             </button>
 
-            {/* Divider */}
             <span
               aria-hidden="true"
               className="h-5 w-px bg-white/10"
             />
 
             {/* Quote CTA */}
+
             <Link
               href="/#contact"
               onClick={() => handleNavigation("#contact")}
-              className="
-                group
-                relative
-                inline-flex
-                h-[46px]
-                items-center
-                overflow-hidden
-                border
-                border-white/20
-                bg-white/[0.025]
-                px-5
-                font-jakarta
-                text-[10px]
-                font-bold
-                uppercase
-                tracking-[0.14em]
-                text-white
-                transition-all
-                duration-500
-                hover:border-[#5ba7df]/50
-              "
+              className={`
+                group relative inline-flex h-[46px]
+                items-center overflow-hidden
+                border border-white/20 bg-white/[0.025]
+                px-5 ${bodyFont}
+                text-[10px] font-semibold uppercase
+                tracking-[0.10em] text-white
+                transition-all duration-500
+                hover:border-[#CD2B55]/60
+              `}
             >
-              {/* Fill */}
               <span
-                className="
-                  absolute
-                  inset-0
-                  origin-left
-                  scale-x-0
-                  bg-[#005293]
-                  transition-transform
-                  duration-500
+                className={`
+                  absolute inset-0 scale-x-0
+                  transition-transform duration-500
                   ease-[cubic-bezier(0.76,0,0.24,1)]
                   group-hover:scale-x-100
-                "
+                  ${isArabic ? "origin-right" : "origin-left"}
+                `}
+                style={{ backgroundColor: brandColor }}
               />
 
               <span className="relative z-10 flex items-center gap-3">
                 <span>{t("nav.quote")}</span>
 
                 <ArrowUpRight
-                  className="
-                    h-3.5
-                    w-3.5
-                    transition-transform
-                    duration-500
-                    group-hover:translate-x-0.5
-                    group-hover:-translate-y-0.5
-                  "
+                  className={`
+                    h-3.5 w-3.5 transition-transform duration-500
+                    ${
+                      isArabic
+                        ? "group-hover:-translate-x-0.5 group-hover:translate-y-0.5"
+                        : "group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    }
+                  `}
                 />
               </span>
             </Link>
           </div>
 
-          {/* =================================================
-              MOBILE ACTIONS
-          ================================================== */}
+          {/* MOBILE ACTIONS */}
 
           <div className="flex items-center gap-4 lg:hidden">
-            {/* Language */}
             <button
               type="button"
-              aria-label={t(locale === "ar" ? "language.changeToEnglish" : "language.changeToArabic")}
-              onClick={() => setLocale(locale === "ar" ? "en" : "ar")}
-              className="
-                font-cairo
-                text-[11px]
-                font-bold
-                text-white/65
-                transition-colors
-                hover:text-white
-              "
+              aria-label={t(
+                isArabic
+                  ? "language.changeToEnglish"
+                  : "language.changeToArabic"
+              )}
+              onClick={toggleLocale}
+              className={`
+                ${bodyFont} text-[11px] font-medium
+                text-white/65 transition-colors hover:text-white
+              `}
             >
               {t("language.switch")}
             </button>
 
-            {/* Menu */}
             <button
               type="button"
               aria-label={
@@ -417,16 +356,9 @@ export default function Navbar() {
               aria-controls="mobile-navigation"
               onClick={() => setIsMenuOpen((value) => !value)}
               className="
-                relative
-                z-[110]
-                flex
-                h-10
-                w-10
-                items-center
-                justify-center
-                border
-                border-white/15
-                bg-white/[0.03]
+                relative z-[110] flex h-10 w-10
+                items-center justify-center
+                border border-white/15 bg-white/[0.03]
               "
             >
               <div className="relative h-4 w-5">
@@ -436,30 +368,12 @@ export default function Navbar() {
                       ? { rotate: 45, y: 6 }
                       : { rotate: 0, y: 0 }
                   }
-                  className="
-                    absolute
-                    left-0
-                    top-0
-                    h-px
-                    w-full
-                    bg-white
-                  "
+                  className="absolute left-0 top-0 h-px w-full bg-white"
                 />
 
                 <motion.span
-                  animate={
-                    isMenuOpen
-                      ? { opacity: 0 }
-                      : { opacity: 1 }
-                  }
-                  className="
-                    absolute
-                    left-0
-                    top-[7px]
-                    h-px
-                    w-full
-                    bg-white
-                  "
+                  animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+                  className="absolute left-0 top-[7px] h-px w-full bg-white"
                 />
 
                 <motion.span
@@ -468,14 +382,7 @@ export default function Navbar() {
                       ? { rotate: -45, y: -6 }
                       : { rotate: 0, y: 0 }
                   }
-                  className="
-                    absolute
-                    left-0
-                    top-[14px]
-                    h-px
-                    w-full
-                    bg-white
-                  "
+                  className="absolute left-0 top-[14px] h-px w-full bg-white"
                 />
               </div>
             </button>
@@ -483,9 +390,7 @@ export default function Navbar() {
         </div>
       </motion.div>
 
-      {/* =========================================================
-          MOBILE MENU
-      ========================================================== */}
+      {/* MOBILE MENU */}
 
       <AnimatePresence>
         {isMenuOpen && (
@@ -495,70 +400,55 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
-            className="
-              fixed
-              inset-0
-              -z-10
-              bg-[#051428]
-              lg:hidden
-            "
+            dir={isArabic ? "rtl" : "ltr"}
+            className="fixed inset-0 -z-10 bg-[#051428] lg:hidden"
           >
-            {/* Background glow */}
+            {/* Brand background glow */}
+
             <div
               aria-hidden="true"
               className="
-                pointer-events-none
-                absolute
-                -right-40
-                top-20
-                h-[450px]
-                w-[450px]
-                rounded-full
-                bg-[#005293]/10
-                blur-[120px]
+                pointer-events-none absolute -right-40 top-20
+                h-[450px] w-[450px] rounded-full
+                bg-[#CD2B55]/10 blur-[120px]
               "
             />
 
             <div
               aria-hidden="true"
               className="
-                pointer-events-none
-                absolute
-                -bottom-40
-                -left-40
-                h-[400px]
-                w-[400px]
-                rounded-full
-                bg-[#4F0908]/10
-                blur-[120px]
+                pointer-events-none absolute -bottom-40 -left-40
+                h-[400px] w-[400px] rounded-full
+                bg-[#421821]/30 blur-[120px]
               "
             />
 
             <div
-              className="
-                relative
-                mx-auto
-                flex
-                h-full
-                w-full
-                max-w-[1320px]
-                flex-col
-                px-5
-                pb-8
-                pt-[105px]
-                sm:px-8
-              "
+              className={`
+                relative mx-auto flex h-full w-full max-w-[1320px]
+                flex-col px-5 pb-8 pt-[105px] sm:px-8
+              `}
             >
               {/* Menu label */}
-              <div className="mb-8 flex items-center gap-3">
-                <span className="h-px w-8 bg-[#5ba7df]" />
 
-                <span className="font-jakarta text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
+              <div className="mb-8 flex items-center gap-3">
+                <span
+                  className="h-px w-8"
+                  style={{ backgroundColor: accentColor }}
+                />
+
+                <span
+                  className={`
+                    ${bodyFont} text-[10px] font-medium
+                    uppercase tracking-[0.15em] text-white/40
+                  `}
+                >
                   {t("nav.navigation")}
                 </span>
               </div>
 
-              {/* Links */}
+              {/* Navigation links */}
+
               <nav
                 aria-label={t("nav.mobileNavigation")}
                 className="flex flex-col"
@@ -571,12 +461,9 @@ export default function Navbar() {
                       key={link.href}
                       initial={{
                         opacity: 0,
-                        x: -30,
+                        x: isArabic ? 30 : -30,
                       }}
-                      animate={{
-                        opacity: 1,
-                        x: 0,
-                      }}
+                      animate={{ opacity: 1, x: 0 }}
                       transition={{
                         delay: 0.05 + index * 0.055,
                         duration: 0.4,
@@ -585,31 +472,21 @@ export default function Navbar() {
                     >
                       <Link
                         href={link.href}
-                        onClick={() =>
-                          handleNavigation(link.href)
-                        }
+                        onClick={() => handleNavigation(link.href)}
                         className="
-                          group
-                          flex
-                          items-center
-                          justify-between
-                          border-b
-                          border-white/[0.08]
-                          py-5
+                          group flex items-center justify-between
+                          border-b border-white/[0.08] py-5
                         "
                       >
                         <div className="flex items-center gap-5">
                           <span
                             className={`
-                              font-jakarta
-                              text-[10px]
-                              font-bold
-                              tracking-[0.15em]
-                              transition-colors
+                              ${bodyFont} text-[10px] font-medium
+                              tracking-[0.12em] transition-colors
                               ${
                                 isActive
-                                  ? "text-[#5ba7df]"
-                                  : "text-white/20 group-hover:text-white/40"
+                                  ? "text-[#CD2B55]"
+                                  : "text-white/25 group-hover:text-white/50"
                               }
                             `}
                           >
@@ -618,15 +495,12 @@ export default function Navbar() {
 
                           <span
                             className={`
-                              font-jakarta
-                              text-2xl
-                              font-semibold
-                              tracking-[-0.025em]
-                              transition-colors
+                              ${bodyFont} text-2xl font-medium
+                              tracking-[-0.025em] transition-colors
                               ${
                                 isActive
                                   ? "text-white"
-                                  : "text-white/55 group-hover:text-white"
+                                  : "text-white/60 group-hover:text-white"
                               }
                             `}
                           >
@@ -636,14 +510,16 @@ export default function Navbar() {
 
                         <ArrowUpRight
                           className={`
-                            h-5
-                            w-5
-                            transition-all
-                            duration-300
+                            h-5 w-5 transition-all duration-300
+                            ${
+                              isArabic
+                                ? "rotate-[-90deg]"
+                                : ""
+                            }
                             ${
                               isActive
-                                ? "text-[#5ba7df] opacity-100"
-                                : "text-white/20 opacity-0 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100"
+                                ? "text-[#CD2B55] opacity-100"
+                                : "text-white/20 opacity-0 group-hover:opacity-100"
                             }
                           `}
                         />
@@ -653,61 +529,55 @@ export default function Navbar() {
                 })}
               </nav>
 
-              {/* Bottom */}
+              {/* Mobile footer */}
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: 0.45,
-                  duration: 0.4,
-                }}
+                transition={{ delay: 0.45, duration: 0.4 }}
                 className="mt-auto"
               >
                 <div className="mb-5 h-px w-full bg-white/[0.08]" />
 
                 <div className="flex items-end justify-between gap-6">
                   <div>
-                    <p className="font-jakarta text-sm font-semibold text-white">
+                    <p
+                      className={`${headlineFont} text-sm font-medium text-white`}
+                    >
                       {t("nav.ready")}
                     </p>
 
-                    <p className="mt-1 max-w-[220px] font-manrope text-xs leading-5 text-white/35">
+                    <p
+                      className={`
+                        mt-1 max-w-[220px] ${bodyFont}
+                        text-xs leading-5 text-white/40
+                      `}
+                    >
                       {t("nav.shipmentPrompt")}
                     </p>
                   </div>
 
                   <Link
                     href="/#contact"
-                    onClick={() =>
-                      handleNavigation("#contact")
-                    }
-                    className="
-                      group
-                      flex
-                      h-12
-                      shrink-0
-                      items-center
-                      gap-3
-                      bg-[#005293]
-                      px-5
-                      font-jakarta
-                      text-[10px]
-                      font-bold
-                      uppercase
-                      tracking-[0.12em]
-                      text-white
-                    "
+                    onClick={() => handleNavigation("#contact")}
+                    className={`
+                      group flex h-12 shrink-0 items-center gap-3
+                      px-5 ${bodyFont} text-[10px] font-semibold
+                      uppercase tracking-[0.10em] text-white
+                    `}
+                    style={{ backgroundColor: brandColor }}
                   >
-                    {t("nav.quote")}
+                    <span>{t("nav.quote")}</span>
 
                     <ArrowUpRight
-                      className="
-                        h-4
-                        w-4
-                        transition-transform
-                        group-hover:translate-x-0.5
-                        group-hover:-translate-y-0.5
-                      "
+                      className={`
+                        h-4 w-4 transition-transform
+                        ${
+                          isArabic
+                            ? "rotate-[-90deg] group-hover:-translate-x-0.5"
+                            : "group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        }
+                      `}
                     />
                   </Link>
                 </div>

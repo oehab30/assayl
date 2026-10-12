@@ -1,6 +1,6 @@
-import CustomerTable from "./CustomerTable";
+import CustomerForm from "./CustomerForm";
 
-export default function CustomersPage() {
+export default function NewCustomerPage() {
   return (
     <div className="space-y-6">
       <div>
@@ -13,11 +13,11 @@ export default function CustomersPage() {
         </h1>
 
         <p className="mt-1 text-sm text-slate-500">
-          Manage STARS customers and their activity.
+          Register a new customer profile and account details.
         </p>
       </div>
 
-      <CustomerTable />
+      <CustomerForm />
     </div>
   );
 }

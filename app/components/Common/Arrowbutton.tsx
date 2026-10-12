@@ -33,7 +33,10 @@ export default function ArrowButton({
         font-bold
         uppercase
         tracking-[0.12em]
-        text-[#005293]
+        text-[#662433]
+        transition-colors
+        duration-300
+        hover:text-[#CD2B55]
         sm:text-[13px]
         ${className}
       `}
@@ -51,29 +54,29 @@ export default function ArrowButton({
           justify-center
           rounded-full
           border
-          border-[#005293]/20
+          border-[#662433]/30
           transition-all
           duration-300
           ease-out
-          group-hover:border-[#005293]
-          group-hover:bg-[#005293]
+          group-hover:border-[#CD2B55]
+          group-hover:bg-[#662433]
         "
       >
         <Icon
           className="
             h-4
             w-4
-            text-[#005293]
+            text-[#662433]
             transition-all
             duration-300
             group-hover:-translate-y-0.5
             group-hover:translate-x-0.5
-            group-hover:text-white
+            group-hover:text-[#F8F6F3]
           "
         />
       </span>
 
-      {/* Animated underline */}
+      {/* Animated Underline */}
       <span
         className="
           absolute
@@ -81,7 +84,7 @@ export default function ArrowButton({
           left-0
           h-px
           w-0
-          bg-[#005293]
+          bg-[#CD2B55]
           transition-all
           duration-300
           group-hover:w-[calc(100%-56px)]

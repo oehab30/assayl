@@ -94,16 +94,13 @@ export default function Services() {
       className="
         relative
         overflow-hidden
-        bg-[#071827]
+        bg-[#221E20]
         py-24
         sm:py-28
         lg:py-36
       "
     >
-      {/* =====================================================
-          BACKGROUND
-      ====================================================== */}
-
+      {/* BACKGROUND */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
@@ -116,7 +113,7 @@ export default function Services() {
             h-[700px]
             w-[700px]
             rounded-full
-            bg-[#005293]/10
+            bg-[#421821]/30
             blur-[140px]
           "
         />
@@ -129,7 +126,7 @@ export default function Services() {
             h-[650px]
             w-[650px]
             rounded-full
-            bg-[#005293]/10
+            bg-[#662433]/20
             blur-[140px]
           "
         />
@@ -139,7 +136,7 @@ export default function Services() {
             absolute
             inset-0
             opacity-[0.035]
-            [background-image:linear-gradient(rgba(255,255,255,.5)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.5)_1px,transparent_1px)]
+            [background-image:linear-gradient(rgba(209,198,185,.5)_1px,transparent_1px),linear-gradient(90deg,rgba(209,198,185,.5)_1px,transparent_1px)]
             [background-size:80px_80px]
           "
         />
@@ -156,18 +153,15 @@ export default function Services() {
           lg:px-10
         "
       >
-        {/* =====================================================
-            HEADER
-        ====================================================== */}
-
+        {/* HEADER */}
         <div className="grid items-end gap-8 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-8">
             <div className="mb-6">
               <AnimatedLine
                 text={t("services.eyebrow")}
                 lines={1}
-                lineColor="bg-[#005293]"
-                textColor="text-white/60"
+                lineColor="bg-[#CD2B55]"
+                textColor="text-[#D1C6B9]"
               />
             </div>
 
@@ -186,7 +180,7 @@ export default function Services() {
             >
               {t("services.titleLead")}
               <br />
-              <span className="text-[#5ba7df]">
+              <span className="text-[#D1C6B9]">
                 {t("services.titleTail")}
               </span>
             </h2>
@@ -199,7 +193,7 @@ export default function Services() {
                 font-manrope
                 text-sm
                 leading-7
-                text-white/50
+                text-[#D1C6B9]/75
                 sm:text-[15px]
               "
             >
@@ -208,31 +202,26 @@ export default function Services() {
           </div>
         </div>
 
-        {/* =====================================================
-            MAIN SERVICE EXPERIENCE
-        ====================================================== */}
-
+        {/* MAIN SERVICE EXPERIENCE */}
         <div
           className="
             mt-16
             grid
             overflow-hidden
             border
-            border-white/10
+            border-[#D1C6B9]/15
             lg:grid-cols-[0.95fr_1.05fr]
             lg:min-h-[650px]
           "
         >
-          {/* =================================================
-              LEFT — SERVICE NAVIGATION
-          ================================================== */}
-
+          {/* LEFT — SERVICE NAVIGATION */}
           <div
             className="
               flex
               flex-col
               border-b
-              border-white/10
+              border-[#D1C6B9]/15
+              bg-[#34161C]/45
               lg:border-b-0
               lg:border-r
             "
@@ -240,7 +229,7 @@ export default function Services() {
             <div
               className="
                 border-b
-                border-white/10
+                border-[#D1C6B9]/15
                 px-6
                 py-5
                 sm:px-8
@@ -253,7 +242,7 @@ export default function Services() {
                   font-bold
                   uppercase
                   tracking-[0.22em]
-                  text-white/30
+                  text-[#D1C6B9]/60
                 "
               >
                 {t("services.capabilities")}
@@ -262,22 +251,15 @@ export default function Services() {
 
             <div className="flex flex-1 flex-col">
               {servicesData.map((service) => {
-                const isActive =
-                  activeService.id === service.id;
+                const isActive = activeService.id === service.id;
 
                 return (
                   <button
                     key={service.id}
                     type="button"
-                    onMouseEnter={() =>
-                      setActiveService(service)
-                    }
-                    onFocus={() =>
-                      setActiveService(service)
-                    }
-                    onClick={() =>
-                      setActiveService(service)
-                    }
+                    onMouseEnter={() => setActiveService(service)}
+                    onFocus={() => setActiveService(service)}
+                    onClick={() => setActiveService(service)}
                     className={`
                       group
                       relative
@@ -286,7 +268,7 @@ export default function Services() {
                       items-center
                       gap-5
                       border-b
-                      border-white/10
+                      border-[#D1C6B9]/10
                       px-6
                       py-6
                       text-start
@@ -296,7 +278,7 @@ export default function Services() {
                       sm:px-8
                       ${
                         isActive
-                          ? "bg-white/[0.055]"
+                          ? "bg-[#662433]/30"
                           : "hover:bg-white/[0.025]"
                       }
                     `}
@@ -319,7 +301,7 @@ export default function Services() {
                         h-full
                         w-[2px]
                         origin-center
-                        bg-[#5ba7df]
+                        bg-[#CD2B55]
                       "
                     />
 
@@ -327,16 +309,13 @@ export default function Services() {
                     <motion.span
                       animate={{
                         color: isActive
-                          ? "#5ba7df"
-                          : "rgba(255,255,255,0.25)",
+                          ? "#CD2B55"
+                          : "rgba(209,198,185,0.45)",
                       }}
-                      transition={{
-                        duration: 0.45,
-                      }}
+                      transition={{ duration: 0.45 }}
                       className="
                         w-8
                         shrink-0
-                        font-jakarta
                         text-xs
                         font-semibold
                         tracking-wider
@@ -349,8 +328,8 @@ export default function Services() {
                     <motion.span
                       animate={{
                         color: isActive
-                          ? "#ffffff"
-                          : "rgba(255,255,255,0.5)",
+                          ? "#FFFFFF"
+                          : "rgba(209,198,185,0.72)",
                         x: isActive ? 4 : 0,
                       }}
                       transition={{
@@ -376,16 +355,14 @@ export default function Services() {
                         x: isActive ? 0 : -6,
                         y: isActive ? 0 : 4,
                       }}
-                      transition={{
-                        duration: 0.45,
-                      }}
+                      transition={{ duration: 0.45 }}
                     >
                       <ArrowUpRight
                         className="
                           h-4
                           w-4
                           shrink-0
-                          text-[#5ba7df]
+                          text-[#CD2B55]
                         "
                       />
                     </motion.span>
@@ -395,30 +372,15 @@ export default function Services() {
             </div>
           </div>
 
-          {/* =================================================
-              RIGHT — FEATURED SERVICE
-          ================================================== */}
-
-          <div className="relative min-h-[550px] overflow-hidden">
-            {/* =================================================
-                IMAGE CROSSFADE
-            ================================================== */}
-
+          {/* RIGHT — FEATURED SERVICE */}
+          <div className="relative min-h-[550px] overflow-hidden bg-[#221E20]">
+            {/* IMAGE CROSSFADE */}
             <AnimatePresence initial={false}>
               <motion.div
                 key={activeService.id}
-                initial={{
-                  opacity: 0,
-                  scale: 1.04,
-                }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                }}
-                exit={{
-                  opacity: 0,
-                  scale: 1.015,
-                }}
+                initial={{ opacity: 0, scale: 1.04 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.015 }}
                 transition={{
                   opacity: {
                     duration: 0.7,
@@ -436,32 +398,26 @@ export default function Services() {
                   alt={t(`services.${activeService.titleKey}`)}
                   fill
                   sizes="(max-width: 1024px) 100vw, 55vw"
-                  className="
-                    object-cover
-                    object-center
-                  "
+                  className="object-cover object-center"
                 />
 
-                {/* Image treatment */}
-                <div className="absolute inset-0 bg-[#071827]/30" />
+                {/* Unified charcoal and burgundy image treatment */}
+                <div className="absolute inset-0 bg-[#221E20]/35" />
 
                 <div
                   className="
                     absolute
                     inset-0
                     bg-gradient-to-t
-                    from-[#071827]
-                    via-[#071827]/25
-                    to-transparent
+                    from-[#221E20]
+                    via-[#34161C]/35
+                    to-[#221E20]/10
                   "
                 />
               </motion.div>
             </AnimatePresence>
 
-            {/* =================================================
-                TOP METADATA
-            ================================================== */}
-
+            {/* TOP METADATA */}
             <div
               className="
                 absolute
@@ -477,24 +433,12 @@ export default function Services() {
                 sm:top-8
               "
             >
-              <AnimatePresence
-                mode="wait"
-                initial={false}
-              >
+              <AnimatePresence mode="wait" initial={false}>
                 <motion.div
                   key={`meta-${activeService.id}`}
-                  initial={{
-                    opacity: 0,
-                    y: 8,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    y: -8,
-                  }}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
                   transition={{
                     duration: 0.45,
                     ease: "easeOut",
@@ -510,9 +454,9 @@ export default function Services() {
                       justify-center
                       rounded-full
                       border
-                      border-white/20
-                      bg-[#071827]/30
-                      text-white
+                      border-[#D1C6B9]/25
+                      bg-[#221E20]/55
+                      text-[#D1C6B9]
                       backdrop-blur-md
                     "
                   >
@@ -520,21 +464,17 @@ export default function Services() {
                       activeService.icon as React.ReactElement<{
                         className?: string;
                       }>,
-                      {
-                        className:
-                          "h-4 w-4",
-                      }
+                      { className: "h-4 w-4" }
                     )}
                   </span>
 
                   <span
                     className="
-                      font-jakarta
                       text-[10px]
                       font-bold
                       uppercase
                       tracking-[0.18em]
-                      text-white/70
+                      text-white/80
                     "
                   >
                     {t("services.serviceLabel")} {activeService.number}
@@ -549,17 +489,14 @@ export default function Services() {
                   font-medium
                   uppercase
                   tracking-[0.18em]
-                  text-white/40
+                  text-[#D1C6B9]/65
                 "
               >
-                STARS
+                ASSAYEL
               </span>
             </div>
 
-            {/* =================================================
-                CONTENT CROSSFADE
-            ================================================== */}
-
+            {/* CONTENT CROSSFADE */}
             <div
               className="
                 absolute
@@ -572,24 +509,12 @@ export default function Services() {
                 lg:p-10
               "
             >
-              <AnimatePresence
-                mode="wait"
-                initial={false}
-              >
+              <AnimatePresence mode="wait" initial={false}>
                 <motion.div
                   key={activeService.id}
-                  initial={{
-                    opacity: 0,
-                    y: 18,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    y: -10,
-                  }}
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
                   transition={{
                     duration: 0.55,
                     ease: [0.65, 0, 0.35, 1],
@@ -598,7 +523,6 @@ export default function Services() {
                 >
                   <h3
                     className="
-                      font-jakarta
                       text-3xl
                       font-bold
                       leading-tight
@@ -618,7 +542,7 @@ export default function Services() {
                       font-manrope
                       text-sm
                       leading-7
-                      text-white/60
+                      text-[#D1C6B9]/85
                     "
                   >
                     {t(`services.${activeService.descriptionKey}`)}
@@ -632,7 +556,6 @@ export default function Services() {
                       inline-flex
                       items-center
                       gap-3
-                      font-jakarta
                       text-xs
                       font-bold
                       uppercase
@@ -640,7 +563,7 @@ export default function Services() {
                       text-white
                       transition-colors
                       duration-300
-                      hover:text-[#5ba7df]
+                      hover:text-[#CD2B55]
                     "
                   >
                     <span>{t("services.explore")}</span>
@@ -664,10 +587,7 @@ export default function Services() {
           </div>
         </div>
 
-        {/* =====================================================
-            BOTTOM CTA
-        ====================================================== */}
-
+        {/* BOTTOM CTA */}
         <div
           className="
             mt-12
@@ -677,7 +597,7 @@ export default function Services() {
             justify-between
             gap-6
             border-t
-            border-white/10
+            border-[#D1C6B9]/20
             pt-8
             sm:flex-row
             sm:items-center
@@ -688,7 +608,7 @@ export default function Services() {
               {t("services.bottomTitle")}
             </p>
 
-            <p className="mt-1 font-manrope text-xs text-white/40">
+            <p className="mt-1 font-manrope text-xs text-[#D1C6B9]/70">
               {t("services.bottomDescription")}
             </p>
           </div>

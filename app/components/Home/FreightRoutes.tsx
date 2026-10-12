@@ -49,34 +49,29 @@ export default function FreightRoutes() {
 
   return (
     <section
-      id="freight-routes"
+      id="how-we-work"
       className="
         relative
         overflow-hidden
-        bg-[#F4F7F9]
+        bg-[#F8F6F3]
         py-24
         sm:py-28
         lg:py-40
       "
     >
-      {/* =========================================================
-          BACKGROUND
-      ========================================================== */}
-
-      {/* Technical grid */}
+      {/* Background details */}
       <div
         aria-hidden="true"
         className="
           pointer-events-none
           absolute
           inset-0
-          opacity-[0.035]
-          [background-image:linear-gradient(#071827_1px,transparent_1px),linear-gradient(90deg,#071827_1px,transparent_1px)]
+          opacity-[0.025]
+          [background-image:linear-gradient(#421821_1px,transparent_1px),linear-gradient(90deg,#421821_1px,transparent_1px)]
           [background-size:80px_80px]
         "
       />
 
-      {/* Blue glow */}
       <div
         aria-hidden="true"
         className="
@@ -87,12 +82,11 @@ export default function FreightRoutes() {
           h-[500px]
           w-[500px]
           rounded-full
-          bg-[#005293]/[0.045]
+          bg-[#662433]/[0.06]
           blur-[130px]
         "
       />
 
-      {/* Burgundy glow */}
       <div
         aria-hidden="true"
         className="
@@ -103,15 +97,12 @@ export default function FreightRoutes() {
           h-[450px]
           w-[450px]
           rounded-full
-          bg-[#4F0908]/[0.025]
+          bg-[#D1C6B9]/[0.30]
           blur-[120px]
         "
       />
 
-      {/* =========================================================
-          CONTAINER
-      ========================================================== */}
-
+      {/* Container */}
       <div
         className="
           relative
@@ -125,10 +116,7 @@ export default function FreightRoutes() {
           xl:px-16
         "
       >
-        {/* =======================================================
-            HEADER
-        ======================================================== */}
-
+        {/* Header */}
         <div
           className="
             mb-14
@@ -136,23 +124,21 @@ export default function FreightRoutes() {
             flex-col
             gap-8
             border-b
-            border-[#071827]/10
+            border-[#D1C6B9]/80
             pb-8
-
             sm:mb-16
             lg:mb-20
-
             lg:flex-row
             lg:items-end
             lg:justify-between
           "
         >
-          {/* Left */}
           <div className="max-w-[780px]">
             <AnimatedLine
               text={t("freight.eyebrow")}
               lines={1}
-              lineColor="bg-[#005293]"
+              lineColor="bg-[#662433]"
+              textColor="text-[#662433]"
             />
 
             <h2
@@ -163,29 +149,26 @@ export default function FreightRoutes() {
                 font-extrabold
                 leading-[0.98]
                 tracking-[-0.055em]
-                text-[#071827]
-
+                text-[#221E20]
                 sm:text-[3.5rem]
                 md:text-[4rem]
                 lg:text-[4.6rem]
               "
             >
               {t("freight.titleLead")}{" "}
-              <span className="text-[#005293]">
+              <span className="text-[#662433]">
                 {t("freight.titleAccent")}
               </span>
             </h2>
           </div>
 
-          {/* Right */}
           <div className="max-w-[350px] lg:pb-1">
             <p
               className="
                 font-manrope
                 text-[13px]
                 leading-[1.8]
-                text-slate-500
-
+                text-[#4B4A4B]
                 sm:text-[14px]
                 lg:text-[15px]
               "
@@ -195,19 +178,8 @@ export default function FreightRoutes() {
           </div>
         </div>
 
-        {/* =======================================================
-            ROUTES
-        ======================================================== */}
-
-        <div
-          className="
-            grid
-            gap-5
-
-            lg:grid-cols-2
-            lg:gap-6
-          "
-        >
+        {/* Freight routes */}
+        <div className="grid gap-5 lg:grid-cols-2 lg:gap-6">
           {routeOptions.map((route) => {
             const isActive = activeRoute === route.id;
 
@@ -222,21 +194,18 @@ export default function FreightRoutes() {
                   min-h-[590px]
                   overflow-hidden
                   border
+                  bg-[#221E20]
                   transition-all
                   duration-700
                   sm:min-h-[650px]
-
                   ${
                     isActive
-                      ? "border-[#005293]/40"
-                      : "border-[#071827]/10"
+                      ? "border-[#662433]/80"
+                      : "border-[#D1C6B9]/60"
                   }
                 `}
               >
-                {/* =================================================
-                    IMAGE
-                ================================================== */}
-
+                {/* Image */}
                 <Image
                   src={route.image}
                   alt={t(`freight.${route.titleKey}`)}
@@ -248,7 +217,6 @@ export default function FreightRoutes() {
                     transition-transform
                     duration-[1200ms]
                     ease-[cubic-bezier(0.76,0,0.24,1)]
-
                     ${
                       isActive
                         ? "scale-[1.055]"
@@ -257,45 +225,38 @@ export default function FreightRoutes() {
                   `}
                 />
 
-                {/* =================================================
-                    IMAGE OVERLAY
-                ================================================== */}
-
+                {/* Enhanced charcoal-to-burgundy overlay */}
                 <div
                   aria-hidden="true"
                   className="
                     absolute
                     inset-0
                     bg-gradient-to-t
-                    from-[#071827]
-                    via-[#071827]/65
+                    from-[#221E20]
+                    via-[#34161C]/80
                     via-55%
-                    to-[#071827]/10
+                    to-[#421821]/20
                   "
                 />
 
-                {/* Blue hover wash */}
+                {/* Subtle active-state treatment */}
                 <div
                   aria-hidden="true"
                   className={`
                     absolute
                     inset-0
-                    bg-[#005293]
+                    bg-[#662433]/25
                     transition-opacity
                     duration-700
-
                     ${
                       isActive
-                        ? "opacity-[0.08]"
+                        ? "opacity-100"
                         : "opacity-0"
                     }
                   `}
                 />
 
-                {/* =================================================
-                    TOP META
-                ================================================== */}
-
+                {/* Top metadata */}
                 <div
                   className="
                     absolute
@@ -303,11 +264,9 @@ export default function FreightRoutes() {
                     right-6
                     top-6
                     z-10
-
                     flex
                     items-center
                     justify-between
-
                     sm:left-8
                     sm:right-8
                     sm:top-8
@@ -320,7 +279,7 @@ export default function FreightRoutes() {
                         text-[11px]
                         font-bold
                         tracking-[0.14em]
-                        text-[#5ba7df]
+                        text-[#D1C6B9]
                       "
                     >
                       {route.id}
@@ -335,7 +294,7 @@ export default function FreightRoutes() {
                         font-semibold
                         uppercase
                         tracking-[0.2em]
-                        text-white/55
+                        text-white/75
                       "
                     >
                       {t(`freight.${route.tagKey}`)}
@@ -353,8 +312,7 @@ export default function FreightRoutes() {
                       font-semibold
                       uppercase
                       tracking-[0.18em]
-                      text-white/40
-
+                      text-white/65
                       sm:flex
                     "
                   >
@@ -365,11 +323,10 @@ export default function FreightRoutes() {
                         rounded-full
                         transition-colors
                         duration-500
-
                         ${
                           isActive
-                            ? "bg-[#5ba7df]"
-                            : "bg-white/30"
+                            ? "bg-[#CD2B55]"
+                            : "bg-white/40"
                         }
                       `}
                     />
@@ -378,10 +335,7 @@ export default function FreightRoutes() {
                   </span>
                 </div>
 
-                {/* =================================================
-                    CONTENT
-                ================================================== */}
-
+                {/* Card content */}
                 <div
                   className="
                     absolute
@@ -390,12 +344,10 @@ export default function FreightRoutes() {
                     right-0
                     z-10
                     p-6
-
                     sm:p-8
                     lg:p-10
                   "
                 >
-                  {/* Title */}
                   <h3
                     className="
                       max-w-[570px]
@@ -405,7 +357,6 @@ export default function FreightRoutes() {
                       leading-[1.02]
                       tracking-[-0.04em]
                       text-white
-
                       sm:text-[2.5rem]
                       lg:text-[2.8rem]
                     "
@@ -413,7 +364,6 @@ export default function FreightRoutes() {
                     {t(`freight.${route.titleKey}`)}
                   </h3>
 
-                  {/* Description */}
                   <p
                     className="
                       mt-4
@@ -421,8 +371,7 @@ export default function FreightRoutes() {
                       font-manrope
                       text-[12px]
                       leading-[1.8]
-                      text-white/60
-
+                      text-white/80
                       sm:text-[13px]
                       sm:leading-[1.75]
                     "
@@ -430,24 +379,20 @@ export default function FreightRoutes() {
                     {t(`freight.${route.descriptionKey}`)}
                   </p>
 
-                  {/* =================================================
-                      ROUTE DATA
-                  ================================================== */}
-
+                  {/* Route data */}
                   <div
                     className="
                       mt-7
                       grid
                       grid-cols-3
                       border-y
-                      border-white/10
+                      border-white/20
                     "
                   >
-                    {/* Capacity */}
                     <div
                       className="
                         border-r
-                        border-white/10
+                        border-white/20
                         py-4
                         pr-3
                       "
@@ -460,7 +405,7 @@ export default function FreightRoutes() {
                           font-semibold
                           uppercase
                           tracking-[0.16em]
-                          text-white/35
+                          text-[#D1C6B9]
                         "
                       >
                         {t("freight.capacityLabel")}
@@ -480,11 +425,10 @@ export default function FreightRoutes() {
                       </span>
                     </div>
 
-                    {/* Speed */}
                     <div
                       className="
                         border-r
-                        border-white/10
+                        border-white/20
                         px-3
                         py-4
                       "
@@ -497,7 +441,7 @@ export default function FreightRoutes() {
                           font-semibold
                           uppercase
                           tracking-[0.16em]
-                          text-white/35
+                          text-[#D1C6B9]
                         "
                       >
                         {t("freight.transitLabel")}
@@ -517,7 +461,6 @@ export default function FreightRoutes() {
                       </span>
                     </div>
 
-                    {/* Best for */}
                     <div className="py-4 pl-3">
                       <span
                         className="
@@ -527,7 +470,7 @@ export default function FreightRoutes() {
                           font-semibold
                           uppercase
                           tracking-[0.16em]
-                          text-white/35
+                          text-[#D1C6B9]
                         "
                       >
                         {t("freight.bestForLabel")}
@@ -548,27 +491,24 @@ export default function FreightRoutes() {
                     </div>
                   </div>
 
-                  {/* =================================================
-                      CTA
-                  ================================================== */}
-
+                  {/* CTA */}
                   <div className="mt-6">
                     <ArrowButton
                       href={route.href}
                       text={t("freight.requestService")}
                       className="
                         !text-white
-                        [&_span]:border-white/25
-                        [&_span]:group-hover:border-[#5ba7df]
-                        [&_span]:group-hover:bg-[#5ba7df]
+                        [&>span]:border-white/35
+                        [&>span]:group-hover:border-[#662433]
+                        [&>span]:group-hover:bg-[#662433]
                         [&_svg]:!text-white
-                        [&_svg]:group-hover:!text-[#071827]
+                        [&_svg]:group-hover:!text-white
                       "
                     />
                   </div>
                 </div>
 
-                {/* Active vertical line */}
+                {/* Active vertical indicator */}
                 <span
                   aria-hidden="true"
                   className={`
@@ -579,10 +519,9 @@ export default function FreightRoutes() {
                     z-20
                     w-[2px]
                     origin-bottom
-                    bg-[#5ba7df]
+                    bg-[#CD2B55]
                     transition-transform
                     duration-700
-
                     ${
                       isActive
                         ? "scale-y-100"
@@ -595,28 +534,23 @@ export default function FreightRoutes() {
           })}
         </div>
 
-        {/* =======================================================
-            DECISION STRIP
-        ======================================================== */}
-
+        {/* Decision strip */}
         <div
           className="
             mt-8
             grid
             border
-            border-[#071827]/10
+            border-[#D1C6B9]/80
             bg-white
-
             sm:grid-cols-3
           "
         >
-          {/* Item */}
+          {/* Sea freight */}
           <div
             className="
               border-b
-              border-[#071827]/10
+              border-[#D1C6B9]/80
               p-5
-
               sm:border-b-0
               sm:border-r
               sm:p-6
@@ -628,7 +562,7 @@ export default function FreightRoutes() {
                 text-[10px]
                 font-bold
                 tracking-[0.14em]
-                text-[#005293]
+                text-[#662433]
               "
             >
               01
@@ -642,7 +576,7 @@ export default function FreightRoutes() {
                 font-bold
                 uppercase
                 tracking-[0.08em]
-                text-[#071827]
+                text-[#221E20]
               "
             >
               {t("freight.decisionSeaTitle")}
@@ -654,20 +588,19 @@ export default function FreightRoutes() {
                 font-manrope
                 text-[10px]
                 leading-[1.6]
-                text-slate-400
+                text-[#4B4A4B]
               "
             >
               {t("freight.decisionSeaDescription")}
             </p>
           </div>
 
-          {/* Item */}
+          {/* Air freight */}
           <div
             className="
               border-b
-              border-[#071827]/10
+              border-[#D1C6B9]/80
               p-5
-
               sm:border-b-0
               sm:border-r
               sm:p-6
@@ -679,7 +612,7 @@ export default function FreightRoutes() {
                 text-[10px]
                 font-bold
                 tracking-[0.14em]
-                text-[#005293]
+                text-[#662433]
               "
             >
               02
@@ -693,7 +626,7 @@ export default function FreightRoutes() {
                 font-bold
                 uppercase
                 tracking-[0.08em]
-                text-[#071827]
+                text-[#221E20]
               "
             >
               {t("freight.decisionAirTitle")}
@@ -705,14 +638,14 @@ export default function FreightRoutes() {
                 font-manrope
                 text-[10px]
                 leading-[1.6]
-                text-slate-400
+                text-[#4B4A4B]
               "
             >
               {t("freight.decisionAirDescription")}
             </p>
           </div>
 
-          {/* Item */}
+          {/* Assistance */}
           <div className="p-5 sm:p-6">
             <span
               className="
@@ -720,7 +653,7 @@ export default function FreightRoutes() {
                 text-[10px]
                 font-bold
                 tracking-[0.14em]
-                text-[#005293]
+                text-[#662433]
               "
             >
               03
@@ -734,7 +667,7 @@ export default function FreightRoutes() {
                 font-bold
                 uppercase
                 tracking-[0.08em]
-                text-[#071827]
+                text-[#221E20]
               "
             >
               {t("freight.decisionHelpTitle")}
@@ -746,7 +679,7 @@ export default function FreightRoutes() {
                 font-manrope
                 text-[10px]
                 leading-[1.6]
-                text-slate-400
+                text-[#4B4A4B]
               "
             >
               {t("freight.decisionHelpDescription")}

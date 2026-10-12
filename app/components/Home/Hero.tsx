@@ -1,11 +1,10 @@
-"use client"
+"use client";
 
 import { useTranslation } from "../../Language/translator";
-import Link from "next/link"
-import { motion } from "motion/react"
-import Image from "next/image"
-import { ArrowUpRight, ArrowDown } from "lucide-react"
-import AnimatedLine from "../Common/AnimatedLine"
+import Link from "next/link";
+import { motion } from "motion/react";
+import { ArrowUpRight, ArrowDown } from "lucide-react";
+import AnimatedLine from "../Common/AnimatedLine";
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -15,58 +14,50 @@ export default function Hero() {
       id="home"
       className="
         relative min-h-screen overflow-hidden
-        bg-[#051428]
+        bg-[#221E20]
         text-white
       "
     >
-  {/* =========================================================
-    BACKGROUND VIDEO
-========================================================== */}
-<div className="absolute inset-0 z-0 overflow-hidden">
-  <video
-    src="/Hero_video.mp4"
-    autoPlay
-    loop
-    muted
-    playsInline
-    className="
-      h-full
-      w-full
-      object-cover
-      object-[62%_center]
-      scale-[1.03]
-    "
-  />
-</div>
+      {/* BACKGROUND VIDEO */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <video
+          src="/Hero_video.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="
+            h-full
+            w-full
+            object-cover
+            object-[62%_center]
+            scale-[1.03]
+          "
+        />
+      </div>
 
-      {/* =========================================================
-          IMAGE TREATMENT
-      ========================================================== */}
-
-      {/* Main dark gradient */}
+      {/* MAIN DARK GRADIENT */}
       <div
         aria-hidden="true"
         className="
           absolute inset-0 z-[1]
-          bg-[linear-gradient(90deg,#03101f_0%,#06182a_38%,rgba(5,20,40,0.68)_64%,rgba(5,20,40,0.28)_100%)]
+          bg-[linear-gradient(90deg,#221E20_0%,#34161C_38%,rgba(52,22,28,0.76)_64%,rgba(34,30,32,0.34)_100%)]
         "
       />
 
-      {/* Bottom fade */}
+      {/* BOTTOM FADE */}
       <div
         aria-hidden="true"
         className="
           absolute inset-x-0 bottom-0 z-[2]
           h-56
           bg-gradient-to-t
-          from-[#051428]
+          from-[#221E20]
           to-transparent
         "
       />
 
-
-
-      {/* Blue atmospheric glow */}
+      {/* BURGUNDY ATMOSPHERIC GLOW */}
       <div
         aria-hidden="true"
         className="
@@ -78,14 +69,12 @@ export default function Hero() {
           h-[450px]
           w-[450px]
           rounded-full
-          bg-[#005293]/20
+          bg-[#421821]/35
           blur-[120px]
         "
       />
 
-      {/* =========================================================
-          TECHNICAL GRID
-      ========================================================== */}
+      {/* TECHNICAL GRID */}
       <div
         aria-hidden="true"
         className="
@@ -97,14 +86,7 @@ export default function Hero() {
         "
       />
 
-      {/* =========================================================
-          TOP TECHNICAL LABEL
-      ========================================================== */}
-
-
-      {/* =========================================================
-          MAIN CONTENT
-      ========================================================== */}
+      {/* MAIN CONTENT */}
       <div
         className="
           relative z-10
@@ -123,13 +105,9 @@ export default function Hero() {
         "
       >
         <div className="grid w-full items-center lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-16 xl:gap-24">
-
-          {/* =====================================================
-              LEFT CONTENT
-          ====================================================== */}
+          {/* LEFT CONTENT */}
           <div className="max-w-[760px]">
-
-            {/* Eyebrow */}
+            {/* EYEBROW */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -138,17 +116,17 @@ export default function Hero() {
                 delay: 0.15,
                 ease: [0.76, 0, 0.24, 1],
               }}
-              className="mb-7 z-100"
+              className="z-100 mb-7"
             >
               <AnimatedLine
                 text={t("hero.eyebrow")}
                 lines={1}
+                lineColor="bg-[#CD2B55]"
+                textColor="text-[#D1C6B9]"
               />
             </motion.div>
 
-            {/* =================================================
-                MAIN HEADING
-            ================================================== */}
+            {/* MAIN HEADING */}
             <motion.h1
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -159,7 +137,6 @@ export default function Hero() {
               }}
               className="
                 max-w-[820px]
-                font-jakarta
                 text-[46px]
                 font-extrabold
                 leading-[1.02]
@@ -171,26 +148,15 @@ export default function Hero() {
                 xl:text-[84px]
               "
             >
-              {t("hero.titleLead")} {" "}
-              <span className="relative inline-block text-[#5ba7df]">
+              {t("hero.titleLead")}{" "}
+              <span className="relative inline-block text-[#D1C6B9]">
                 {t("hero.titleAccent")}
-                <span
-                  aria-hidden="true"
-                  className="
-                    absolute
-                    -bottom-2
-                    left-0
-                    h-[2px]
-                    w-1/2
-                  "
-                />
+
               </span>{" "}
               {t("hero.titleTail")}
             </motion.h1>
 
-            {/* =================================================
-                DESCRIPTION
-            ================================================== */}
+            {/* DESCRIPTION */}
             <motion.p
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
@@ -205,7 +171,7 @@ export default function Hero() {
                 font-manrope
                 text-[15px]
                 leading-7
-                text-slate-300/80
+                text-[#D1C6B9]/90
                 sm:text-[17px]
                 sm:leading-8
               "
@@ -213,9 +179,7 @@ export default function Hero() {
               {t("hero.description")}
             </motion.p>
 
-            {/* =================================================
-                CTA
-            ================================================== */}
+            {/* CTA */}
             <motion.div
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
@@ -232,7 +196,7 @@ export default function Hero() {
                 gap-3
               "
             >
-              {/* Primary CTA */}
+              {/* PRIMARY CTA */}
               <Link
                 href="#contact"
                 className="
@@ -244,8 +208,8 @@ export default function Hero() {
                   justify-center
                   overflow-hidden
                   border
-                  border-[#005293]
-                  bg-[#005293]
+                  border-[#421821]
+                  bg-[#421821]
                   px-6
                   font-jakarta
                   text-[11px]
@@ -255,8 +219,8 @@ export default function Hero() {
                   text-white
                   transition-all
                   duration-500
-                  hover:border-[#5ba7df]
-                  hover:bg-[#0765a0]
+                  hover:border-[#CD2B55]
+                  hover:bg-[#662433]
                 "
               >
                 <span className="relative z-10 flex items-center gap-3">
@@ -275,7 +239,7 @@ export default function Hero() {
                 </span>
               </Link>
 
-              {/* Secondary CTA */}
+              {/* SECONDARY CTA */}
               <Link
                 href="#services"
                 className="
@@ -297,7 +261,7 @@ export default function Hero() {
                   backdrop-blur-sm
                   transition-all
                   duration-500
-                  hover:border-white/40
+                  hover:border-[#D1C6B9]/60
                   hover:bg-white/[0.07]
                 "
               >
@@ -312,15 +276,13 @@ export default function Hero() {
                     transition-all
                     duration-500
                     group-hover:w-8
-                    group-hover:bg-[#5ba7df]
+                    group-hover:bg-[#CD2B55]
                   "
                 />
               </Link>
             </motion.div>
 
-            {/* =================================================
-                GLOBAL NETWORK
-            ================================================== */}
+            {/* GLOBAL NETWORK */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -343,7 +305,7 @@ export default function Hero() {
                     font-semibold
                     uppercase
                     tracking-[0.22em]
-                    text-white/35
+                    text-[#D1C6B9]/55
                   "
                 >
                   {t("hero.operationalNetwork")}
@@ -351,8 +313,7 @@ export default function Hero() {
               </div>
 
               <div className="flex flex-wrap items-center gap-y-3">
-
-                {/* China */}
+                {/* CHINA */}
                 <div className="flex items-center gap-2.5 pr-5">
                   <span
                     className="
@@ -375,7 +336,7 @@ export default function Hero() {
                       font-medium
                       uppercase
                       tracking-[0.16em]
-                      text-white/40
+                      text-[#D1C6B9]/70
                     "
                   >
                     {t("hero.china")}
@@ -389,13 +350,13 @@ export default function Hero() {
                     h-px
                     w-8
                     bg-gradient-to-r
-                    from-[#005293]
-                    to-[#5ba7df]
+                    from-[#421821]
+                    to-[#CD2B55]
                     sm:block
                   "
                 />
 
-                {/* Saudi */}
+                {/* SAUDI ARABIA */}
                 <div className="flex items-center gap-2.5 px-5">
                   <span
                     className="
@@ -418,7 +379,7 @@ export default function Hero() {
                       font-medium
                       uppercase
                       tracking-[0.16em]
-                      text-white/40
+                      text-[#D1C6B9]/70
                     "
                   >
                     {t("hero.Saudi")}
@@ -432,13 +393,13 @@ export default function Hero() {
                     h-px
                     w-8
                     bg-gradient-to-r
-                    from-[#5ba7df]
-                    to-[#4F0908]
+                    from-[#CD2B55]
+                    to-[#421821]
                     sm:block
                   "
                 />
 
-                {/* Egypt */}
+                {/* EGYPT */}
                 <div className="flex items-center gap-2.5 pl-5">
                   <span
                     className="
@@ -461,7 +422,7 @@ export default function Hero() {
                       font-medium
                       uppercase
                       tracking-[0.16em]
-                      text-white/40
+                      text-[#D1C6B9]/70
                     "
                   >
                     {t("hero.egypt")}
@@ -471,9 +432,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* =====================================================
-              RIGHT SIDE — LOGISTICS SIGNAL
-          ====================================================== */}
+          {/* RIGHT SIDE — LOGISTICS SIGNAL */}
           <motion.div
             initial={{ opacity: 0, x: 35 }}
             animate={{ opacity: 1, x: 0 }}
@@ -482,11 +441,7 @@ export default function Hero() {
               delay: 0.65,
               ease: [0.76, 0, 0.24, 1],
             }}
-            className="
-              relative
-              hidden
-              lg:block
-            "
+            className="relative hidden lg:block"
           >
             <div
               className="
@@ -495,12 +450,12 @@ export default function Hero() {
                 w-full
                 max-w-[330px]
                 border
-                border-white/10
-                bg-[#051428]/35
+                border-white/15
+                bg-[#221E20]/55
                 backdrop-blur-[6px]
               "
             >
-              {/* Top line */}
+              {/* TOP LINE */}
               <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
                 <span
                   className="
@@ -509,21 +464,22 @@ export default function Hero() {
                     font-semibold
                     uppercase
                     tracking-[0.2em]
-                    text-white/40
+                    text-[#D1C6B9]/70
                   "
                 >
                   {t("hero.Aseel")}
                 </span>
 
                 <span className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#5ba7df]" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#CD2B55]" />
+
                   <span
                     className="
                       font-manrope
                       text-[8px]
                       uppercase
                       tracking-[0.16em]
-                      text-white/35
+                      text-[#D1C6B9]/60
                     "
                   >
                     {t("hero.connected")}
@@ -531,12 +487,10 @@ export default function Hero() {
                 </span>
               </div>
 
-              {/* Network path */}
+              {/* NETWORK PATH */}
               <div className="px-5 py-7">
-
                 <div className="relative">
-
-                  {/* Connecting line */}
+                  {/* CONNECTING LINE */}
                   <div
                     aria-hidden="true"
                     className="
@@ -546,52 +500,52 @@ export default function Hero() {
                       h-[calc(100%-24px)]
                       w-px
                       bg-gradient-to-b
-                      from-[#5ba7df]
+                      from-[#CD2B55]
                       via-white/20
-                      to-[#4F0908]
+                      to-[#421821]
                     "
                   />
 
-                  {/* China */}
+                  {/* CHINA */}
                   <div className="relative flex items-start gap-5 pb-8">
-                    <span className="relative z-10 mt-1 h-2.5 w-2.5 rounded-full border-2 border-[#5ba7df] bg-[#051428]" />
+                    <span className="relative z-10 mt-1 h-2.5 w-2.5 rounded-full border-2 border-[#CD2B55] bg-[#221E20]" />
 
                     <div>
                       <p className="font-jakarta text-[12px] font-bold uppercase tracking-[0.08em] text-white">
                         {t("hero.china")}
                       </p>
 
-                      <p className="mt-1 font-manrope text-[10px] leading-5 text-white/35">
+                      <p className="mt-1 font-manrope text-[10px] leading-5 text-[#D1C6B9]/65">
                         {t("hero.chinaDetails")}
                       </p>
                     </div>
                   </div>
 
-                  {/* Saudi */}
+                  {/* SAUDI ARABIA */}
                   <div className="relative flex items-start gap-5 pb-8">
-                    <span className="relative z-10 mt-1 h-2.5 w-2.5 rounded-full border-2 border-white/30 bg-[#051428]" />
+                    <span className="relative z-10 mt-1 h-2.5 w-2.5 rounded-full border-2 border-[#D1C6B9]/60 bg-[#221E20]" />
 
                     <div>
                       <p className="font-jakarta text-[12px] font-bold uppercase tracking-[0.08em] text-white">
                         {t("hero.Saudi")}
                       </p>
 
-                      <p className="mt-1 font-manrope text-[10px] leading-5 text-white/35">
-                     {t("hero.SaudiDetails")}
+                      <p className="mt-1 font-manrope text-[10px] leading-5 text-[#D1C6B9]/65">
+                        {t("hero.SaudiDetails")}
                       </p>
                     </div>
                   </div>
 
-                  {/* Egypt */}
+                  {/* EGYPT */}
                   <div className="relative flex items-start gap-5">
-                    <span className="relative z-10 mt-1 h-2.5 w-2.5 rounded-full border-2 border-[#4F0908] bg-[#051428]" />
+                    <span className="relative z-10 mt-1 h-2.5 w-2.5 rounded-full border-2 border-[#421821] bg-[#221E20]" />
 
                     <div>
                       <p className="font-jakarta text-[12px] font-bold uppercase tracking-[0.08em] text-white">
                         {t("hero.egypt")}
                       </p>
 
-                      <p className="mt-1 font-manrope text-[10px] leading-5 text-white/35">
+                      <p className="mt-1 font-manrope text-[10px] leading-5 text-[#D1C6B9]/65">
                         {t("hero.egyptDetails")}
                       </p>
                     </div>
@@ -599,7 +553,7 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Bottom statement */}
+              {/* BOTTOM STATEMENT */}
               <div className="border-t border-white/10 px-5 py-4">
                 <p
                   className="
@@ -608,7 +562,7 @@ export default function Hero() {
                     uppercase
                     leading-5
                     tracking-[0.12em]
-                    text-white/30
+                    text-[#D1C6B9]/55
                   "
                 >
                   {t("hero.routeFirst")}
@@ -621,9 +575,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* =========================================================
-          SCROLL INDICATOR
-      ========================================================== */}
+      {/* SCROLL INDICATOR */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -646,18 +598,18 @@ export default function Hero() {
             font-semibold
             uppercase
             tracking-[0.24em]
-            text-white/30
+            text-[#D1C6B9]/60
           "
         >
           {t("hero.scroll")}
         </span>
 
-        <span className="h-px w-10 bg-white/20" />
+        <span className="h-px w-10 bg-white/25" />
 
-        <ArrowDown className="h-3.5 w-3.5 text-white/40" />
+        <ArrowDown className="h-3.5 w-3.5 text-[#D1C6B9]/70" />
       </motion.div>
 
-      {/* Bottom-right coordinate detail */}
+      {/* BOTTOM-RIGHT COORDINATE DETAIL */}
       <div
         aria-hidden="true"
         className="
@@ -670,12 +622,12 @@ export default function Hero() {
           text-[8px]
           uppercase
           tracking-[0.22em]
-          text-white/20
+          text-[#D1C6B9]/45
           lg:block
         "
       >
         CN · HK · EG / 01
       </div>
     </section>
-  )
+  );
 }

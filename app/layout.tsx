@@ -1,37 +1,21 @@
 import type { Metadata } from "next";
-import { Manrope, Plus_Jakarta_Sans, Cairo, Inter } from "next/font/google";
+import { Barlow } from "next/font/google";
 import "./globals.css";
+
 import SiteChrome from "./components/Layout/SiteChrome";
 import { TranslationProvider } from "./Language/translator";
 
-const cairo = Cairo({
-  subsets: ["arabic", "latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-cairo",
-  display: "swap",
-});
-
-const inter = Inter({
+const barlow = Barlow({
   subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-manrope",
-  display: "swap",
-});
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-jakarta",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-barlow",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Your Website",
-  description: "Your website description",
+  title: "Assayel | Import and Export",
+  description:
+    "From origin to the world. Connecting businesses across China, Egypt, and Saudi Arabia.",
 };
 
 export default function RootLayout({
@@ -40,8 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${manrope.variable} ${jakarta.variable} ${cairo.variable} ${inter.variable}`}>
-      <body className="font-manrope antialiased">
+    <html lang="en" className={barlow.variable}>
+      <body className="antialiased">
         <TranslationProvider>
           <SiteChrome>{children}</SiteChrome>
         </TranslationProvider>
