@@ -175,16 +175,15 @@ export default function CargoJourney() {
                       items-center
                       justify-center
                       border
-                      border-[#421821]
-                      bg-[#D1C6B9]/35
+                      bg-brand-primary
                       text-xs
                       font-bold
                       tracking-[0.12em]
-                      text-[#421821]
+                      text-brand-white
                       transition-all
                       duration-500
-                      group-hover:bg-[#34161C]
-                      group-hover:text-white
+                      group-hover:bg-brand-neutral
+                      group-hover:text-black
                     "
                   >
                     {step.number}
@@ -213,7 +212,7 @@ export default function CargoJourney() {
                     h-[430px]
                     overflow-hidden
                     border
-                    border-[#421821]/15
+                    border-[#421821]/35
                     bg-[#221E20]
                     sm:h-[470px]
                   "
@@ -241,9 +240,8 @@ export default function CargoJourney() {
                       absolute
                       inset-0
                       bg-gradient-to-t
-                      from-[#221E20]/95
-                      via-[#421821]/65
-                      to-[#421821]/15
+                      via-[#421821]/30
+                      to-[#421821]/45
                       opacity-70
                       transition-opacity
                       duration-500
@@ -291,7 +289,6 @@ export default function CargoJourney() {
 
                     <h3
                       className="
-                        font-jakarta
                         text-2xl
                         font-bold
                         tracking-[-0.025em]

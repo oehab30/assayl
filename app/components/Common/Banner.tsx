@@ -41,7 +41,6 @@ export default function Banner() {
             className="
               object-cover
               object-center
-              opacity-60
             "
           />
 
@@ -53,7 +52,6 @@ export default function Banner() {
               inset-0
               bg-gradient-to-r
               from-[#221E20]/90
-              via-[#421821]/75
               to-[#421821]/35
             "
           />

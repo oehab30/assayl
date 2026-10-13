@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
 import AnimatedLine from "../Common/AnimatedLine";
 import { useTranslation } from "../../Language/translator";
+import PageBackground from "../Common/PageBackground";
 
 interface FeatureItem {
   id: string;
@@ -43,21 +42,11 @@ export default function WhyAssayel() {
       aria-labelledby="why-Assayel-title"
       className="relative isolate overflow-hidden bg-[#F8F6F3] py-20 sm:py-24 lg:py-32"
     >
-      {/* -------------------------------------------------
-          Background
-      -------------------------------------------------- */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10"
-      >
-        {/* Main fade */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F8F6F3] via-[#F8F6F3]/95 to-[#F8F6F3]" />
+    {/* -------------------------------------------------
+    Background — matching FreightRoutes
+-------------------------------------------------- */}
+      <PageBackground />
 
-        {/* Subtle Assayel accent glow */}
-        <div className="absolute -right-40 top-1/4 h-[420px] w-[420px] rounded-full bg-[#CD2B55]/[0.035] blur-3xl" />
-
-        <div className="absolute -left-40 bottom-0 h-[360px] w-[360px] rounded-full bg-[#421821]/[0.035] blur-3xl" />
-      </div>
 
       {/* -------------------------------------------------
           Content

@@ -622,7 +622,7 @@ export default function Hero() {
           lg:block
         "
       >
-        CN · HK · EG / 01
+        CN · KSA · EG / 01
       </div>
     </section>
   );
