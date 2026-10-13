@@ -145,15 +145,13 @@ export default function Hero() {
                 sm:text-[58px]
                 md:text-[68px]
                 lg:text-[72px]
-                xl:text-[84px]
+                xl:text-[63px]
               "
             >
               {t("hero.titleLead")}{" "}
-              <span className="relative inline-block text-[#D1C6B9]">
-                {t("hero.titleAccent")}
+             {t("hero.titleAccent")}
 
-              </span>{" "}
-              {t("hero.titleTail")}
+           {t("hero.titleTail")}
             </motion.h1>
 
             {/* DESCRIPTION */}
@@ -168,7 +166,6 @@ export default function Hero() {
               className="
                 mt-7
                 max-w-[610px]
-                font-manrope
                 text-[15px]
                 leading-7
                 text-[#D1C6B9]/90
@@ -211,7 +208,6 @@ export default function Hero() {
                   border-[#421821]
                   bg-[#421821]
                   px-6
-                  font-jakarta
                   text-[11px]
                   font-bold
                   uppercase

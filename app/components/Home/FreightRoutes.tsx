@@ -1,6 +1,7 @@
+
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import AnimatedLine from "../Common/AnimatedLine";
 import ArrowButton from "../Common/Arrowbutton";
@@ -45,7 +46,6 @@ const routeOptions: RouteCard[] = [
 
 export default function FreightRoutes() {
   const { t } = useTranslation();
-  const [activeRoute, setActiveRoute] = useState("01");
 
   return (
     <section
@@ -144,7 +144,6 @@ export default function FreightRoutes() {
             <h2
               className="
                 mt-7
-                font-jakarta
                 text-[2.7rem]
                 font-extrabold
                 leading-[0.98]
@@ -181,29 +180,22 @@ export default function FreightRoutes() {
         {/* Freight routes */}
         <div className="grid gap-5 lg:grid-cols-2 lg:gap-6">
           {routeOptions.map((route) => {
-            const isActive = activeRoute === route.id;
-
             return (
               <article
                 key={route.id}
-                onMouseEnter={() => setActiveRoute(route.id)}
-                onFocus={() => setActiveRoute(route.id)}
-                className={`
+                className="
                   group
                   relative
                   min-h-[590px]
                   overflow-hidden
                   border
+                  border-[#D1C6B9]/60
                   bg-[#221E20]
                   transition-all
                   duration-700
+                  hover:border-[#662433]/30
                   sm:min-h-[650px]
-                  ${
-                    isActive
-                      ? "border-[#662433]/80"
-                      : "border-[#D1C6B9]/60"
-                  }
-                `}
+                "
               >
                 {/* Image */}
                 <Image
@@ -211,21 +203,17 @@ export default function FreightRoutes() {
                   alt={t(`freight.${route.titleKey}`)}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className={`
+                  className="
                     object-cover
                     object-center
                     transition-transform
                     duration-[1200ms]
                     ease-[cubic-bezier(0.76,0,0.24,1)]
-                    ${
-                      isActive
-                        ? "scale-[1.055]"
-                        : "scale-100"
-                    }
-                  `}
+                    group-hover:scale-[1.055]
+                  "
                 />
 
-                {/* Enhanced charcoal-to-burgundy overlay */}
+                {/* Image  overlay */}
                 <div
                   aria-hidden="true"
                   className="
@@ -233,27 +221,22 @@ export default function FreightRoutes() {
                     inset-0
                     bg-gradient-to-t
                     from-[#221E20]
-                    via-[#34161C]/80
-                    via-55%
-                    to-[#421821]/20
+                    to-[#421821]/10
                   "
                 />
 
-                {/* Subtle active-state treatment */}
+                {/* Image Hover overlay */}
                 <div
                   aria-hidden="true"
-                  className={`
+                  className="
                     absolute
                     inset-0
-                    bg-[#662433]/25
+                    bg-[#662433]/15
+                    opacity-0
                     transition-opacity
                     duration-700
-                    ${
-                      isActive
-                        ? "opacity-100"
-                        : "opacity-0"
-                    }
-                  `}
+                    group-hover:opacity-60
+                  "
                 />
 
                 {/* Top metadata */}
@@ -275,11 +258,10 @@ export default function FreightRoutes() {
                   <div className="flex items-center gap-3">
                     <span
                       className="
-                        font-jakarta
                         text-[11px]
                         font-bold
                         tracking-[0.14em]
-                        text-[#D1C6B9]
+                        text-brand-neutral
                       "
                     >
                       {route.id}
@@ -317,18 +299,15 @@ export default function FreightRoutes() {
                     "
                   >
                     <span
-                      className={`
+                      className="
                         h-1.5
                         w-1.5
                         rounded-full
+                        bg-white/40
                         transition-colors
                         duration-500
-                        ${
-                          isActive
-                            ? "bg-[#CD2B55]"
-                            : "bg-white/40"
-                        }
-                      `}
+                        group-hover:bg-brand-accent
+                      "
                     />
 
                     {t("freight.available")}
@@ -351,12 +330,11 @@ export default function FreightRoutes() {
                   <h3
                     className="
                       max-w-[570px]
-                      font-jakarta
                       text-[2rem]
                       font-extrabold
                       leading-[1.02]
                       tracking-[-0.04em]
-                      text-white
+                      text-brand-white
                       sm:text-[2.5rem]
                       lg:text-[2.8rem]
                     "
@@ -415,7 +393,6 @@ export default function FreightRoutes() {
                         className="
                           mt-1.5
                           block
-                          font-jakarta
                           text-[11px]
                           font-bold
                           text-white
@@ -451,7 +428,6 @@ export default function FreightRoutes() {
                         className="
                           mt-1.5
                           block
-                          font-jakarta
                           text-[11px]
                           font-bold
                           text-white
@@ -480,7 +456,6 @@ export default function FreightRoutes() {
                         className="
                           mt-1.5
                           block
-                          font-jakarta
                           text-[11px]
                           font-bold
                           text-white
@@ -499,8 +474,7 @@ export default function FreightRoutes() {
                       className="
                         !text-white
                         [&>span]:border-white/35
-                        [&>span]:group-hover:border-[#662433]
-                        [&>span]:group-hover:bg-[#662433]
+                        [&>span]:group-hover:border-brand-neutral
                         [&_svg]:!text-white
                         [&_svg]:group-hover:!text-white
                       "
@@ -508,10 +482,10 @@ export default function FreightRoutes() {
                   </div>
                 </div>
 
-                {/* Active vertical indicator */}
+                {/* Hover-only vertical indicator */}
                 <span
                   aria-hidden="true"
-                  className={`
+                  className="
                     absolute
                     bottom-0
                     left-0
@@ -519,15 +493,13 @@ export default function FreightRoutes() {
                     z-20
                     w-[2px]
                     origin-bottom
-                    bg-[#CD2B55]
+                    scale-y-0
+                    bg-brand-accent
                     transition-transform
                     duration-700
-                    ${
-                      isActive
-                        ? "scale-y-100"
-                        : "scale-y-0"
-                    }
-                  `}
+                    group-hover:scale-y-100
+                    opacity-60
+                  "
                 />
               </article>
             );
@@ -558,7 +530,6 @@ export default function FreightRoutes() {
           >
             <span
               className="
-                font-jakarta
                 text-[10px]
                 font-bold
                 tracking-[0.14em]
@@ -571,7 +542,6 @@ export default function FreightRoutes() {
             <p
               className="
                 mt-2
-                font-jakarta
                 text-[11px]
                 font-bold
                 uppercase
@@ -608,7 +578,6 @@ export default function FreightRoutes() {
           >
             <span
               className="
-                font-jakarta
                 text-[10px]
                 font-bold
                 tracking-[0.14em]
@@ -621,7 +590,6 @@ export default function FreightRoutes() {
             <p
               className="
                 mt-2
-                font-jakarta
                 text-[11px]
                 font-bold
                 uppercase
@@ -649,7 +617,6 @@ export default function FreightRoutes() {
           <div className="p-5 sm:p-6">
             <span
               className="
-                font-jakarta
                 text-[10px]
                 font-bold
                 tracking-[0.14em]
@@ -662,7 +629,6 @@ export default function FreightRoutes() {
             <p
               className="
                 mt-2
-                font-jakarta
                 text-[11px]
                 font-bold
                 uppercase

@@ -28,15 +28,14 @@ export default function ArrowButton({
         w-fit
         items-center
         gap-4
-        font-jakarta
         text-[12px]
         font-bold
         uppercase
         tracking-[0.12em]
-        text-[#662433]
+        text-brand-neutral
         transition-colors
         duration-300
-        hover:text-[#CD2B55]
+        hover:text-brand-accent
         sm:text-[13px]
         ${className}
       `}
@@ -58,8 +57,7 @@ export default function ArrowButton({
           transition-all
           duration-300
           ease-out
-          group-hover:border-[#CD2B55]
-          group-hover:bg-[#662433]
+          group-hover:border-brand-accent
         "
       >
         <Icon
@@ -72,6 +70,7 @@ export default function ArrowButton({
             group-hover:-translate-y-0.5
             group-hover:translate-x-0.5
             group-hover:text-[#F8F6F3]
+
           "
         />
       </span>
@@ -84,7 +83,7 @@ export default function ArrowButton({
           left-0
           h-px
           w-0
-          bg-[#CD2B55]
+          bg-brand-accent
           transition-all
           duration-300
           group-hover:w-[calc(100%-56px)]

@@ -82,7 +82,6 @@ export default function WhyAssayel() {
               <h2
                 id="why-Assayel-title"
                 className="
-                  font-jakarta
                   text-4xl
                   font-extrabold
                   leading-[1.05]
@@ -93,7 +92,7 @@ export default function WhyAssayel() {
                 "
               >
                 {t("why.headingLead")}
-                <span className="text-[#421821]">
+                <span className="text-brand-primary">
                   {" "}
                   {t("why.headingAccent")}
                 </span>
@@ -102,7 +101,7 @@ export default function WhyAssayel() {
               {/* Accent line */}
               <div
                 aria-hidden="true"
-                className="mt-7 h-[2px] w-14 bg-[#CD2B55]"
+                 className="mt-7 h-[2px] w-14 bg-brand-accent"
               />
 
               {/* Description */}
@@ -185,14 +184,13 @@ export default function WhyAssayel() {
                   <div className="relative pt-1">
                     <span
                       className="
-                        font-jakarta
                         text-xs
                         font-bold
                         tracking-wider
                         text-[#D1C6B9]
                         transition-colors
                         duration-300
-                        group-hover:text-[#CD2B55]
+                        group-hover:text-brand-accent
                       "
                     >
                       {feature.id}
@@ -207,7 +205,7 @@ export default function WhyAssayel() {
                         top-7
                         h-0
                         w-[2px]
-                        bg-[#CD2B55]
+                        bg-brand-accent
                         transition-all
                         duration-300
                         group-hover:h-8
@@ -219,14 +217,13 @@ export default function WhyAssayel() {
                   <div>
                     <h3
                       className="
-                        font-jakarta
                         text-lg
                         font-bold
                         tracking-[-0.015em]
                         text-[#221E20]
                         transition-colors
                         duration-300
-                        group-hover:text-[#421821]
+                        group-hover:text-brand-primary
                         sm:text-xl
                       "
                     >
@@ -237,7 +234,6 @@ export default function WhyAssayel() {
                       className="
                         mt-2.5
                         max-w-xl
-                        font-manrope
                         text-xs
                         leading-6
                         text-[#4B4A4B]
@@ -258,9 +254,8 @@ export default function WhyAssayel() {
                       top-1/2
                       -translate-y-1/2
                       translate-x-2
-                      font-jakarta
                       text-lg
-                      text-[#CD2B55]
+                      text-brand-accent
                       opacity-0
                       transition-all
                       duration-300
