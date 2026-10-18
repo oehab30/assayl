@@ -27,7 +27,7 @@ interface ServiceCardData {
   href: string;
 }
 
-const servicesData: ServiceCardData[] = [
+const HomeServicesData: ServiceCardData[] = [
   {
     id: "01",
     number: "01",
@@ -85,12 +85,12 @@ const servicesData: ServiceCardData[] = [
 ];
 
 export default function Services() {
-  const [activeService, setActiveService] = useState(servicesData[0]);
+  const [activeService, setActiveService] = useState(HomeServicesData[0]);
   const { t } = useTranslation();
 
   return (
     <section
-      id="services"
+      id="HomeServices"
       className="
         relative
         overflow-hidden
@@ -158,7 +158,7 @@ export default function Services() {
           <div className="lg:col-span-8">
             <div className="mb-6">
               <AnimatedLine
-                text={t("services.eyebrow")}
+                text={t("HomeServices.eyebrow")}
                 lines={1}
                 lineColor="bg-[#CD2B55]"
                 textColor="text-[#D1C6B9]"
@@ -178,10 +178,10 @@ export default function Services() {
                 lg:text-[68px]
               "
             >
-              {t("services.titleLead")}
+              {t("HomeServices.titleLead")}
               <br />
               <span className="text-[#D1C6B9]">
-                {t("services.titleTail")}
+                {t("HomeServices.titleTail")}
               </span>
             </h2>
           </div>
@@ -197,7 +197,7 @@ export default function Services() {
                 sm:text-[15px]
               "
             >
-              {t("services.description")}
+              {t("HomeServices.description")}
             </p>
           </div>
         </div>
@@ -245,12 +245,12 @@ export default function Services() {
                   text-[#D1C6B9]/60
                 "
               >
-                {t("services.capabilities")}
+                {t("HomeServices.capabilities")}
               </span>
             </div>
 
             <div className="flex flex-1 flex-col">
-              {servicesData.map((service) => {
+              {HomeServicesData.map((service) => {
                 const isActive = activeService.id === service.id;
 
                 return (
@@ -345,7 +345,7 @@ export default function Services() {
                         sm:text-lg
                       "
                     >
-                      {t(`services.${service.titleKey}`)}
+                      {t(`HomeServices.${service.titleKey}`)}
                     </motion.span>
 
                     {/* Arrow */}
@@ -395,7 +395,7 @@ export default function Services() {
               >
                 <Image
                   src={activeService.image}
-                  alt={t(`services.${activeService.titleKey}`)}
+                  alt={t(`HomeServices.${activeService.titleKey}`)}
                   fill
                   sizes="(max-width: 1024px) 100vw, 55vw"
                   className="object-cover object-center"
@@ -477,7 +477,7 @@ export default function Services() {
                       text-white/80
                     "
                   >
-                    {t("services.serviceLabel")} {activeService.number}
+                    {t("HomeServices.serviceLabel")} {activeService.number}
                   </span>
                 </motion.div>
               </AnimatePresence>
@@ -532,7 +532,7 @@ export default function Services() {
                       lg:text-[46px]
                     "
                   >
-                    {t(`services.${activeService.titleKey}`)}
+                    {t(`HomeServices.${activeService.titleKey}`)}
                   </h3>
 
                   <p
@@ -545,7 +545,7 @@ export default function Services() {
                       text-[#D1C6B9]/85
                     "
                   >
-                    {t(`services.${activeService.descriptionKey}`)}
+                    {t(`HomeServices.${activeService.descriptionKey}`)}
                   </p>
 
                   <Link
@@ -566,7 +566,7 @@ export default function Services() {
                       hover:text-[#CD2B55]
                     "
                   >
-                    <span>{t("services.explore")}</span>
+                    <span>{t("HomeServices.explore")}</span>
 
                     <span
                       className="
@@ -605,11 +605,11 @@ export default function Services() {
         >
           <div>
             <p className="font-jakarta text-sm font-semibold text-white">
-              {t("services.bottomTitle")}
+              {t("HomeServices.bottomTitle")}
             </p>
 
             <p className="mt-1 font-manrope text-xs text-[#D1C6B9]/70">
-              {t("services.bottomDescription")}
+              {t("HomeServices.bottomDescription")}
             </p>
           </div>
 

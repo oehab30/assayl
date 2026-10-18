@@ -4,7 +4,7 @@
     "about": "About",
     "services": "Services",
     "process": "How We Work",
-    "branches": "Branches",
+    "Knowledge Base": "Knowledge Base",
     "contact": "Contact",
     "quote": "Request a Quote",
     "navigation": "Navigation",
@@ -23,7 +23,7 @@
   },
 
   "hero": {
-    "eyebrow": "From orld  to your destination",
+    "eyebrow": "From World  to your destination",
     "titleLead": "Your trusted",
     "titleAccent": "partner ",
     "titleTail": "for sourcing and shipping.",
@@ -118,7 +118,7 @@
     "cta": "Branch and office details"
   },
 
-  "services": {
+  "HomeServices": {
     "eyebrow": "What We Do",
     "title": "Trade, handled with precision.",
     "description": "From sourcing at the origin to delivery in Egypt, we coordinate the critical stages behind every shipment.",
@@ -177,13 +177,52 @@
     "title": "From request details to arrival procedures",
     "titleLead": "From request details",
     "titleTail": "to arrival procedures",
+    "description": "Follow every stage of your shipment, from your initial request to sourcing, freight, and customs clearance.",
     "step1": "Share your product or request details",
     "step2": "Review the request and define requirements",
     "step3": "Source, purchase, or arrange supply",
     "step4": "Consolidate and inspect",
     "paused": "Process paused",
     "inMotion": "Process in motion",
-    "cta": "See the complete process"
+    "cta": "See the complete process",
+    "stageLabel": "STAGE",
+    "ctaTitle": "Ready to start your shipping journey?",
+    "ctaButton": "Request a Quote",
+    "imageAlt": "Shipment journey stage",
+    "stages": [
+      {
+        "title": "Share your product or request details",
+        "description": "Share specifications, images, quantity, destination, and any special requirements."
+      },
+      {
+        "title": "Review the request and define requirements",
+        "description": "We review feasibility, missing information, and applicable requirements."
+      },
+      {
+        "title": "Source, purchase, or arrange supply",
+        "description": "We coordinate product sourcing, purchasing, or supply according to your needs."
+      },
+      {
+        "title": "Consolidate and inspect",
+        "description": "Products arrive at our China warehouses for consolidation and preparation, as applicable."
+      },
+      {
+        "title": "Select the suitable shipping method",
+        "description": "We assess the product, volume, and destination to identify a suitable shipping route."
+      },
+      {
+        "title": "Arrange air or sea freight",
+        "description": "We arrange the agreed freight option after reviewing your shipment details."
+      },
+      {
+        "title": "Support customs clearance",
+        "description": "We coordinate the required procedures according to the destination and applicable regulations."
+      }
+    ],
+    "stageLabel": "STAGE",
+    "ctaTitle": "Ready to start your shipping journey?",
+    "ctaButton": "Request a Quote",
+    "imageAlt": "Shipment journey stage"
   },
   "contact": {
     "eyebrow": "Get in touch",
@@ -217,5 +256,290 @@
     "rightsReserved": "All rights reserved.",
     "privacy": "Privacy",
     "terms": "Terms"
+  },
+
+
+
+
+
+
+
+
+
+  "ourStory": {
+    "eyebrow": "OUR STORY",
+    "title": "One Operating Network Across Three Markets",
+    "paragraph1": "Assayel specializes in import, export, international freight, and logistics services from China. Our operating network connects our presence in China and Hong Kong with representation in Egypt.",
+    "paragraph2": "The Assayel brand has operated since 2018, while our team brings more than 15 years of practical sector experience. This combination helps us understand sourcing, shipping, and the diverse requirements of our clients.",
+    "imageAlt": "Assayel logistics and warehouse operations",
+    "imageLabel": "Our Operations",
+    "since": "Operating since",
+    "experience": "More than 15 years of combined team experience in international trade and logistics.",
+    "caption": "Experience · Coordination · Global Reach"
+
+},
+
+
+  "visionMission": {
+    "eyebrow": "OUR PURPOSE",
+    "heading": "Driven by Vision. Guided by Purpose.",
+    "intro": "Our vision and mission shape how we connect markets, coordinate logistics, and build lasting relationships with our clients.",
+    "visionTitle": "Our Vision",
+    "visionDescription": "To be a reliable, organized link between China's markets and clients in Egypt and worldwide.",
+    "missionTitle": "Our Mission",
+    "missionDescription": "To simplify importing by coordinating sourcing, consolidation, warehousing, freight, and customs support with clarity and professionalism.",
+    "visionLabel": "Where we're going",
+    "missionLabel": "How we deliver"
+  },
+
+    "ourValues": {
+    "eyebrow": "OUR VALUES",
+    "heading": "The Principles Behind Every Partnership",
+    "intro": "The way we work is built on trust, accountability, and practical solutions tailored to every client's needs.",
+    "items": {
+      "credibility": {
+        "title": "Credibility",
+        "description": "We communicate clearly and avoid promises that ignore shipping variables."
+      },
+      "professionalism": {
+        "title": "Professionalism",
+        "description": "Every request follows organized steps and traceable information."
+      },
+      "security": {
+        "title": "Security",
+        "description": "We provide secure warehouses in China and carefully coordinate shipment preparation."
+      },
+      "flexibility": {
+        "title": "Flexibility",
+        "description": "We serve individuals, traders, importers, and companies according to each request."
+      }
+    }
+  },
+
+
+
+
+  "services": {
+    "requestService": "Request this service",
+    "importExport": {
+      "eyebrow": "SERVICE GROUP 01",
+      "heading": "Import, Export & Sourcing",
+      "intro": "Solutions that begin with understanding your needs and sourcing the right products, followed by coordinated purchasing and import.",
+      "items": {
+        "importExport": {
+          "title": "Import & Export",
+          "description": "Coordinated import and export services from China to Egypt and destinations worldwide, tailored to each shipment.",
+          "feature": "A clear, integrated route from source to destination.",
+          "imageAlt": "Cargo ship at a commercial port for international transportation"
+        },
+        "importOnBehalf": {
+          "title": "Importing on Behalf of Clients",
+          "description": "Import arrangements using client documentation or company documentation, subject to applicable legal frameworks.",
+          "feature": "Operating options suited to each client's business needs.",
+          "imageAlt": "Import documentation and international trade planning"
+        },
+        "sourcing": {
+          "title": "Sourcing, Purchasing & Supply",
+          "description": "Product sourcing, purchasing, consolidation, and supply according to the requested specifications.",
+          "feature": "One point of coordination across suppliers and operational stages.",
+          "imageAlt": "Product sourcing and coordination with factories and suppliers"
+        }
+      }
+    },
+    "freightLogistics": {
+      "eyebrow": "SERVICE GROUP 02",
+      "heading": "Freight & Logistics",
+      "intro": "Sea freight, air freight, and supporting services to help you select the most suitable shipping route for your cargo.",
+      "items": {
+        "seaFreight": {
+          "title": "Sea Freight",
+          "description": "Sea freight solutions for varied shipment sizes, including cubic-meter consolidation.",
+          "feature": "An option aligned with the product, shipment volume, and destination.",
+          "imageAlt": "Cargo vessel transporting shipping containers by sea"
+        },
+        "airFreight": {
+          "title": "Air Freight",
+          "description": "Air freight coordination for shipments suited to this route, based on product type and destination.",
+          "feature": "A flexible alternative within available shipping options.",
+          "imageAlt": "Cargo aircraft transporting goods by air"
+        },
+        "cargoX": {
+          "title": "Cargo X Services",
+          "description": "A shipping service within the logistics portfolio, with details determined after reviewing your request and shipment requirements.",
+          "feature": "An additional option evaluated against your cargo needs.",
+          "imageAlt": "Cargo management and logistics coordination"
+        },
+        "shippingMethod": {
+          "title": "Shipping Method Selection",
+          "description": "Reviewing the product, quantity, and destination to identify the most suitable available shipping method.",
+          "feature": "A decision based on the shipment's actual requirements.",
+          "imageAlt": "Comparing shipping options and selecting a suitable route"
+        }
+      }
+    },
+    "customsWarehousing": {
+      "eyebrow": "SERVICE GROUP 03",
+      "heading": "Customs, Warehousing & Consolidation",
+      "intro": "Organized procedures, storage, and cargo consolidation before goods are prepared for transportation to their destination.",
+      "items": {
+        "customsClearance": {
+          "title": "Customs Clearance",
+          "description": "Support with customs requirements and clearance procedures in accordance with applicable laws and regulations.",
+          "feature": "Greater procedural clarity and less complexity throughout clearance.",
+          "imageAlt": "Cargo inspection and customs clearance procedures"
+        },
+        "warehousing": {
+          "title": "Secure Warehousing in China",
+          "description": "Receiving, consolidating, and storing products in secure company warehouses before shipment preparation.",
+          "feature": "Greater flexibility when sourcing from multiple suppliers.",
+          "imageAlt": "Goods consolidated and stored in a warehouse before shipping"
+        }
+      }
+    },
+    "individualTradeAutomotive": {
+      "eyebrow": "SERVICE GROUP 04",
+      "heading": "Solutions for Individuals, Traders & Automotive",
+      "intro": "Flexible services designed for individual orders, traders, importers, businesses, and customers in the automotive sector.",
+      "items": {
+        "personalSourcing": {
+          "title": "Single-item Personal Sourcing",
+          "description": "Sourcing individual products and arranging shipment for personal use according to the customer's requirements.",
+          "feature": "Sourcing support for individuals as well as businesses.",
+          "imageAlt": "Individual products sourced and prepared for shipment"
+        },
+        "autoParts": {
+          "title": "Automotive Spare Parts",
+          "description": "Sourcing automotive spare parts according to the details and specifications provided by the customer.",
+          "feature": "Focused sourcing based on clear product requirements.",
+          "imageAlt": "Automotive spare parts sourced to match requested specifications"
+        },
+        "autoAccessories": {
+          "title": "Automotive Accessories",
+          "description": "Sourcing automotive accessories from suppliers in China and preparing them for shipment according to customer requirements.",
+          "feature": "Organized sourcing and consolidation in one workflow.",
+          "imageAlt": "Automotive accessories sourced from suppliers and prepared for shipping"
+        },
+        "individualBusinessSolutions": {
+          "title": "Solutions for Individuals & Businesses",
+          "description": "Adaptable solutions for individuals, small traders, importers, and companies, tailored to the nature and size of each order.",
+          "feature": "Services aligned with order size and business requirements.",
+          "imageAlt": "Coordinating sourcing and import solutions for individuals and businesses"
+        }
+      }
+    }
+  },
+
+
+
+
+  "ProcessPhases": {
+    "eyebrow": "FROM REQUEST TO ARRIVAL",
+    "title": "Your Journey with Assayl",
+    "description": "From your initial request to final delivery, we coordinate every step to ensure a smooth and reliable shipping experience.",
+    "stageLabel": "STAGE",
+    "imageAlt": "Assayl shipping process",
+    "ctaTitle": "Ready to start your next shipment?",
+    "ctaButton": "Request a Quote",
+    "stages": [
+      {
+        "title": "Share Your Request",
+        "description": "Tell us what you need to import, your product details, and your shipping requirements."
+      },
+      {
+        "title": "Review Requirements",
+        "description": "We review your requirements, quantities, specifications, and delivery expectations."
+      },
+      {
+        "title": "Sourcing and Purchasing",
+        "description": "We help coordinate sourcing and purchasing based on your needs."
+      },
+      {
+        "title": "Inspection and Verification",
+        "description": "We check shipment details and coordinate the necessary verification before shipping."
+      },
+      {
+        "title": "Consolidation and Warehousing",
+        "description": "We consolidate your goods and coordinate secure storage when required."
+      },
+      {
+        "title": "International Shipping",
+        "description": "We coordinate air or sea freight according to your shipment requirements."
+      },
+      {
+        "title": "Arrival and Delivery",
+        "description": "We follow up on your shipment and help coordinate the final delivery process."
+      }
+    ]
+  },
+
+
+
+  "requestForm": {
+    "eyebrow": "LET'S WORK TOGETHER",
+    "heading": "Tell us about your shipment.",
+    "intro": "Share a few details about your requirements. Our team can review your request and discuss the right solution with you.",
+    "imageAlt": "Warehouse and international logistics operations",
+    "imageBadge": "INTERNATIONAL LOGISTICS",
+    "infoEyebrow": "START WITH THE DETAILS",
+    "infoTitle": "Better details. Better shipping decisions.",
+    "infoDescription": "Product specifications, shipment volume, destination, and shipping method help us understand your needs before discussing the next steps.",
+    "checklist": {
+      "product": "Describe the products you want to ship.",
+      "quantity": "Include quantities and shipment volume.",
+      "shipping": "Choose a shipping method if you know it.",
+      "contact": "Provide accurate contact details."
+    },
+    "whatsappLabel": "CONTACT US DIRECTLY",
+    "privacyNote": "Your details will be included in a WhatsApp message that you can review before sending.",
+    "formTitle": "Request a shipping quote",
+    "formDescription": "Complete the fields below to prepare your request.",
+    "contactDetails": "Your contact details",
+    "shipmentDetails": "Shipment requirements",
+    "requestDetails": "Tell us more",
+    "fullName": "Full name",
+    "companyName": "Company name (optional)",
+    "phone": "Phone number",
+    "whatsapp": "WhatsApp number",
+    "email": "Email address",
+    "country": "Your country",
+    "serviceType": "Service type",
+    "quantity": "Quantity or shipment volume",
+    "shippingMethod": "Shipping method",
+    "destinationCountry": "Destination country",
+    "description": "Product or shipment description",
+    "message": "Additional message (optional)",
+    "services": {
+      "directSourcing": "Direct sourcing",
+      "logisticsShipping": "Logistics and shipping",
+      "customsClearance": "Customs clearance",
+      "warehousing": "Warehousing",
+      "importExport": "Import and export"
+    },
+    "shippingMethods": {
+      "airFreight": "Air freight",
+      "seaFreight": "Sea freight",
+      "expressCourier": "Express courier",
+      "notSure": "Not sure yet"
+    },
+    "placeholders": {
+      "fullName": "Enter your full name",
+      "companyName": "Your company name",
+      "phone": "+20...",
+      "whatsapp": "+20...",
+      "email": "you@example.com",
+      "country": "Your country",
+      "serviceType": "Choose a service",
+      "quantity": "e.g. 200 units or 3 CBM",
+      "shippingMethod": "Choose a shipping method",
+      "destinationCountry": "Where should it arrive?",
+      "description": "Product type, specifications, quantity, or other relevant details...",
+      "message": "Anything else we should know?"
+    },
+    "agreement": "I agree to use my details to prepare a WhatsApp message in accordance with the privacy policy.",
+    "agreementError": "Please agree to the privacy terms before continuing.",
+    "submit": "Continue via WhatsApp",
+    "submitNote": "WhatsApp will open with your request prepared. Review the details and send the message yourself.",
+    "whatsappTitle": "New Assayl Service Request"
   }
 }
+

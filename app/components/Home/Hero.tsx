@@ -1,4 +1,3 @@
-"use client";
 
 import { useTranslation } from "../../Language/translator";
 import Link from "next/link";

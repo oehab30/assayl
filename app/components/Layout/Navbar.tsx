@@ -1,4 +1,3 @@
-"use client";
 
 import { useTranslation } from "../../Language/translator";
 import Image from "next/image";
@@ -9,17 +8,17 @@ import { ArrowUpRight } from "lucide-react";
 
 const navigationLinks = [
   { key: "home", href: "#home", number: "01" },
-  { key: "about", href: "#about", number: "02" },
-  { key: "services", href: "#services", number: "03" },
-  { key: "process", href: "#how-we-work", number: "04" },
-  { key: "branches", href: "#branches", number: "05" },
-  { key: "contact", href: "#contact", number: "06" },
+  { key: "about", href: "about", number: "02" },
+  { key: "services", href: "services", number: "03" },
+  { key: "process", href: "process", number: "04" },
+  { key: "Knowledge Base", href: "KnowledgeBase", number: "05" },
+  { key: "contact", href: "contact", number: "06" },
 ];
 
 export default function Navbar() {
   const { locale, setLocale, t } = useTranslation();
 
-  const [activeHash, setActiveHash] = useState("#home");
+  const [activeHash, setActiveHash] = useState("home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -48,7 +47,7 @@ export default function Navbar() {
 
       setIsScrolled(scrollY > 40);
 
-      let currentSection = "#home";
+      let currentSection = "home";
 
       sections.forEach((section) => {
         if (!section) return;
@@ -57,7 +56,7 @@ export default function Navbar() {
         const top = element.offsetTop - 180;
 
         if (scrollY >= top) {
-          currentSection = `#${element.id}`;
+          currentSection = element.id;
         }
       });
 
@@ -160,7 +159,7 @@ borderColor: isScrolled
           <Link
             href="/#home"
             aria-label={`Assayel ${t("nav.home")}`}
-            onClick={() => handleNavigation("#home")}
+            onClick={() => handleNavigation("home")}
             className="group relative z-[110] flex shrink-0 items-center outline-none"
           >
             <Image

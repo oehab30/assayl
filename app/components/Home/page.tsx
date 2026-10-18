@@ -10,7 +10,7 @@ import Hero from "./Hero";
 import Journey from "./Journey";
 import OfficesSection from "./Ouroffices";
 import Services from "./Services";
-import WhySTARS from "./WhyAssayel";
+import WhyAssayel from "./WhyAssayel";
 
 export default function Home() {
   return (
@@ -21,7 +21,7 @@ export default function Home() {
       <Coordination />
       <Services />
       <FreightRoutes />
-      <WhySTARS />
+      <WhyAssayel />
       <Journey />
       <OfficesSection />
       <CargoJourney />

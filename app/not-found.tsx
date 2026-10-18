@@ -52,22 +52,6 @@ export default function NotFound() {
       />
 
       <div className="relative z-10 mx-auto flex w-full max-w-[1320px] flex-col px-5 py-6 sm:px-8 lg:px-10">
-        {/* Header */}
-        <header className="flex items-center justify-between">
-          <Link href="/" className="inline-flex items-center">
-            <span className="font-jakarta text-2xl font-extrabold tracking-[-0.06em] text-[#071827]">
-              Aseel
-            </span>
-          </Link>
-
-          <div className="hidden items-center gap-3 sm:flex">
-            <span className="h-px w-8 bg-[#005293]/40" />
-
-            <span className="font-jakarta text-[9px] font-bold uppercase tracking-[0.2em] text-[#071827]/40">
-              Global Logistics
-            </span>
-          </div>
-        </header>
 
         {/* Main */}
         <div className="flex flex-1 items-center py-16 lg:py-20">
@@ -80,25 +64,25 @@ export default function NotFound() {
               className="lg:col-span-6"
             >
               <div className="flex items-center gap-3">
-                <span className="font-jakarta text-[10px] font-bold tracking-[0.2em] text-[#005293]">
+                <span className=" text-[10px] font-bold tracking-[0.2em] text-brand-primary">
                   ROUTE 404
                 </span>
 
-                <span className="h-px w-10 bg-[#005293]/40" />
+                <span className="h-px w-10 bg-brand-accent" />
 
                 <span className="font-manrope text-[10px] uppercase tracking-[0.15em] text-[#071827]/35">
                   Destination unavailable
                 </span>
               </div>
 
-              <h1 className="mt-7 font-jakarta text-[clamp(4.5rem,11vw,9rem)] font-extrabold leading-[0.8] tracking-[-0.09em] text-[#071827]">
+              <h1 className="mt-7  text-[clamp(4.5rem,11vw,9rem)] font-extrabold leading-[0.8] tracking-[-0.09em] text-[#071827]">
                 404
               </h1>
 
               <div className="mt-8 max-w-xl">
-                <h2 className="font-jakarta text-3xl font-bold tracking-[-0.04em] sm:text-4xl lg:text-[3.2rem]">
+                <h2 className=" text-3xl font-bold tracking-[-0.04em] sm:text-4xl lg:text-[3.2rem]">
                   This route
-                  <span className="text-[#005293]"> doesn’t exist.</span>
+                  <span className="text-brand-primary"> doesn’t exist.</span>
                 </h2>
 
                 <p className="mt-5 max-w-lg font-manrope text-sm leading-7 text-[#071827]/55 sm:text-base">
@@ -111,8 +95,8 @@ export default function NotFound() {
               {/* Route */}
               <div className="mt-8 flex max-w-md items-center">
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-[#005293]" />
-                  <span className="font-jakarta text-[9px] font-bold uppercase tracking-[0.15em] text-[#071827]/50">
+                  <span className="h-2 w-2 rounded-full bg-brand-primary" />
+                  <span className=" text-[9px] font-bold uppercase tracking-[0.15em] text-[#071827]/50">
                     China
                   </span>
                 </div>
@@ -125,14 +109,14 @@ export default function NotFound() {
                       repeat: Infinity,
                       ease: "linear",
                     }}
-                    className="absolute left-0 top-0 h-px w-1/3 bg-[#005293]"
+                    className="absolute left-0 top-0 h-px w-1/3 bg-brand-accent"
                   />
                 </div>
 
                 <div className="flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full border border-[#4F0908]" />
 
-                  <span className="font-jakarta text-[9px] font-bold uppercase tracking-[0.15em] text-[#071827]/50">
+                  <span className=" text-[9px] font-bold uppercase tracking-[0.15em] text-[#071827]/50">
                     Destination
                   </span>
                 </div>
@@ -151,14 +135,14 @@ export default function NotFound() {
                     gap-3
                     bg-[#071827]
                     px-6
-                    font-jakarta
+
                     text-[10px]
                     font-bold
                     uppercase
                     tracking-[0.14em]
                     text-white
                     transition-colors
-                    hover:bg-[#005293]
+                    hover:bg-brand-primary
                   "
                 >
                   <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
@@ -178,15 +162,15 @@ export default function NotFound() {
                     border-[#071827]/15
                     bg-white/60
                     px-6
-                    font-jakarta
+
                     text-[10px]
                     font-bold
                     uppercase
                     tracking-[0.14em]
                     text-[#071827]
                     transition-colors
-                    hover:border-[#005293]
-                    hover:text-[#005293]
+                    hover:border-brand-primary
+                    hover:text-brand-primary
                   "
                 >
                   Explore Services
@@ -212,7 +196,7 @@ export default function NotFound() {
 
                 {/* Coordinates */}
                 <div className="absolute left-8 top-8">
-                  <p className="font-jakarta text-[8px] font-bold uppercase tracking-[0.2em] text-[#071827]/25">
+                  <p className=" text-[8px] font-bold uppercase tracking-[0.2em] text-[#071827]/25">
                     Navigation error
                   </p>
 
@@ -231,13 +215,13 @@ export default function NotFound() {
                   }}
                   className="absolute right-8 top-8"
                 >
-                  <Compass className="h-8 w-8 text-[#005293]/50" />
+                  <Compass className="h-8 w-8 text-brand-primary/50" />
                 </motion.div>
 
                 {/* Large 404 */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="relative">
-                    <span className="font-jakarta text-[clamp(8rem,20vw,15rem)] font-extrabold leading-none tracking-[-0.12em] text-[#071827]/[0.035]">
+                    <span className=" text-[clamp(8rem,20vw,15rem)] font-extrabold leading-none tracking-[-0.12em] text-[#071827]/[0.035]">
                       404
                     </span>
 
@@ -254,10 +238,10 @@ export default function NotFound() {
                       }}
                       className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
                     >
-                      <div className="relative flex h-24 w-24 items-center justify-center border border-[#005293]/20 bg-[#F4F7F9]">
-                        <Ship className="h-10 w-10 text-[#005293]" />
+                      <div className="relative flex h-24 w-24 items-center justify-center border border-brand-primary/20 bg-[#F4F7F9]">
+                        <Ship className="h-10 w-10 text-brand-primary" />
 
-                        <span className="absolute -bottom-1 left-1/2 h-px w-20 -translate-x-1/2 bg-[#005293]/30" />
+                        <span className="absolute -bottom-1 left-1/2 h-px w-20 -translate-x-1/2 bg-brand-primary/30" />
                       </div>
                     </motion.div>
                   </div>
@@ -274,24 +258,24 @@ export default function NotFound() {
                         repeatDelay: 1,
                         ease: "easeInOut",
                       }}
-                      className="absolute left-0 top-0 h-px bg-[#005293]"
+                      className="absolute left-0 top-0 h-px bg-brand-primary"
                     />
 
-                    <span className="absolute left-[42%] top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 border border-[#4F0908] bg-[#F4F7F9]" />
+                    <span className="absolute left-[42%] top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 border border-brand-primary bg-[#F4F7F9]" />
 
-                    <span className="absolute right-0 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-[#071827]/20" />
+                    <span className="absolute right-0 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-brand-primary/20" />
                   </div>
 
                   <div className="mt-3 flex justify-between">
-                    <span className="font-jakarta text-[8px] font-bold uppercase tracking-[0.18em] text-[#071827]/30">
+                    <span className=" text-[8px] font-bold uppercase tracking-[0.18em] text-[#071827]/30">
                       Origin
                     </span>
 
-                    <span className="font-jakarta text-[8px] font-bold uppercase tracking-[0.18em] text-[#4F0908]/60">
+                    <span className=" text-[8px] font-bold uppercase tracking-[0.18em] text-[#4F0908]/60">
                       Route lost
                     </span>
 
-                    <span className="font-jakarta text-[8px] font-bold uppercase tracking-[0.18em] text-[#071827]/30">
+                    <span className=" text-[8px] font-bold uppercase tracking-[0.18em] text-[#071827]/30">
                       Destination
                     </span>
                   </div>
@@ -317,7 +301,7 @@ export default function NotFound() {
         {/* Bottom status */}
         <footer className="flex flex-col gap-3 border-t border-[#071827]/10 py-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-manrope text-[9px] uppercase tracking-[0.15em] text-[#071827]/30">
-            STARS · China · Hong Kong · Egypt
+            Assayel · China · Saudi · Egypt
           </p>
 
           <p className="font-manrope text-[9px] uppercase tracking-[0.15em] text-[#071827]/30">
