@@ -21,20 +21,19 @@
     "changeToEnglish": "Change language to English",
     "switch": "العربية"
   },
-
   "hero": {
     "eyebrow": "From World  to your destination",
     "titleLead": "Your trusted",
     "titleAccent": "partner ",
     "titleTail": "for sourcing and shipping.",
-    "description": "Assayel connects its presence in China, Saudi Arabia, and Egypt to deliver coordinated sourcing, shipping, warehousing, and import solutions for traders, businesses, and individuals.",
+    "description": "Assayl connects its presence in China, Saudi Arabia, and Egypt to deliver coordinated sourcing, shipping, warehousing, and import solutions for traders, businesses, and individuals.",
     "start": "Start a Project",
     "services": "Explore Services",
     "operationalNetwork": "Our operational network",
-    "Assayel": "Assayel Network",
+    "Assayl": "Assayl Network",
     "connected": "Connected",
     "china": "China",
-    "Saudi":"Saudi ",
+    "Saudi": "Saudi ",
     "egypt": "Egypt",
     "chinaDetails": "Sourcing · Supplier network",
     "SaudiDetails": "Freight · Consolidation",
@@ -44,12 +43,11 @@
     "scroll": "Scroll to explore",
     "portImageAlt": "Cargo containers and international shipping port"
   },
-
   "about": {
     "eyebrow": "Experience that knows the route",
     "title": "A reliable link between source and destination.",
-    "description": "Our teams and offices coordinate sourcing, purchasing, consolidation, warehousing, freight, and customs support through a clear process shaped around each product, volume, and destination."
-    ,"markets": "China · Saudi Arabia · Egypt",
+    "description": "Our teams and offices coordinate sourcing, purchasing, consolidation, warehousing, freight, and customs support through a clear process shaped around each product, volume, and destination.",
+    "markets": "China · Saudi Arabia · Egypt",
     "networkLine": "One coordinated network",
     "titleLead": "A reliable link between",
     "titleAccent": "source",
@@ -74,7 +72,7 @@
   "why": {
     "eyebrow": "A practical advantage",
     "headingLead": "Why",
-    "headingAccent": "Assayel?",
+    "headingAccent": "Assayl?",
     "description": "The value lies in having a team close to the source that understands sourcing and freight stages and brings them into one clearer experience.",
     "principles": "Source · Coordinate · Deliver",
     "sourceTitle": "Present at the source",
@@ -90,7 +88,7 @@
     "eyebrow": "Cargo journey",
     "titleLead": "From selection",
     "titleTail": "to movement.",
-    "Assayel": "Assayel",
+    "Assayl": "Assayl",
     "description": "Every shipment moves through a coordinated sequence. From verification at the origin to final freight movement, each stage is handled with clarity and control.",
     "origin": "Origin",
     "inspectTitle": "Inspect & verify",
@@ -111,13 +109,12 @@
     "SaudiTitle": "Saudi  Branch",
     "chinaTitle": "China Branch",
     "egyptTitle": "Representative Office in Egypt",
-    "Saudi":"Saudi ",
+    "Saudi": "Saudi ",
     "china": "China",
     "egypt": "Egypt",
     "noPhone": "No verified phone available",
     "cta": "Branch and office details"
   },
-
   "HomeServices": {
     "eyebrow": "What We Do",
     "title": "Trade, handled with precision.",
@@ -142,12 +139,11 @@
     "bottomTitle": "Have a shipment in mind?",
     "bottomDescription": "Tell us what you need and we’ll help determine the right solution."
   },
-
   "freight": {
     "eyebrow": "International freight solutions",
     "titleLead": "The right route for",
     "titleAccent": "your cargo.",
-    "description": "Choose the freight method that matches your cargo, timing, and priorities. Assayel coordinates the route from origin through destination.",
+    "description": "Choose the freight method that matches your cargo, timing, and priorities. Assayl coordinates the route from origin through destination.",
     "seaTag": "Sea freight",
     "seaTitle": "More capacity. Carefully planned routes.",
     "seaDescription": "A practical solution for larger cargo, with flexible capacity, consolidation options, and carefully coordinated routing from China to your destination.",
@@ -218,11 +214,7 @@
         "title": "Support customs clearance",
         "description": "We coordinate the required procedures according to the destination and applicable regulations."
       }
-    ],
-    "stageLabel": "STAGE",
-    "ctaTitle": "Ready to start your shipping journey?",
-    "ctaButton": "Request a Quote",
-    "imageAlt": "Shipment journey stage"
+    ]
   },
   "contact": {
     "eyebrow": "Get in touch",
@@ -257,29 +249,17 @@
     "privacy": "Privacy",
     "terms": "Terms"
   },
-
-
-
-
-
-
-
-
-
   "ourStory": {
     "eyebrow": "OUR STORY",
     "title": "One Operating Network Across Three Markets",
-    "paragraph1": "Assayel specializes in import, export, international freight, and logistics services from China. Our operating network connects our presence in China and Hong Kong with representation in Egypt.",
-    "paragraph2": "The Assayel brand has operated since 2018, while our team brings more than 15 years of practical sector experience. This combination helps us understand sourcing, shipping, and the diverse requirements of our clients.",
-    "imageAlt": "Assayel logistics and warehouse operations",
+    "paragraph1": "Assayl specializes in import, export, international freight, and logistics services from China. Our operating network connects our presence in China and Hong Kong with representation in Egypt.",
+    "paragraph2": "The Assayl brand has operated since 2018, while our team brings more than 15 years of practical sector experience. This combination helps us understand sourcing, shipping, and the diverse requirements of our clients.",
+    "imageAlt": "Assayl logistics and warehouse operations",
     "imageLabel": "Our Operations",
     "since": "Operating since",
     "experience": "More than 15 years of combined team experience in international trade and logistics.",
     "caption": "Experience · Coordination · Global Reach"
-
-},
-
-
+  },
   "visionMission": {
     "eyebrow": "OUR PURPOSE",
     "heading": "Driven by Vision. Guided by Purpose.",
@@ -291,8 +271,7 @@
     "visionLabel": "Where we're going",
     "missionLabel": "How we deliver"
   },
-
-    "ourValues": {
+  "ourValues": {
     "eyebrow": "OUR VALUES",
     "heading": "The Principles Behind Every Partnership",
     "intro": "The way we work is built on trust, accountability, and practical solutions tailored to every client's needs.",
@@ -315,10 +294,6 @@
       }
     }
   },
-
-
-
-
   "services": {
     "requestService": "Request this service",
     "importExport": {
@@ -428,10 +403,6 @@
       }
     }
   },
-
-
-
-
   "ProcessPhases": {
     "eyebrow": "FROM REQUEST TO ARRIVAL",
     "title": "Your Journey with Assayl",
@@ -471,9 +442,6 @@
       }
     ]
   },
-
-
-
   "requestForm": {
     "eyebrow": "LET'S WORK TOGETHER",
     "heading": "Tell us about your shipment.",
@@ -542,4 +510,3 @@
     "whatsappTitle": "New Assayl Service Request"
   }
 }
-
