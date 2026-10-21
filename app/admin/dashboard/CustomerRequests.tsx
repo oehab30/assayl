@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight, MessageSquareText } from "lucide-react";
-import AdminCard from "../Common/AdminCard";
+import AdminCard from "../common/AdminCard";
 
 const requests = [
   {
@@ -48,7 +48,7 @@ export default function CustomerRequests() {
         </div>
 
         <Link
-          href="/admin/Requests"
+          href="/admin/requests"
           className="flex items-center gap-1 text-[10px] font-bold text-[#4F0908]"
         >
           View all

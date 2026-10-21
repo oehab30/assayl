@@ -14,7 +14,6 @@ import {
   Phone,
   Send,
   ShieldCheck,
-  Truck,
 } from "lucide-react";
 
 import { useTranslation } from "../../Language/translator";

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import AdminCard from "../Common/AdminCard";
+import AdminCard from "../common/AdminCard";
 
 const monthlyData = [
   38, 48, 44, 62, 55, 70, 64, 78, 72, 84, 76, 91,

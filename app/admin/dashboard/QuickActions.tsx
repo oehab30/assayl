@@ -7,25 +7,25 @@ import {
   PackagePlus,
   UserPlus,
 } from "lucide-react";
-import AdminCard from "../Common/AdminCard";
+import AdminCard from "../common/AdminCard";
 
 const actions = [
   {
     title: "Create shipment",
     description: "Add a new shipment",
-    href: "/admin/Shipments/new",
+    href: "/admin/shipments",
     icon: PackagePlus,
   },
   {
     title: "Customer request",
     description: "Create service request",
-    href: "/admin/Requests/new",
+    href: "/admin/requests",
     icon: ClipboardPlus,
   },
   {
     title: "Add customer",
     description: "Register a customer",
-    href: "/admin/Customers/new",
+    href: "/admin/customers",
     icon: UserPlus,
   },
 ];

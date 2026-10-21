@@ -1,6 +1,6 @@
 "use client"
 
-import Home from "./components/Home/page"
+import Home from "./components/Home/HomePageContent"
 
 
 

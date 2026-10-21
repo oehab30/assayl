@@ -30,7 +30,6 @@ interface PageHeroProps {
 }
 
 export default function PageHero({
-  eyebrow,
   title,
   description,
   breadcrumbs,

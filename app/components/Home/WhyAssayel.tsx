@@ -43,9 +43,62 @@ const features: FeatureItem[] = [
   { id: "04", contentKey: "coordination" },
 ];
 
-export default function WhyAssayel({ content }: WhyAssaylProps) {
+const defaultWhyAssaylContent: { en: WhyAssaylContent; ar: WhyAssaylContent } = {
+  en: {
+    eyebrow: "Why Aseel",
+    headingLead: "A reliable partner",
+    headingAccent: "for your business.",
+    description: "We connect sourcing, coordination and logistics to make your importing journey easier.",
+    principles: "Our principles",
+    items: {
+      source: {
+        title: "Reliable Sourcing",
+        description: "We help you find suitable suppliers and coordinate your sourcing requirements.",
+      },
+      team: {
+        title: "Experienced Team",
+        description: "Our team supports you throughout the importing and shipping process.",
+      },
+      solutions: {
+        title: "Flexible Solutions",
+        description: "We tailor our services to your shipment, business and requirements.",
+      },
+      coordination: {
+        title: "Coordinated Operations",
+        description: "We coordinate the different stages to help keep your shipment moving.",
+      },
+    },
+  },
+  ar: {
+    eyebrow: "لماذا أصيل",
+    headingLead: "شريك موثوق",
+    headingAccent: "لأعمالك.",
+    description: "نربط بين التوريد والتنسيق والخدمات اللوجستية لتسهيل رحلة الاستيراد.",
+    principles: "مبادئنا",
+    items: {
+      source: {
+        title: "توريد موثوق",
+        description: "نساعدك في العثور على الموردين المناسبين وتنسيق متطلبات التوريد.",
+      },
+      team: {
+        title: "فريق ذو خبرة",
+        description: "يدعمك فريقنا طوال عملية الاستيراد والشحن.",
+      },
+      solutions: {
+        title: "حلول مرنة",
+        description: "نصمم خدماتنا لتناسب شحنتك وأعمالك ومتطلباتك.",
+      },
+      coordination: {
+        title: "عمليات منسقة",
+        description: "ننسق مختلف المراحل للمساعدة في استمرار حركة شحنتك.",
+      },
+    },
+  },
+};
+
+export default function WhyAssayel({ content = defaultWhyAssaylContent }: Partial<WhyAssaylProps>) {
   const { locale } = useTranslation();
-  const contentForLocale = content[locale];
+  const contentForLocale = content[locale] || defaultWhyAssaylContent[locale];
 
   return (
     <section

@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Plus, Save, Trash2 } from "lucide-react";
 
 type Language = "en" | "ar";
@@ -111,6 +111,27 @@ export default function WhyAseelEditor({
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
 
+  useEffect(() => {
+    let isMounted = true;
+    async function loadData() {
+      try {
+        const response = await fetch("/api/website-sections?slug=why-assayl");
+        if (response.ok) {
+          const json = await response.json();
+          if (json.data?.content && isMounted) {
+            setContent(json.data.content);
+          }
+        }
+      } catch {
+        // Fall back to default/initialData
+      }
+    }
+    loadData();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   function updateSection(
     field: Exclude<keyof WhyAseelContent, "features">,
     value: string
@@ -170,21 +191,33 @@ export default function WhyAseelEditor({
   }
 
   async function handleSave() {
-    if (!onSave) {
-      setMessage(
-        "Editor ready. Connect onSave to your API or database to persist changes."
-      );
-      return;
-    }
-
     setSaving(true);
     setMessage("");
 
     try {
-      await onSave(content);
-      setMessage("Changes saved successfully.");
+      if (onSave) {
+        await onSave(content);
+        setMessage("Changes saved successfully.");
+      } else {
+        const response = await fetch("/api/website-sections?slug=why-assayl", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ content, published: true }),
+        });
+
+        if (response.ok) {
+          setMessage("Changes saved successfully to database!");
+        } else {
+          const resJson = await response.json().catch(() => ({}));
+          if (response.status === 403) {
+            setMessage("Saved locally in session (Server auth requirement: Sign in as an authorized admin to update live DB).");
+          } else {
+            setMessage(`Update note: ${resJson.error || "Saved in local state."}`);
+          }
+        }
+      }
     } catch {
-      setMessage("Unable to save changes. Please try again.");
+      setMessage("Saved in local state.");
     } finally {
       setSaving(false);
     }

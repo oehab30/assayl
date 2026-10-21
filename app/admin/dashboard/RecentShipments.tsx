@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, MoreHorizontal } from "lucide-react";
-import AdminCard from "../Common/AdminCard";
-import StatusBadge from "../Common/StatusBadge";
+import AdminCard from "../common/AdminCard";
+import StatusBadge from "../common/StatusBadge";
 
 const shipments = [
   {
@@ -66,7 +66,7 @@ export default function RecentShipments() {
         </div>
 
         <Link
-          href="/admin/Shipments"
+          href="/admin/shipments"
           className="flex items-center gap-1 text-[10px] font-bold text-[#4F0908] transition hover:text-[#051428]"
         >
           View all

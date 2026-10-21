@@ -1,0 +1,13 @@
+
+> my-app@0.1.0 dev
+> next dev
+
+▲ Next.js 16.4.0 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+✓ Ready in 571ms
+✓ Running next.config.ts took 49ms
+
+○ Compiling /admin ...
+ HEAD /admin 200 in 788ms (next.js: 295ms, application-code: 492ms)
+ GET /admin 200 in 908ms (next.js: 42ms, application-code: 865ms)
