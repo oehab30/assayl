@@ -14,14 +14,14 @@ import { useTranslation } from "../../Language/translator";
 const companyLinks = [
   { key: "about", href: "/about" },
   { key: "process", href: "/process" },
-  { key: "branches", href: "/branches" },
+  { key: "branches", href: "/#branches" },
 ];
 
 const serviceLinks = [
-  { key: "importExport", href: "/services#import-export" },
-  { key: "customs", href: "/services#customs" },
-  { key: "warehousing", href: "/services#warehousing" },
-  { key: "importing", href: "/services#third-party-import" },
+  { key: "importExport", href: "/services" },
+  { key: "customs", href: "/services" },
+  { key: "warehousing", href: "/services" },
+  { key: "importing", href: "/services" },
 ];
 
 export default function Footer() {

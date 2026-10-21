@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Save } from "lucide-react";
 import { fetchSectionContent, saveSectionContent } from "@/lib/cms/content-store";
+import ImageUploader from "./ImageUploader";
 
 export interface OurStoryContent {
   eyebrow: { en: string; ar: string };
@@ -169,13 +170,10 @@ export default function OurStoryEditor() {
           </div>
 
           <div>
-            <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-500">
-              Image URL / Path
-            </label>
-            <input
+            <ImageUploader
+              label="Our Story Section Image"
               value={content.imageUrl}
-              onChange={(e) => setContent({ ...content, imageUrl: e.target.value })}
-              className="h-11 w-full rounded-xl border border-slate-200 px-3.5 text-sm outline-none focus:border-[#C9A96E]"
+              onChange={(newUrl) => setContent({ ...content, imageUrl: newUrl })}
             />
           </div>
         </div>

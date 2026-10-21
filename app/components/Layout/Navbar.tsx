@@ -7,12 +7,12 @@ import { useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 
 const navigationLinks = [
-  { key: "home", href: "#home", number: "01" },
-  { key: "about", href: "about", number: "02" },
-  { key: "services", href: "services", number: "03" },
-  { key: "process", href: "process", number: "04" },
-  { key: "Knowledge Base", href: "KnowledgeBase", number: "05" },
-  { key: "contact", href: "contact", number: "06" },
+  { key: "home", href: "/#home", number: "01" },
+  { key: "about", href: "/about", number: "02" },
+  { key: "services", href: "/services", number: "03" },
+  { key: "process", href: "/process", number: "04" },
+  { key: "Knowledge Base", href: "/#branches", number: "05" },
+  { key: "contact", href: "/#contact", number: "06" },
 ];
 
 export default function Navbar() {
@@ -38,40 +38,13 @@ export default function Navbar() {
   ========================================================== */
 
   useEffect(() => {
-    const sections = navigationLinks
-      .map((link) => document.querySelector(link.href))
-      .filter(Boolean);
-
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-
-      setIsScrolled(scrollY > 40);
-
-      let currentSection = "home";
-
-      sections.forEach((section) => {
-        if (!section) return;
-
-        const element = section as HTMLElement;
-        const top = element.offsetTop - 180;
-
-        if (scrollY >= top) {
-          currentSection = element.id;
-        }
-      });
-
-      setActiveHash(currentSection);
+      setIsScrolled(window.scrollY > 40);
     };
 
     handleScroll();
-
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   /* =========================================================
