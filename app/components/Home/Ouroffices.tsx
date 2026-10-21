@@ -1,7 +1,9 @@
 
 "use client";
 
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   ArrowDownRight,
@@ -14,47 +16,59 @@ import {
 import AnimatedLine from "../Common/AnimatedLine";
 import PageBackground from "../Common/PageBackground";
 import { useTranslation } from "../../Language/translator";
+import { fetchSectionContent } from "@/lib/cms/content-store";
+import type { OfficesContent } from "@/app/admin/edit/OfficesEditor";
 
-interface OfficeLocation {
-  id: string;
-  titleKey: string;
-  companyName: string;
-  address: string;
-  phones?: string[];
-  badgeKey: string;
-}
-
-const offices: OfficeLocation[] = [
-  {
-    id: "01",
-    titleKey: "SaudiTitle",
-    companyName: "Assayel EMAA TRADE LIMITED",
-    address:
-      "FLAT 1512, 15/F, LUCKY CENTRE, NO. 165-171 WAN CHAI ROAD, WAN CHAI, HONG KONG",
-    badgeKey: "Saudi Arabia",
+const defaultOfficesContent: OfficesContent = {
+  eyebrow: { en: "Our Network", ar: "شبكتنا" },
+  title: { en: "Strategic Locations across China, Hong Kong & Egypt", ar: "مواقع استراتيجية عبر الصين وهونغ كونغ ومصر" },
+  description: {
+    en: "Our regional hubs provide local coordination, warehouse consolidation, and direct support.",
+    ar: "توفر مراكزنا الإقليمية التنسيق المحلي وتجميع المستودعات والدعم المباشر.",
   },
-  {
-    id: "02",
-    titleKey: "chinaTitle",
-    companyName:
-      "Guangzhou Assayel International Supply Chain Co., Limited",
-    address:
-      "Room E77-4611, No. 372 Huan Shi Dong Road, Guangzhou City, Guangdong Province, China",
-    phones: ["+86 185 6551 1660"],
-    badgeKey: "China",
-  },
-  {
-    id: "03",
-    titleKey: "egyptTitle",
-    companyName: "Assayel - Essam El-Din El-Sayed",
-    address: "Badr City, Cairo, Arab Republic of Egypt",
-    phones: ["+20 111 844 2982", "+20 12 395 5586"],
-    badgeKey: "Egypt",
-  },
-];
+  locations: [
+    {
+      id: "01",
+      badge: "Hong Kong / KSA Hub",
+      title: { en: "Hong Kong Headquarters", ar: "مقر هونغ كونغ" },
+      companyName: "Assayel EMAA TRADE LIMITED",
+      address: "FLAT 1512, 15/F, LUCKY CENTRE, NO. 165-171 WAN CHAI ROAD, WAN CHAI, HONG KONG",
+      phone: "+852 2891 0000",
+    },
+    {
+      id: "02",
+      badge: "China Sourcing Hub",
+      title: { en: "Guangzhou Sourcing Center", ar: "مركز كوانزو للتوريد" },
+      companyName: "Guangzhou Assayel International Supply Chain Co., Limited",
+      address: "Room E77-4611, No. 372 Huan Shi Dong Road, Guangzhou City, Guangdong Province, China",
+      phone: "+86 185 6551 1660",
+    },
+    {
+      id: "03",
+      badge: "Egypt Operations Hub",
+      title: { en: "Cairo Logistics Branch", ar: "فرع القاهرة اللوجستي" },
+      companyName: "Assayel - Essam El-Din El-Sayed",
+      address: "Badr City, Cairo, Arab Republic of Egypt",
+      phone: "+20 111 844 2982",
+    },
+  ],
+};
 
 export default function OfficesSection() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
+  const lang = (locale === "ar" ? "ar" : "en") as "en" | "ar";
+  const [cms, setCms] = useState<OfficesContent>(defaultOfficesContent);
+
+  useEffect(() => {
+    fetchSectionContent<OfficesContent>("offices", defaultOfficesContent).then(setCms);
+
+    const onUpdate = () => {
+      fetchSectionContent<OfficesContent>("offices", defaultOfficesContent).then(setCms);
+    };
+
+    window.addEventListener("cms_update_offices", onUpdate);
+    return () => window.removeEventListener("cms_update_offices", onUpdate);
+  }, []);
 
   return (
     <section
@@ -70,7 +84,7 @@ export default function OfficesSection() {
         <div className="mb-14 lg:mb-20">
           <div className="mb-5">
             <AnimatedLine
-              text={t("offices.eyebrow")}
+              text={cms.eyebrow[lang] || t("offices.eyebrow")}
               lines={1}
               lineColor="bg-[#CD2B55]"
               textColor="text-[#8C8275]"
@@ -80,14 +94,14 @@ export default function OfficesSection() {
           <div className="grid gap-7 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-16">
             <div>
               <h2 className="w-110  max-w-2xl text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-[#221E20] sm:text-4xl lg:text-[52px]">
-                {t("offices.title")}
+                {cms.title[lang] || t("offices.title")}
               </h2>
 
               <div className="mt-6 h-[3px] w-14 rounded-full bg-[#CD2B55]" />
             </div>
 
             <p className="max-w-lg font-manrope text-sm leading-7 text-[#696164] sm:text-base sm:leading-8">
-              {t("offices.description")}
+              {cms.description[lang] || t("offices.description")}
             </p>
           </div>
         </div>
@@ -109,7 +123,7 @@ export default function OfficesSection() {
 
         {/* Office cards */}
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-          {offices.map((office, index) => {
+          {cms.locations.map((office, index) => {
             const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
               office.address
             )}`;
@@ -152,14 +166,14 @@ export default function OfficesSection() {
 
                   <span className="inline-flex items-center gap-2 rounded-full border border-[#D1C6B9]/70 bg-[#F8F6F3] px-3 py-2 text-[10px] font-bold uppercase tracking-[0.12em] text-[#421821]">
                     <span className="h-1.5 w-1.5 rounded-full bg-[#CD2B55]" />
-                    {t(`offices.${office.badgeKey}`)}
+                    {office.badge}
                   </span>
                 </div>
 
                 {/* Office information */}
                 <div className="relative flex-1">
                   <h3 className="mb-4 text-2xl font-semibold tracking-[-0.035em] text-[#221E20] transition-colors duration-300 group-hover:text-[#702538] sm:text-[28px]">
-                    {t(`offices.${office.titleKey}`)}
+                    {office.title[lang] || office.title.en}
                   </h3>
 
                   <p
@@ -201,30 +215,25 @@ export default function OfficesSection() {
 
                 {/* Contact footer */}
                 <div className="mt-8 border-t border-[#D1C6B9]/60 pt-6">
-                  {office.phones?.length ? (
-                    <div className="space-y-3">
-                      {office.phones.map((phone) => (
-                        <a
-                          key={phone}
-                          href={`tel:${phone.replace(/[^\d+]/g, "")}`}
-                          dir="ltr"
-                          className="
-                            flex w-fit max-w-full items-center gap-3
-                            text-xs font-semibold text-[#393135]
-                            transition-colors duration-200
-                            hover:text-[#CD2B55]
-                            focus-visible:outline-none focus-visible:ring-2
-                            focus-visible:ring-[#CD2B55]
-                          "
-                        >
-                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#F8F6F3] transition-colors duration-300 group-hover:bg-[#F5E8EB]">
-                            <Phone className="h-3.5 w-3.5 text-[#702538]" />
-                          </span>
+                  {office.phone ? (
+                    <a
+                      href={`tel:${office.phone.replace(/[^\d+]/g, "")}`}
+                      dir="ltr"
+                      className="
+                        flex w-fit max-w-full items-center gap-3
+                        text-xs font-semibold text-[#393135]
+                        transition-colors duration-200
+                        hover:text-[#CD2B55]
+                        focus-visible:outline-none focus-visible:ring-2
+                        focus-visible:ring-[#CD2B55]
+                      "
+                    >
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#F8F6F3] transition-colors duration-300 group-hover:bg-[#F5E8EB]">
+                        <Phone className="h-3.5 w-3.5 text-[#702538]" />
+                      </span>
 
-                          <span className="break-all">{phone}</span>
-                        </a>
-                      ))}
-                    </div>
+                      <span className="break-all">{office.phone}</span>
+                    </a>
                   ) : (
                     <p className="font-manrope text-xs leading-6 text-[#8C8275]">
                       {t("offices.noPhone")}

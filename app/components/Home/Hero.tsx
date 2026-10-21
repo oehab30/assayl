@@ -1,12 +1,44 @@
 
+"use client";
+
+import { useEffect, useState } from "react";
 import { useTranslation } from "../../Language/translator";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { ArrowUpRight, ArrowDown } from "lucide-react";
 import AnimatedLine from "../Common/AnimatedLine";
+import { fetchSectionContent } from "@/lib/cms/content-store";
+import type { HeroContent } from "@/app/admin/edit/HeroEditor";
+
+const defaultHeroContent: HeroContent = {
+  eyebrow: { en: "International Freight & Logistics", ar: "الشحن الدولي والخدمات اللوجستية" },
+  titleLead: { en: "Your trusted bridge for", ar: "جسركم الموثوق لخدمات" },
+  titleAccent: { en: "China-Middle East", ar: "الصين والشرق الأوسط" },
+  titleTail: { en: "trade & shipping.", ar: "للتجارة والشحن." },
+  description: {
+    en: "We coordinate end-to-end sourcing, customs clearance, and freight solutions connecting Guangzhou, Hong Kong, Saudi Arabia, and Egypt.",
+    ar: "ننسق عمليات التوريد والتخليص الجمركي وحلول الشحن التي تربط كوانزو وهونغ كونغ والسعودية ومصر.",
+  },
+  primaryCtaText: { en: "Request a Quote", ar: "طلب عرض سعر" },
+  secondaryCtaText: { en: "Explore Services", ar: "استكشف خدماتنا" },
+  videoUrl: "/Hero_video.mp4",
+};
 
 export default function Hero() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
+  const lang = (locale === "ar" ? "ar" : "en") as "en" | "ar";
+  const [cms, setCms] = useState<HeroContent>(defaultHeroContent);
+
+  useEffect(() => {
+    fetchSectionContent<HeroContent>("hero", defaultHeroContent).then(setCms);
+
+    const onUpdate = () => {
+      fetchSectionContent<HeroContent>("hero", defaultHeroContent).then(setCms);
+    };
+
+    window.addEventListener("cms_update_hero", onUpdate);
+    return () => window.removeEventListener("cms_update_hero", onUpdate);
+  }, []);
 
   return (
     <section
@@ -118,7 +150,7 @@ export default function Hero() {
               className="z-100 mb-7"
             >
               <AnimatedLine
-                text={t("hero.eyebrow")}
+                text={cms.eyebrow[lang] || t("hero.eyebrow")}
                 lines={1}
                 lineColor="bg-[#CD2B55]"
                 textColor="text-[#D1C6B9]"
@@ -147,10 +179,9 @@ export default function Hero() {
                 xl:text-[63px]
               "
             >
-              {t("hero.titleLead")}{" "}
-             {t("hero.titleAccent")}
-
-           {t("hero.titleTail")}
+              {cms.titleLead[lang] || t("hero.titleLead")}{" "}
+              <span className="text-[#CD2B55]">{cms.titleAccent[lang] || t("hero.titleAccent")}</span>{" "}
+              {cms.titleTail[lang] || t("hero.titleTail")}
             </motion.h1>
 
             {/* DESCRIPTION */}
@@ -172,7 +203,7 @@ export default function Hero() {
                 sm:leading-8
               "
             >
-              {t("hero.description")}
+              {cms.description[lang] || t("hero.description")}
             </motion.p>
 
             {/* CTA */}

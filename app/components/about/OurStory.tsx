@@ -1,13 +1,48 @@
 
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import AnimatedLine from "../Common/AnimatedLine";
 import { ArrowDownLeft, ArrowDownRight } from "lucide-react";
 import { useTranslation } from "../../Language/translator";
+import { fetchSectionContent } from "@/lib/cms/content-store";
+import type { OurStoryContent } from "@/app/admin/edit/OurStoryEditor";
+
+const defaultStoryContent: OurStoryContent = {
+  eyebrow: { en: "Our Story", ar: "قصتنا" },
+  title: { en: "Building Seamless Trade Bridges Since 2018", ar: "بناء جسور تجارية سلسة منذ عام 2018" },
+  paragraph1: {
+    en: "Assayl was founded to simplify complex importing procedures between China, Hong Kong, Saudi Arabia, and Egypt.",
+    ar: "تأسست أصيل لتبسيط إجراءات الاستيراد المعقدة بين الصين وهونغ كونغ والسعودية ومصر.",
+  },
+  paragraph2: {
+    en: "Our dedicated logistics team provides complete visibility, sourcing verification, and customs support.",
+    ar: "يقدم فريقنا اللوجستي المخصص رؤية كاملة والتحقق من التوريد والدعم الجمركي.",
+  },
+  sinceYear: "2018",
+  experienceText: {
+    en: "Over 8 years of operational excellence in China-Middle East logistics.",
+    ar: "أكثر من 8 سنوات من التميز التشغيلي في الخدمات اللوجستية بين الصين والشرق الأوسط.",
+  },
+  imageUrl: "/exper.jpg",
+};
 
 export default function OurStory() {
   const { t, locale: language } = useTranslation();
+  const lang = (language === "ar" ? "ar" : "en") as "en" | "ar";
+  const [cms, setCms] = useState<OurStoryContent>(defaultStoryContent);
+
+  useEffect(() => {
+    fetchSectionContent<OurStoryContent>("our-story", defaultStoryContent).then(setCms);
+
+    const onUpdate = () => {
+      fetchSectionContent<OurStoryContent>("our-story", defaultStoryContent).then(setCms);
+    };
+
+    window.addEventListener("cms_update_our-story", onUpdate);
+    return () => window.removeEventListener("cms_update_our-story", onUpdate);
+  }, []);
 
   const isRtl = language === "ar";
   const DirectionArrow = isRtl ? ArrowDownLeft : ArrowDownRight;
@@ -39,7 +74,7 @@ export default function OurStory() {
           <div className="lg:col-span-6">
             <div className="mb-5">
               <AnimatedLine
-                text={t("ourStory.eyebrow")}
+                text={cms.eyebrow[lang] || t("ourStory.eyebrow")}
                 lines={1}
                 lineColor="bg-[#CD2B55]"
                 textColor="text-[#421821]"
@@ -47,7 +82,7 @@ export default function OurStory() {
             </div>
 
             <h2 className="max-w-2xl font-jakarta text-3xl font-bold leading-[1.15] tracking-[-0.035em] text-[#221E20] sm:text-4xl lg:text-[46px]">
-              {t("ourStory.title")}
+              {cms.title[lang] || t("ourStory.title")}
             </h2>
 
             {/* Short decorative accent */}
@@ -59,8 +94,8 @@ export default function OurStory() {
 
           {/* Description */}
           <div className="space-y-4 font-manrope text-sm leading-7 text-[#4B4A4B] sm:text-[15px] sm:leading-8 lg:col-span-6 lg:pt-10">
-            <p>{t("ourStory.paragraph1")}</p>
-            <p>{t("ourStory.paragraph2")}</p>
+            <p>{cms.paragraph1[lang] || t("ourStory.paragraph1")}</p>
+            <p>{cms.paragraph2[lang] || t("ourStory.paragraph2")}</p>
           </div>
         </div>
 
@@ -118,7 +153,7 @@ export default function OurStory() {
                     dir="ltr"
                     className="font-jakarta text-5xl font-bold leading-none tracking-[-0.05em] text-white sm:text-6xl lg:text-7xl"
                   >
-                    2018
+                    {cms.sinceYear || "2018"}
                   </p>
                 </div>
 
