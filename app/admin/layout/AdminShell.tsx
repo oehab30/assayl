@@ -9,8 +9,28 @@ interface AdminShellProps {
   children: ReactNode;
 }
 
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect } from "react";
+
 export default function AdminShell({ children }: AdminShellProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const isLoginPage = pathname === "/admin/login";
+
+  useEffect(() => {
+    if (!isLoginPage && typeof window !== "undefined") {
+      const isAuth = localStorage.getItem("assayel_admin_auth");
+      if (!isAuth) {
+        router.push("/admin/login");
+      }
+    }
+  }, [isLoginPage, router]);
+
+  if (isLoginPage) {
+    return <>{children}</>;
+  }
 
   return (
     <div className="min-h-screen bg-[#F6F3EF] text-[#051428]">
