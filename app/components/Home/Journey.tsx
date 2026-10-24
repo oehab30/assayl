@@ -24,7 +24,7 @@ export default function ProcessTimeline() {
 
   const [activeStep, setActiveStep] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
-  const [isPaused, setIsPaused] = useState(false);
+  const [isPaused] = useState(false);
 
   // Arabic = RTL
   const isArabic = language === "ar";

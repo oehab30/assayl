@@ -4,7 +4,7 @@
     "about": "من نحن",
     "services": "الخدمات",
     "process": "كيف نعمل",
-    "Knowledge Base": "قاعدة المعرفة",
+    "knowledge Base": "قاعدة المعرفة",
     "contact": "اتصل بنا",
     "quote": "اطلب عرض سعر",
     "navigation": "التنقل",
@@ -69,21 +69,7 @@
     "deliver": "التسليم",
     "customs": "الجمارك والوجهة"
   },
-  "why": {
-    "eyebrow": "ميزة عملية",
-    "headingLead": "لماذا",
-    "headingAccent": " اصايل؟",
-    "description": "تكمن القيمة في وجود فريق قريب من المصدر، يفهم مراحل التوريد والشحن ويجمعها في تجربة أكثر وضوحًا.",
-    "principles": "نورد · ننسق · نسلّم",
-    "sourceTitle": "حضور عند المصدر",
-    "sourceDescription": "حضور قانوني وتشغيلي في الصين والسعودية، مع تمثيل في مصر.",
-    "teamTitle": "فريق ذو خبرة",
-    "teamDescription": "أكثر من 15 عامًا من الخبرة العملية في الاستيراد والشحن.",
-    "solutionsTitle": "حلول مرنة",
-    "solutionsDescription": "دعم للشحنات الكبيرة والشحن بالمتر المكعب والطلبات الفردية.",
-    "coordinationTitle": "متابعة منسقة",
-    "coordinationDescription": "تنسيق مراحل التوريد والتجميع والتخزين والشحن والوصول."
-  },
+
   "cargo": {
     "eyebrow": "رحلة الشحنة",
     "titleLead": "من الاختيار",

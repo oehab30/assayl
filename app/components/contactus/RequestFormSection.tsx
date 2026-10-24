@@ -14,7 +14,6 @@ import {
   Phone,
   Send,
   ShieldCheck,
-  Truck,
 } from "lucide-react";
 
 import { useTranslation } from "../../Language/translator";
@@ -123,7 +122,7 @@ function FormField({
   icon,
 }: FieldProps) {
   return (
-    <label className="block min-w-0">
+    <label id="#contact" className="block min-w-0 ">
       <span className="mb-2 block text-sm font-semibold text-[#34282b]">
         {label}
         {required && <span className="ml-1 text-[#cd2b55]">*</span>}

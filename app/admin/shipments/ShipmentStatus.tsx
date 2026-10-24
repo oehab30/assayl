@@ -1,30 +1,30 @@
 "use client";
 
 import {
-  AlertCircle,
   CheckCircle2,
   Clock3,
-  FileCheck2,
+  PackageCheck,
+  Truck,
   XCircle,
-  Search,
+  AlertTriangle,
 } from "lucide-react";
 
-export type RequestStatusType =
-  | "New"
-  | "Reviewing"
-  | "Quoted"
-  | "Approved"
-  | "Completed"
-  | "Rejected";
+export type ShipmentStatusType =
+  | "Pending"
+  | "Processing"
+  | "In Transit"
+  | "Delivered"
+  | "Delayed"
+  | "Cancelled";
 
-interface RequestStatusProps {
-  status: RequestStatusType;
+interface ShipmentStatusProps {
+  status: ShipmentStatusType;
   showIcon?: boolean;
   size?: "sm" | "md";
 }
 
 const statusConfig: Record<
-  RequestStatusType,
+  ShipmentStatusType,
   {
     label: string;
     icon: React.ElementType;
@@ -32,54 +32,54 @@ const statusConfig: Record<
     dotClassName: string;
   }
 > = {
-  New: {
-    label: "New",
-    icon: AlertCircle,
-    className: "bg-blue-50 text-blue-700 border-blue-200",
-    dotClassName: "bg-blue-500",
-  },
-
-  Reviewing: {
-    label: "Reviewing",
-    icon: Search,
+  Pending: {
+    label: "Pending",
+    icon: Clock3,
     className: "bg-amber-50 text-amber-700 border-amber-200",
     dotClassName: "bg-amber-500",
   },
 
-  Quoted: {
-    label: "Quoted",
-    icon: FileCheck2,
-    className: "bg-purple-50 text-purple-700 border-purple-200",
-    dotClassName: "bg-purple-500",
+  Processing: {
+    label: "Processing",
+    icon: PackageCheck,
+    className: "bg-blue-50 text-blue-700 border-blue-200",
+    dotClassName: "bg-blue-500",
   },
 
-  Approved: {
-    label: "Approved",
+  "In Transit": {
+    label: "In Transit",
+    icon: Truck,
+    className: "bg-indigo-50 text-indigo-700 border-indigo-200",
+    dotClassName: "bg-indigo-500",
+  },
+
+  Delivered: {
+    label: "Delivered",
     icon: CheckCircle2,
     className: "bg-emerald-50 text-emerald-700 border-emerald-200",
     dotClassName: "bg-emerald-500",
   },
 
-  Completed: {
-    label: "Completed",
-    icon: CheckCircle2,
-    className: "bg-teal-50 text-teal-700 border-teal-200",
-    dotClassName: "bg-teal-500",
+  Delayed: {
+    label: "Delayed",
+    icon: AlertTriangle,
+    className: "bg-orange-50 text-orange-700 border-orange-200",
+    dotClassName: "bg-orange-500",
   },
 
-  Rejected: {
-    label: "Rejected",
+  Cancelled: {
+    label: "Cancelled",
     icon: XCircle,
     className: "bg-red-50 text-red-700 border-red-200",
     dotClassName: "bg-red-500",
   },
 };
 
-export default function RequestStatus({
+export default function ShipmentStatus({
   status,
   showIcon = true,
   size = "sm",
-}: RequestStatusProps) {
+}: ShipmentStatusProps) {
   const config = statusConfig[status];
 
   if (!config) return null;
@@ -92,8 +92,8 @@ export default function RequestStatus({
         inline-flex
         items-center
         gap-1.5
-        rounded-full
         border
+        rounded-full
         font-medium
         whitespace-nowrap
         ${config.className}

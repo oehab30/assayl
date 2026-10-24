@@ -1,6 +1,6 @@
 import "server-only";
 
-import { createClient } from "@supabase/supabase-js";
+import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 
 export function createSupabaseServerClient() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -11,11 +11,15 @@ export function createSupabaseServerClient() {
     throw new Error("Supabase environment variables are missing.");
   }
 
-  return createClient(supabaseUrl, supabaseKey, {
+  return createSupabaseClient(supabaseUrl, supabaseKey, {
     auth: {
       persistSession: false,
       autoRefreshToken: false,
       detectSessionInUrl: false,
     },
   });
+}
+
+export function createClient() {
+  return createSupabaseServerClient();
 }

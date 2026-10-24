@@ -18,7 +18,7 @@ export default function AboutHero() {
       ]}
       primaryCta={{
         label: "Request a Quote",
-        href: "/quote",
+        href: "/contact#contact",
       }}
       secondaryCta={{
         label: "Contact Us",

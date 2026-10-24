@@ -15,7 +15,7 @@ import {
 
 import ServiceGroupSection, {
   type ServiceItem,
-} from "./ServiceGroupSection.tsx";
+} from "./ServiceGroupSection";
 
 // SECTION 01 — Import, Export & Sourcing
 const importExportServices: ServiceItem[] = [

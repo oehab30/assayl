@@ -30,7 +30,7 @@ const navigation = [
   },
   {
     label: "Shipments",
-    href: "/admin/Shipments",
+    href: "/admin/shipments",
     icon: Ship,
   },
   {
@@ -40,12 +40,12 @@ const navigation = [
   },
   {
     label: "Customer Requests",
-    href: "/admin/Requests",
+    href: "/admin/requests",
     icon: ClipboardList,
   },
   {
     label: "Customers",
-    href: "/admin/Customers",
+    href: "/admin/customers",
     icon: Users,
   },
   {
@@ -55,7 +55,7 @@ const navigation = [
   },
   {
     label: "Edit",
-    href: "/admin/Edit",
+    href: "/admin/edit",
     icon: Building2,
   },
 ];

@@ -6,7 +6,7 @@ import {
   Clock3,
   Ship,
 } from "lucide-react";
-import AdminCard from "../Common/AdminCard";
+import AdminCard from "../common/AdminCard";
 
 const stats = [
   {

@@ -12,6 +12,7 @@ export default function ContactCTA() {
 
   return (
     <section
+      id="contact"
       dir={isArabic ? "rtl" : "ltr"}
       className="relative isolate overflow-hidden bg-[#221e20] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
     >

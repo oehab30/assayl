@@ -44,7 +44,7 @@ export default function ServiceGroupSection({
   const { t, locale: language } = useTranslation();
   const isRtl = language === "ar";
 
-  const [featuredService, ...regularServices] = services;
+  const [featuredService] = services;
 
   const renderServiceContent = (service: ServiceItem) => {
     const Icon = service.icon;
