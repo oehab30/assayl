@@ -13,7 +13,7 @@ interface FeatureContent {
   description: string;
 }
 
-interface WhyAssaylContent {
+interface why_assayl {
   eyebrow: string;
   headingLead: string;
   headingAccent: string;
@@ -27,12 +27,12 @@ interface WhyAssaylContent {
   };
 }
 
-interface WebsiteSection {
+interface Home_sections {
   id: number;
   slug: string;
   content: {
-    en: WhyAssaylContent;
-    ar: WhyAssaylContent;
+    en: why_assayl;
+    ar: why_assayl;
   };
   published: boolean;
 }
@@ -47,7 +47,7 @@ const features = [
 export default function WhyAssayel() {
   const { locale } = useTranslation();
 
-  const [section, setSection] = useState<WebsiteSection | null>(null);
+  const [section, setSection] = useState<Home_sections | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -62,9 +62,9 @@ export default function WhyAssayel() {
         const supabase = createClient();
 
         const { data, error: queryError } = await supabase
-          .from("website_sections")
+          .from("Home_sections")
           .select("id, slug, content, published")
-          .eq("slug", "why-assayl")
+          .eq("slug", "why_assayl")
           .eq("published", true)
           .maybeSingle();
 
@@ -79,14 +79,14 @@ export default function WhyAssayel() {
         }
 
         if (isMounted) {
-          setSection(data as unknown as WebsiteSection);
+          setSection(data as unknown as Home_sections);
         }
       } catch (err) {
         console.error("Failed to load Why Assayl content:", err);
 
         if (isMounted) {
           setError(
-            "Unable to load this section. Please try again later."
+            "Unable to load this section. Please try again later check the connection ."
           );
         }
       } finally {

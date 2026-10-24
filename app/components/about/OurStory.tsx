@@ -6,7 +6,6 @@ import Image from "next/image";
 import AnimatedLine from "../Common/AnimatedLine";
 import { ArrowDownLeft, ArrowDownRight } from "lucide-react";
 import { useTranslation } from "../../Language/translator";
-import { fetchSectionContent } from "@/lib/cms/content-store";
 import type { OurStoryContent } from "@/app/admin/edit/OurStoryEditor";
 
 const defaultStoryContent: OurStoryContent = {
@@ -34,10 +33,8 @@ export default function OurStory() {
   const [cms, setCms] = useState<OurStoryContent>(defaultStoryContent);
 
   useEffect(() => {
-    fetchSectionContent<OurStoryContent>("our-story", defaultStoryContent).then(setCms);
 
     const onUpdate = () => {
-      fetchSectionContent<OurStoryContent>("our-story", defaultStoryContent).then(setCms);
     };
 
     window.addEventListener("cms_update_our-story", onUpdate);

@@ -26,7 +26,7 @@ export default function SupabaseTestPage() {
 
       // جلب البيانات من جدول website_sections
       const { data, error } = await supabase
-        .from("website_sections")
+        .from("Home_sections")
         .select("*");
 
       if (error) {

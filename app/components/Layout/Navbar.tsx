@@ -1,30 +1,33 @@
 
+"use client";
+
 import { useTranslation } from "../../Language/translator";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 
 const navigationLinks = [
-  { key: "home", href: "/#home", number: "01" },
+  { key: "home", href: "/", number: "01" },
   { key: "about", href: "/about", number: "02" },
   { key: "services", href: "/services", number: "03" },
   { key: "process", href: "/process", number: "04" },
-  { key: "Knowledge Base", href: "/#branches", number: "05" },
-  { key: "contact", href: "/#contact", number: "06" },
+  { key: "knowledgeBase", href: "/knowledge-base", number: "05" },
+  { key: "contact", href: "/contact", number: "06" },
 ];
 
 export default function Navbar() {
   const { locale, setLocale, t } = useTranslation();
+  const pathname = usePathname();
 
-  const [activeHash, setActiveHash] = useState("home");
+  const [activeHash, setActiveHash] = useState("/");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   const isArabic = locale === "ar";
 
-  // Brand typography follows the active language.
   const bodyFont = isArabic ? "font-body-ar" : "font-body-en";
   const headlineFont = isArabic
     ? "font-headline-ar"
@@ -33,24 +36,36 @@ export default function Navbar() {
   const accentColor = "#CD2B55";
   const brandColor = "#421821";
 
-  /* =========================================================
-     SCROLL STATE + ACTIVE SECTION
-  ========================================================== */
+  // Synchronize the active navigation item with the current route.
+  useEffect(() => {
+    const currentPath = pathname.replace(/\/+$/, "") || "/";
 
+    const matchedLink = navigationLinks.find(
+      (link) => link.href === currentPath
+    );
+
+    setActiveHash(matchedLink?.href ?? currentPath);
+    setIsMenuOpen(false);
+  }, [pathname]);
+
+  // Track scroll position for the navbar appearance.
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
     };
 
     handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-  /* =========================================================
-     CLOSE MOBILE MENU ON DESKTOP
-  ========================================================== */
-
+  // Close the mobile menu on desktop.
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
@@ -65,30 +80,96 @@ export default function Navbar() {
     };
   }, []);
 
-  /* =========================================================
-     LOCK BODY SCROLL
-  ========================================================== */
-
+  // Prevent background scrolling while the mobile menu is open.
   useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
 
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
     };
   }, [isMenuOpen]);
 
-  /* =========================================================
-     NAVIGATION
-  ========================================================== */
-
+  // Normal links navigate to the top. Quote links preserve #contact.
   const handleNavigation = (href: string) => {
-    setActiveHash(href);
+    setActiveHash(href.split("#")[0] || "/");
     setIsMenuOpen(false);
   };
 
   const toggleLocale = () => {
     setLocale(isArabic ? "en" : "ar");
   };
+
+  const isLinkActive = (href: string) => activeHash === href;
+
+  // Scroll to Contact after the destination page has rendered.
+  const scrollToContact = useCallback(() => {
+    let attempts = 0;
+    let frameId = 0;
+
+    const findContact = () => {
+      const section = document.getElementById("contact");
+
+      if (section) {
+        const navbarHeight =
+          document.querySelector("header")?.getBoundingClientRect().height ??
+          96;
+
+        const top =
+          section.getBoundingClientRect().top +
+          window.scrollY -
+          navbarHeight;
+
+        window.scrollTo({
+          top: Math.max(0, top),
+          left: 0,
+          behavior: "smooth",
+        });
+
+        return;
+      }
+
+      if (attempts < 30) {
+        attempts += 1;
+        frameId = requestAnimationFrame(findContact);
+      }
+    };
+
+    frameId = requestAnimationFrame(findContact);
+
+    return () => cancelAnimationFrame(frameId);
+  }, []);
+
+  // Handle top-of-page navigation and the special Contact hash.
+  useEffect(() => {
+    if (window.location.hash === "#contact") {
+      const cancelScroll = scrollToContact();
+      return cancelScroll;
+    }
+
+    // All ordinary page navigation starts at the top.
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, [pathname, scrollToContact]);
+
+  // Support clicking Quote while already on the Contact page.
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash === "#contact") {
+        scrollToContact();
+      }
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, [scrollToContact]);
 
   return (
     <motion.header
@@ -102,15 +183,14 @@ export default function Navbar() {
       className="fixed inset-x-0 top-0 z-[100]"
     >
       {/* NAVBAR SURFACE */}
-
       <motion.div
         animate={{
-         backgroundColor: isScrolled
-  ? "rgba(34, 30, 32, 0.94)"
-  : "rgba(34, 30, 32, 0)",
-borderColor: isScrolled
-  ? "rgba(209, 198, 185, 0.13)"
-  : "rgba(209, 198, 185, 0)",
+          backgroundColor: isScrolled
+            ? "rgba(34, 30, 32, 0.94)"
+            : "rgba(34, 30, 32, 0)",
+          borderColor: isScrolled
+            ? "rgba(209, 198, 185, 0.13)"
+            : "rgba(209, 198, 185, 0)",
         }}
         transition={{ duration: 0.4 }}
         className="border-b backdrop-blur-xl"
@@ -128,11 +208,10 @@ borderColor: isScrolled
           `}
         >
           {/* LOGO */}
-
           <Link
-            href="/#home"
+            href="/"
             aria-label={`Assayel ${t("nav.home")}`}
-            onClick={() => handleNavigation("home")}
+            onClick={() => handleNavigation("/")}
             className="group relative z-[110] flex shrink-0 items-center outline-none"
           >
             <Image
@@ -153,18 +232,18 @@ borderColor: isScrolled
           </Link>
 
           {/* DESKTOP NAVIGATION */}
-
           <nav
             aria-label={t("nav.mainNavigation")}
             className="hidden items-center gap-7 lg:flex xl:gap-9"
           >
             {navigationLinks.map((link) => {
-              const isActive = activeHash === link.href;
+              const isActive = isLinkActive(link.href);
 
               return (
                 <Link
                   key={link.href}
                   href={link.href}
+                  aria-current={isActive ? "page" : undefined}
                   onClick={() => handleNavigation(link.href)}
                   className={`
                     group relative flex items-center py-3
@@ -186,15 +265,11 @@ borderColor: isScrolled
                     {t(`nav.${link.key}`)}
                   </span>
 
-                  {/* Active underline */}
-
                   <span
                     className={`
                       absolute bottom-1 h-px
                       transition-all duration-300
-                      ${
-                        isArabic ? "right-0" : "left-0"
-                      }
+                      ${isArabic ? "right-0" : "left-0"}
                       ${
                         isActive
                           ? "w-full"
@@ -203,8 +278,6 @@ borderColor: isScrolled
                     `}
                     style={{ backgroundColor: accentColor }}
                   />
-
-                  {/* Active indicator */}
 
                   {isActive && (
                     <motion.span
@@ -223,7 +296,6 @@ borderColor: isScrolled
           </nav>
 
           {/* DESKTOP ACTIONS */}
-
           <div className="hidden items-center gap-5 lg:flex">
             <button
               type="button"
@@ -256,11 +328,10 @@ borderColor: isScrolled
               className="h-5 w-px bg-white/10"
             />
 
-            {/* Quote CTA */}
-
+            {/* DESKTOP QUOTE BUTTON */}
             <Link
-              href="/#contact"
-              onClick={() => handleNavigation("#contact")}
+              href="/contact#contact"
+              onClick={() => handleNavigation("/contact#contact")}
               className={`
                 group relative inline-flex h-[46px]
                 items-center overflow-hidden
@@ -301,7 +372,6 @@ borderColor: isScrolled
           </div>
 
           {/* MOBILE ACTIONS */}
-
           <div className="flex items-center gap-4 lg:hidden">
             <button
               type="button"
@@ -363,7 +433,6 @@ borderColor: isScrolled
       </motion.div>
 
       {/* MOBILE MENU */}
-
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -373,10 +442,9 @@ borderColor: isScrolled
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
             dir={isArabic ? "rtl" : "ltr"}
-            className="fixed inset-0 -z-10 bg-[#051428] lg:hidden"
+            className="fixed inset-0 -z-10 bg-[#221E20] lg:hidden"
           >
-            {/* Brand background glow */}
-
+            {/* Background glow */}
             <div
               aria-hidden="true"
               className="
@@ -396,13 +464,12 @@ borderColor: isScrolled
             />
 
             <div
-              className={`
+              className="
                 relative mx-auto flex h-full w-full max-w-[1320px]
                 flex-col px-5 pb-8 pt-[105px] sm:px-8
-              `}
+              "
             >
               {/* Menu label */}
-
               <div className="mb-8 flex items-center gap-3">
                 <span
                   className="h-px w-8"
@@ -419,14 +486,13 @@ borderColor: isScrolled
                 </span>
               </div>
 
-              {/* Navigation links */}
-
+              {/* MOBILE NAVIGATION LINKS */}
               <nav
                 aria-label={t("nav.mobileNavigation")}
                 className="flex flex-col"
               >
                 {navigationLinks.map((link, index) => {
-                  const isActive = activeHash === link.href;
+                  const isActive = isLinkActive(link.href);
 
                   return (
                     <motion.div
@@ -444,6 +510,7 @@ borderColor: isScrolled
                     >
                       <Link
                         href={link.href}
+                        aria-current={isActive ? "page" : undefined}
                         onClick={() => handleNavigation(link.href)}
                         className="
                           group flex items-center justify-between
@@ -483,11 +550,7 @@ borderColor: isScrolled
                         <ArrowUpRight
                           className={`
                             h-5 w-5 transition-all duration-300
-                            ${
-                              isArabic
-                                ? "rotate-[-90deg]"
-                                : ""
-                            }
+                            ${isArabic ? "rotate-[-90deg]" : ""}
                             ${
                               isActive
                                 ? "text-[#CD2B55] opacity-100"
@@ -501,8 +564,7 @@ borderColor: isScrolled
                 })}
               </nav>
 
-              {/* Mobile footer */}
-
+              {/* MOBILE FOOTER */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -529,9 +591,10 @@ borderColor: isScrolled
                     </p>
                   </div>
 
+                  {/* MOBILE QUOTE BUTTON */}
                   <Link
-                    href="/#contact"
-                    onClick={() => handleNavigation("#contact")}
+                    href="/contact#contact"
+                    onClick={() => handleNavigation("/contact#contact")}
                     className={`
                       group flex h-12 shrink-0 items-center gap-3
                       px-5 ${bodyFont} text-[10px] font-semibold
