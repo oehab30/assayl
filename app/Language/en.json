@@ -69,21 +69,7 @@
     "deliver": "Deliver",
     "customs": "Customs & destination"
   },
-  "why": {
-    "eyebrow": "A practical advantage",
-    "headingLead": "Why",
-    "headingAccent": "Assayl?",
-    "description": "The value lies in having a team close to the source that understands sourcing and freight stages and brings them into one clearer experience.",
-    "principles": "Source · Coordinate · Deliver",
-    "sourceTitle": "Present at the source",
-    "sourceDescription": "Legal and operational presence in China and Saudi Arabia, represented in Egypt.",
-    "teamTitle": "Experienced team",
-    "teamDescription": "More than 15 years of hands-on experience in importing and freight.",
-    "solutionsTitle": "Flexible solutions",
-    "solutionsDescription": "Support for large volumes, cubic-meter shipping, and individual orders.",
-    "coordinationTitle": "Coordinated follow-up",
-    "coordinationDescription": "Aligned sourcing, consolidation, warehousing, shipping, and arrival stages."
-  },
+
   "cargo": {
     "eyebrow": "Cargo journey",
     "titleLead": "From selection",

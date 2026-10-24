@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { Save } from "lucide-react";
-import { fetchSectionContent, saveSectionContent } from "@/lib/cms/content-store";
 import ImageUploader from "./ImageUploader";
 
 export interface OurStoryContent {
@@ -41,13 +40,10 @@ export default function OurStoryEditor() {
   const [statusMessage, setStatusMessage] = useState("");
 
   useEffect(() => {
-    fetchSectionContent<OurStoryContent>("our-story", defaultStoryContent).then(setContent);
   }, []);
 
   const handleSave = async () => {
     setSaving(true);
-    const result = await saveSectionContent<OurStoryContent>("our-story", content);
-    setStatusMessage(result.message);
     setSaving(false);
   };
 

@@ -5,7 +5,7 @@ import { Building2, LayoutTemplate, Sparkles, UserCheck } from "lucide-react";
 import HeroEditor from "./HeroEditor";
 import OurStoryEditor from "./OurStoryEditor";
 import OfficesEditor from "./OfficesEditor";
-import WhyAseelEditor from "./WhyAseelEditor";
+// import WhyAseelEditor from "./WhyAseelEditor";
 
 export default function EditPage() {
   const [activeTab, setActiveTab] = useState<"hero" | "story" | "offices" | "why">("hero");
@@ -78,10 +78,10 @@ export default function EditPage() {
       </div>
 
       {/* Active Editor Panel */}
-      {activeTab === "hero" && <HeroEditor />}
-      {activeTab === "story" && <OurStoryEditor />}
-      {activeTab === "offices" && <OfficesEditor />}
-      {activeTab === "why" && <WhyAseelEditor />}
+      {/* {activeTab === "hero" && <HeroEditor />} */}
+      {/* {activeTab === "story" && <OurStoryEditor />} */}
+      {/* {activeTab === "offices" && <OfficesEditor />} */}
+      {/* {activeTab === "why" && <WhyAseelEditor />} */}
     </div>
   );
 }

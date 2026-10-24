@@ -16,7 +16,6 @@ import {
 import AnimatedLine from "../Common/AnimatedLine";
 import PageBackground from "../Common/PageBackground";
 import { useTranslation } from "../../Language/translator";
-import { fetchSectionContent } from "@/lib/cms/content-store";
 import type { OfficesContent } from "@/app/admin/edit/OfficesEditor";
 
 const defaultOfficesContent: OfficesContent = {
@@ -60,10 +59,8 @@ export default function OfficesSection() {
   const [cms, setCms] = useState<OfficesContent>(defaultOfficesContent);
 
   useEffect(() => {
-    fetchSectionContent<OfficesContent>("offices", defaultOfficesContent).then(setCms);
 
     const onUpdate = () => {
-      fetchSectionContent<OfficesContent>("offices", defaultOfficesContent).then(setCms);
     };
 
     window.addEventListener("cms_update_offices", onUpdate);

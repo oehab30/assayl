@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { Plus, Save, Trash2 } from "lucide-react";
-import { fetchSectionContent, saveSectionContent } from "@/lib/cms/content-store";
 
 export interface OfficeLocationCMS {
   id: string;
@@ -62,13 +61,10 @@ export default function OfficesEditor() {
   const [statusMessage, setStatusMessage] = useState("");
 
   useEffect(() => {
-    fetchSectionContent<OfficesContent>("offices", defaultOfficesContent).then(setContent);
   }, []);
 
   const handleSave = async () => {
     setSaving(true);
-    const result = await saveSectionContent<OfficesContent>("offices", content);
-    setStatusMessage(result.message);
     setSaving(false);
   };
 

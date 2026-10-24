@@ -1,11 +1,14 @@
-
 "use client";
 
+import { useEffect, useState } from "react";
 import AnimatedLine from "../Common/AnimatedLine";
 import { useTranslation } from "../../Language/translator";
 import PageBackground from "../Common/PageBackground";
+import { createClient } from "../../../lib/supabase/client";
 
-interface WhyAssaylItem {
+type Locale = "en" | "ar";
+
+interface FeatureContent {
   title: string;
   description: string;
 }
@@ -17,155 +20,178 @@ interface WhyAssaylContent {
   description: string;
   principles: string;
   items: {
-    source: WhyAssaylItem;
-    team: WhyAssaylItem;
-    solutions: WhyAssaylItem;
-    coordination: WhyAssaylItem;
+    team: FeatureContent;
+    source: FeatureContent;
+    solutions: FeatureContent;
+    coordination: FeatureContent;
   };
 }
 
-interface WhyAssaylProps {
+interface WebsiteSection {
+  id: number;
+  slug: string;
   content: {
     en: WhyAssaylContent;
     ar: WhyAssaylContent;
   };
+  published: boolean;
 }
 
-interface FeatureItem {
-  id: string;
-  contentKey: keyof WhyAssaylContent["items"];
-}
-
-const features: FeatureItem[] = [
-  { id: "01", contentKey: "source" },
-  { id: "02", contentKey: "team" },
-  { id: "03", contentKey: "solutions" },
-  { id: "04", contentKey: "coordination" },
+const features = [
+  { id: "01", key: "source" as const },
+  { id: "02", key: "team" as const },
+  { id: "03", key: "solutions" as const },
+  { id: "04", key: "coordination" as const },
 ];
 
-const defaultWhyAssaylContent: { en: WhyAssaylContent; ar: WhyAssaylContent } = {
-  en: {
-    eyebrow: "Why Aseel",
-    headingLead: "A reliable partner",
-    headingAccent: "for your business.",
-    description: "We connect sourcing, coordination and logistics to make your importing journey easier.",
-    principles: "Our principles",
-    items: {
-      source: {
-        title: "Reliable Sourcing",
-        description: "We help you find suitable suppliers and coordinate your sourcing requirements.",
-      },
-      team: {
-        title: "Experienced Team",
-        description: "Our team supports you throughout the importing and shipping process.",
-      },
-      solutions: {
-        title: "Flexible Solutions",
-        description: "We tailor our services to your shipment, business and requirements.",
-      },
-      coordination: {
-        title: "Coordinated Operations",
-        description: "We coordinate the different stages to help keep your shipment moving.",
-      },
-    },
-  },
-  ar: {
-    eyebrow: "لماذا أصيل",
-    headingLead: "شريك موثوق",
-    headingAccent: "لأعمالك.",
-    description: "نربط بين التوريد والتنسيق والخدمات اللوجستية لتسهيل رحلة الاستيراد.",
-    principles: "مبادئنا",
-    items: {
-      source: {
-        title: "توريد موثوق",
-        description: "نساعدك في العثور على الموردين المناسبين وتنسيق متطلبات التوريد.",
-      },
-      team: {
-        title: "فريق ذو خبرة",
-        description: "يدعمك فريقنا طوال عملية الاستيراد والشحن.",
-      },
-      solutions: {
-        title: "حلول مرنة",
-        description: "نصمم خدماتنا لتناسب شحنتك وأعمالك ومتطلباتك.",
-      },
-      coordination: {
-        title: "عمليات منسقة",
-        description: "ننسق مختلف المراحل للمساعدة في استمرار حركة شحنتك.",
-      },
-    },
-  },
-};
-
-export default function WhyAssayel({ content = defaultWhyAssaylContent }: Partial<WhyAssaylProps>) {
+export default function WhyAssayel() {
   const { locale } = useTranslation();
-  const contentForLocale = content[locale] || defaultWhyAssaylContent[locale];
+
+  const [section, setSection] = useState<WebsiteSection | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    async function fetchWhyAssaylContent() {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const supabase = createClient();
+
+        const { data, error: queryError } = await supabase
+          .from("website_sections")
+          .select("id, slug, content, published")
+          .eq("slug", "why-assayl")
+          .eq("published", true)
+          .maybeSingle();
+
+        if (queryError) {
+          throw queryError;
+        }
+
+        if (!data) {
+          throw new Error(
+            "The published Why Assayl section was not found."
+          );
+        }
+
+        if (isMounted) {
+          setSection(data as unknown as WebsiteSection);
+        }
+      } catch (err) {
+        console.error("Failed to load Why Assayl content:", err);
+
+        if (isMounted) {
+          setError(
+            "Unable to load this section. Please try again later."
+          );
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    }
+
+    fetchWhyAssaylContent();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const currentLocale: Locale = locale === "ar" ? "ar" : "en";
+
+  const content = section?.content?.[currentLocale];
+
+  // Loading state
+  if (loading) {
+    return (
+      <section
+        className="relative min-h-[400px] bg-[#F8F6F3] px-5 py-20"
+        aria-busy="true"
+        aria-label="Loading Why Assayl section"
+      >
+        <PageBackground />
+        <div className="relative mx-auto max-w-[1240px]">
+          <div className="h-4 w-40 animate-pulse rounded bg-[#D1C6B9]/50" />
+          <div className="mt-6 h-12 max-w-md animate-pulse rounded bg-[#D1C6B9]/50" />
+          <div className="mt-8 h-4 max-w-lg animate-pulse rounded bg-[#D1C6B9]/50" />
+          <div className="mt-12 space-y-6">
+            {[1, 2, 3, 4].map((item) => (
+              <div
+                key={item}
+                className="h-20 animate-pulse rounded bg-white/70"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Error or missing content state
+  if (error || !content) {
+    return (
+      <section
+        id="why-Assayel"
+        className="bg-[#F8F6F3] px-5 py-20"
+      >
+        <div
+          className="mx-auto max-w-[1240px] text-sm text-[#4B4A4B]"
+          role="status"
+        >
+          {error ?? "Why Assayl content is unavailable."}
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section
       id="why-Assayel"
       aria-labelledby="why-Assayel-title"
+      dir={currentLocale === "ar" ? "rtl" : "ltr"}
       className="relative isolate overflow-hidden bg-[#F8F6F3] py-20 sm:py-24 lg:py-32"
     >
-      {/* Background */}
       <PageBackground />
 
-      {/* Content */}
       <div className="relative mx-auto w-full max-w-[1240px] px-5 sm:px-6 lg:px-8">
         <div className="grid items-start gap-14 lg:grid-cols-12 lg:gap-20">
-          {/* Left Column */}
+          {/* Left column */}
           <div className="lg:col-span-5 lg:sticky lg:top-28">
             <div className="max-w-lg">
-              {/* Eyebrow */}
               <div className="mb-5">
                 <AnimatedLine
-                  text={contentForLocale.eyebrow}
+                  text={content.eyebrow}
                   lines={1}
                   textColor="text-[#8c8275]"
                 />
               </div>
 
-              {/* Heading */}
               <h2
                 id="why-Assayel-title"
-                className="
-                  text-4xl
-                  font-extrabold
-                  leading-[1.05]
-                  tracking-[-0.035em]
-                  text-[#221E20]
-                  sm:text-5xl
-                  lg:text-[52px]
-                "
+                className="text-4xl font-extrabold leading-[1.05] tracking-[-0.035em] text-[#221E20] sm:text-5xl lg:text-[52px]"
               >
-                {contentForLocale.headingLead}
+                {content.headingLead}
                 <span className="text-brand-primary">
                   {" "}
-                  {contentForLocale.headingAccent}
+                  {content.headingAccent}
                 </span>
               </h2>
 
-              {/* Accent Line */}
               <div
                 aria-hidden="true"
                 className="mt-7 h-[2px] w-14 bg-brand-accent"
               />
 
-              {/* Description */}
-              <p
-                className="
-                  mt-7
-                  max-w-md
-                  font-manrope
-                  text-sm
-                  leading-7
-                  text-[#4B4A4B]
-                  sm:text-[15px]
-                "
-              >
-                {contentForLocale.description}
+              <p className="mt-7 max-w-md font-manrope text-sm leading-7 text-[#4B4A4B] sm:text-[15px]">
+                {content.description}
               </p>
 
-              {/* Supporting Statement */}
               <div className="mt-8 flex items-center gap-3">
                 <span
                   aria-hidden="true"
@@ -173,115 +199,48 @@ export default function WhyAssayel({ content = defaultWhyAssaylContent }: Partia
                 />
 
                 <span className="font-jakarta text-[10px] font-semibold uppercase tracking-[0.18em] text-[#4B4A4B]/75">
-                  {contentForLocale.principles}
+                  {content.principles}
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Right Column */}
+          {/* Right column */}
           <div className="lg:col-span-7">
             <div className="overflow-hidden border-y border-[#D1C6B9]">
               {features.map((feature) => {
-                const item = contentForLocale.items[feature.contentKey];
+                const item = content.items[feature.key];
 
                 return (
                   <article
-                    key={feature.id}
-                    className="
-                      group
-                      relative
-                      grid
-                      grid-cols-[48px_1fr]
-                      gap-4
-                      py-7
-                      transition-all
-                      duration-300
-                      sm:grid-cols-[64px_1fr]
-                      sm:gap-6
-                      sm:py-8
-                    "
+                    key={feature.key}
+                    className="group relative grid grid-cols-[48px_1fr] gap-4 py-7 transition-all duration-300 sm:grid-cols-[64px_1fr] sm:gap-6 sm:py-8"
                   >
-                    {/* Hover Background */}
+                    {/* Hover background */}
                     <div
                       aria-hidden="true"
-                      className="
-                        pointer-events-none
-                        absolute
-                        inset-0
-                        -z-10
-                        translate-x-[-101%]
-                        bg-white
-                        opacity-0
-                        transition-all
-                        duration-500
-                        ease-out
-                        group-hover:translate-x-0
-                        group-hover:opacity-100
-                      "
+                      className="pointer-events-none absolute inset-0 -z-10 translate-x-[-101%] bg-white opacity-0 transition-all duration-500 ease-out group-hover:translate-x-0 group-hover:opacity-100"
                     />
 
                     {/* Number */}
                     <div className="relative pt-1">
-                      <span
-                        className="
-                          text-xs
-                          font-bold
-                          tracking-wider
-                          text-[#D1C6B9]
-                          transition-colors
-                          duration-300
-                          group-hover:text-brand-accent
-                        "
-                      >
+                      <span className="text-xs font-bold tracking-wider text-[#D1C6B9] transition-colors duration-300 group-hover:text-brand-accent">
                         {feature.id}
                       </span>
 
-                      {/* Vertical Accent */}
                       <span
                         aria-hidden="true"
-                        className="
-                          absolute
-                          left-0
-                          top-7
-                          h-0
-                          w-[2px]
-                          bg-brand-accent
-                          transition-all
-                          duration-300
-                          group-hover:h-8
-                        "
+                        className="absolute start-0 top-7 h-0 w-[2px] bg-brand-accent transition-all duration-300 group-hover:h-8"
                       />
                     </div>
 
-                    {/* Feature Content */}
+                    {/* Database content */}
                     <div>
-                      <h3
-                        className="
-                          text-lg
-                          font-bold
-                          tracking-[-0.015em]
-                          text-[#221E20]
-                          transition-colors
-                          duration-300
-                          group-hover:text-brand-primary
-                          sm:text-xl
-                        "
-                      >
+                      <h3 className="text-lg font-bold tracking-[-0.015em] text-[#221E20] transition-colors duration-300 group-hover:text-brand-primary sm:text-xl">
                         {item.title}
                       </h3>
 
-                      <p
-                        className="
-                          mt-2.5
-                          max-w-xl
-                          text-xs
-                          leading-6
-                          text-[#4B4A4B]
-                          sm:text-sm
-                          sm:leading-7
-                        "
-                      >
+                      <p className="mt-2.5 max-w-xl text-xs leading-6 text-[#4B4A4B] sm:text-sm sm:leading-7">
                         {item.description}
                       </p>
                     </div>
@@ -289,22 +248,9 @@ export default function WhyAssayel({ content = defaultWhyAssaylContent }: Partia
                     {/* Arrow */}
                     <div
                       aria-hidden="true"
-                      className="
-                        absolute
-                        right-2
-                        top-1/2
-                        -translate-y-1/2
-                        translate-x-2
-                        text-lg
-                        text-brand-accent
-                        opacity-0
-                        transition-all
-                        duration-300
-                        group-hover:translate-x-0
-                        group-hover:opacity-100
-                      "
+                      className="absolute end-2 top-1/2 -translate-y-1/2 translate-x-2 text-lg text-brand-accent opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
                     >
-                      →
+                      {currentLocale === "ar" ? "←" : "→"}
                     </div>
                   </article>
                 );

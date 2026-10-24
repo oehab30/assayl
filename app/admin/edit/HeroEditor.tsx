@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { Save } from "lucide-react";
-import { fetchSectionContent, saveSectionContent } from "@/lib/cms/content-store";
 
 export interface HeroContent {
   eyebrow: { en: string; ar: string };
@@ -36,13 +35,10 @@ export default function HeroEditor() {
   const [statusMessage, setStatusMessage] = useState("");
 
   useEffect(() => {
-    fetchSectionContent<HeroContent>("hero", defaultHeroContent).then(setContent);
   }, []);
 
   const handleSave = async () => {
     setSaving(true);
-    const result = await saveSectionContent<HeroContent>("hero", content);
-    setStatusMessage(result.message);
     setSaving(false);
   };
 
